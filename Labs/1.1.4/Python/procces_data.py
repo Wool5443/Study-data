@@ -114,7 +114,7 @@ class Data_Tau:
 
 
 def main():
-    path = 'Python/data.txt'
+    path = 'Python/data2.txt'
     data = read_file(path)
 
     taus = [10, 20, 30]
@@ -128,7 +128,7 @@ def main():
         print(f'tau = {tau}')
         data_tau = Data_Tau(data, tau)
 
-        with open(f'Data tau = {tau}.txt', 'w') as f:
+        with open(f'{path} = {tau}.txt', 'w') as f:
             print(f'Number of measures = {len(data_tau.data_tau)}',
                   f'Average particles = {data_tau.average}',
                   f'Dispersion = {data_tau.dispersion}',
