@@ -114,7 +114,7 @@ class Data_Tau:
 
 
 def main():
-    path = 'Python/data2.txt'
+    path = 'Python/data good.txt'
     data = read_file(path)
 
     taus = [10, 20, 30]
@@ -128,7 +128,7 @@ def main():
         print(f'tau = {tau}')
         data_tau = Data_Tau(data, tau)
 
-        with open(f'{path} = {tau}.txt', 'w') as f:
+        with open(f'{path} tau = {tau}.txt', 'w') as f:
             print(f'Number of measures = {len(data_tau.data_tau)}',
                   f'Average particles = {data_tau.average}',
                   f'Dispersion = {data_tau.dispersion}',
@@ -143,7 +143,7 @@ def main():
     data_tau = Data_Tau(data, taus[1])
     data_tau.id -= 1
 
-    X_OFFSET = 12
+    X_OFFSET = 0
     xs = [i for i in range(x_lim + X_OFFSET + 1)]
     ys = [0] * len(xs)
 
@@ -152,7 +152,7 @@ def main():
 
     plot.plot([max(0, x - X_OFFSET) for x in xs], ys, color=colors[(data_tau.id + 1) % len(colors)])
 
-    plot.savefig('Figure.png', dpi=300)
+    plot.savefig('Figure good.png', dpi=300)
     
 
 
