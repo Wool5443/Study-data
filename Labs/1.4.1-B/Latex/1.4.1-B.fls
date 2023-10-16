@@ -240,6 +240,15 @@ INPUT ./images//Figure 2.png
 INPUT ./images//Figure 2.png
 INPUT ./images//Figure 2.png
 INPUT ./images//Figure 2.png
+INPUT ./images//Figure 3.png
+INPUT ./images//Figure 3.png
+INPUT ./images//Figure 3.png
+INPUT ./images//Figure 3.png
+INPUT ./images//graph.png
+INPUT ./images//graph.png
+INPUT ./images//graph.png
+INPUT ./images//graph.png
+INPUT ./images//graph.png
 INPUT 1.4.1-B.aux
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
