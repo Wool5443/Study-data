@@ -39,8 +39,8 @@ def main():
     u = Ts ** 2 * x_cs
     v = ys ** 2
 
-    plt.scatter(v, u)
-    plt.plot(v, u)
+    plt.scatter(ys, Ts)
+    plt.plot(ys, Ts)
 
     k = 1
     c = 0.3905
@@ -51,9 +51,9 @@ def main():
 
     print(g)
 
-    plt.plot(v, u2, color='r')
+#    plt.plot(v, u2, color='r')
 
-    plt.savefig('graph.png', dpi=300)
+    plt.savefig('graph2.png', dpi=300)
 
 
 main()
