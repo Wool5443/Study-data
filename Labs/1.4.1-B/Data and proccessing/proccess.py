@@ -26,7 +26,7 @@ def main():
 
         for i in range(N):
             ts[i], ns[i], x_cs[i] = map(float, f.readline().strip().split())
-        x_cs /= 100
+        x_cs *= CM_TO_M
 
     J_0 = m_rod * l_rod ** 2 / 12 + m_rod * x_c0 ** 2
     ys  = ((m_rod + m_pr + m_gr) * x_cs - (m_rod + m_pr) * x_c0) / m_gr
@@ -54,6 +54,7 @@ def main():
     plt.plot(v, u2, color='r')
 
     plt.savefig('graph.png', dpi=300)
+
 
 main()
 
