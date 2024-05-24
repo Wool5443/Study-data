@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.19)  19 MAY 2024 23:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.19)  20 MAY 2024 11:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1067,7 +1067,7 @@ Package pdftex.def Info: img/Experiment Scheme.png  used on input line 90.
 File: img/Cumulative effect.png Graphic file (type png)
 <use img/Cumulative effect.png>
 Package pdftex.def Info: img/Cumulative effect.png  used on input line 95.
-(pdftex.def)             Requested size: 135.15059pt x 129.00024pt.
+(pdftex.def)             Requested size: 189.21pt x 180.60728pt.
 LaTeX Font Info:    Font shape `OML/cmr/m/up' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 122.
 LaTeX Font Info:    Font shape `OML/cmr/m/up' in size <8> not available
@@ -1108,7 +1108,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  99i,8n,101p,606b,556s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></opt/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb>
-Output written on main.pdf (3 pages, 270355 bytes).
+Output written on main.pdf (3 pages, 270344 bytes).
 PDF statistics:
  104 PDF objects out of 1000 (max. 8388607)
  74 compressed objects within 1 object stream
