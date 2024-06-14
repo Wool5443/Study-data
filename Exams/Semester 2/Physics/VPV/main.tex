@@ -88,7 +88,7 @@
     \begin{subfigure}{0.3\textwidth}
         \centering
         \includegraphics[width=0.5\textwidth]{img/Experiment Scheme.png}
-        \caption*{Установка}
+        \caption*{Иллюстрация эффекта}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
         \centering
@@ -110,6 +110,9 @@
 \end{center}
 
 Весь процесс падения капли можно разделить на 3 этапа:
+
+\bigskip
+
 \begin{enumerate}
     \item Падение капли.
     \item Образование полусферического углубления в жидкости.
@@ -119,25 +122,33 @@
 \bigskip
 
 Энергия падении капли выражается следующим образом:
+
 \begin{equation}
     E_k = mgh = \frac{mv^2}{2} = \frac{4}{3}\pi{r^3}{\rho}gh,
 \end{equation}
+
 где $r$ -- радиус капли, $h$ -- высота её падения.
 Во время образования углубления, энергия капли тратится на образование
 поверхности воды и на работу против силы Архимеда:
+
 \begin{equation}
     A_\sigma = \pi{\sigma}R^2,
 \end{equation}
+
 \begin{equation}
     A_\text{арх} = \int_{0}^{R} \frac{1}{3}{\pi}{\rho}gy^2(3R-y)dy = 
     \frac{1}{4}\pi{\rho}gR^4
 \end{equation}
+
 где $R$ -- радиус углубления.
 Суммарная работа получаеся:
+
 \begin{equation}
     A = \pi\sigma{R^2} + \frac{1}{4}\pi{\rho}gR^4.
 \end{equation}
+
 Если приравнять её к энергии капли получим:
+
 \begin{equation}
     R = \left [\left (\frac{4\sigma^2}{\rho^2g^2} +
                \frac{16}{3}r^3h \right )^\frac{1}{2}
@@ -153,21 +164,100 @@
 \begin{equation}
     A_\sigma = 2\pi{r_c}l\sigma,
 \end{equation}
+
 где $r_c$ -- радиус струи, а $l$ -- её длина.
+
 \begin{equation}
     A_\text{тяж} = \int_{0}^{l} \pi{r_c^2}\rho{g}ydy =
                    \frac{1}{2}\pi{r_c^2}l^2\rho{g}.
 \end{equation}
+
 Суммарная работа получается:
+
 \begin{equation}
     A = 2\pi{r_c}l + \frac{1}{2}\pi{r_c^2}l^2\rho{g}.
 \end{equation}
+
 Приравняв это к энергии капли найдем параметры струи:
+
 \begin{equation}
     r_cl = \left (\frac{4\sigma^2}{\rho^2g^2} + \frac{8}{3}
                   r^3h \right ) ^ \frac{1}{2} - \frac{2\sigma}{\rho{g}}.
 \end{equation}
 
+\newpage
 
+\begin{center}
+    \subsection*{Проверка теории опытом}
+\end{center}
+
+Для проверки теорию мы проведём следующий эксперимент:
+поставим ёмкость с водой рядом с линейкой, и будем капать туда из шприца,
+записывая процесс на замедленную съёмку.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{img/Установка.jpg}
+    \caption*{Установка}
+\end{figure}
+
+Затем мы обработали полученные кадры, измерив параметры углубления от
+падения капли и параметры кумулятивной струи. Для измерения расстояний
+использовался фотошоп.
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/Experiment data/Jug/39_8/jug 39_8.11.jpg}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/Experiment data/Jug/39_8/jug 39_8.12.jpg}
+    \end{subfigure}
+\end{figure}
+
+Мы проводили опыт с двумя сосудами: кружкой и кувшином для воды.
+В нашей теории мы считаем сосуд с водой бесконечно большим, тем самым
+мы не учитываем влияние механических волн на ход эксперимента.
+Однако, если слишком часто капать, то вода не успевает  ``успокоиться'',
+из-за чего первая струя заметно выше последующих. Поэтому перед каждым
+капанием мы выжидали, пока поверхность воды визуально успокоится.
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/Experiment data/Cup/40_5 fast/Fast cup 40_5.2.jpg}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/Experiment data/Cup/40_5 fast/Fast cup 40_5.4.jpg}
+    \end{subfigure}
+\end{figure}
+
+\subsection*{Обработка результатов}
+
+По собранным данным мы построили графики и сравнили их с теорией.
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/R(h)(стакан).png}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/lrc(h)(стакан).png}
+    \end{subfigure}
+
+    \caption*{Оранжевый - теория, синий - эксперимент}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/R(h)(кувшин).png}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/lrc(h)(кувшин).png}
+    \end{subfigure}
+
+    \caption*{Оранжевый - теория, синий - эксперимент}
+\end{figure}
+
+\subsection*{Вывод}
+Видно, что для кувшина графики больше совпадают с теорией, но видно,
+что реальность довольно сильно отличается от теории.
 
 \end{document}
