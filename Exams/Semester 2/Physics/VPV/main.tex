@@ -236,28 +236,60 @@
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.9\textwidth]{img/R(h)(стакан).png}
+        \includegraphics[width=0.9\textwidth]{img/R(h) стакан.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.9\textwidth]{img/lrc(h)(стакан).png}
+        \includegraphics[width=0.9\textwidth]{img/lrc(h) стакан.png}
     \end{subfigure}
-
-    \caption*{Оранжевый - теория, синий - эксперимент}
 \end{figure}
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.9\textwidth]{img/R(h)(кувшин).png}
+        \includegraphics[width=0.9\textwidth]{img/R(h) кувшин.png}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=0.9\textwidth]{img/lrc(h)(кувшин).png}
+        \includegraphics[width=0.9\textwidth]{img/lrc(h) кувшин.png}
     \end{subfigure}
+\end{figure}
 
-    \caption*{Оранжевый - теория, синий - эксперимент}
+Лианирезуем графики по следующим формулам:
+\begin{equation}
+    (R^2+\frac{2\sigma}{{\rho}g})^2=\frac{16}{3}r^3h+\frac{4\sigma^2}{\rho^2g^2}
+\end{equation}
+
+\begin{equation}
+    (lrc+\frac{2\sigma}{{\rho}g})^2=\frac{8}{3}r^3h+\frac{4\sigma^2}{\rho^2g^2}
+\end{equation}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/linear R стакан.png}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/linear lrc стакан.png}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/linear R кувшин.png}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\textwidth]{img/linear lrc кувшин.png}
+    \end{subfigure}
 \end{figure}
 
 \subsection*{Вывод}
-Видно, что для кувшина графики больше совпадают с теорией, но видно,
-что реальность довольно сильно отличается от теории.
+Видно, что для кувшина линеаризованные графики довольно похожи на
+теоретические в плане наклона. Так что можно сказать, что мы нашли
+правильные зависимости, но модель оказалась слишком идеальной.
+Отхождения от теории обосновываются малыми размерами сосудов и большой
+высотой падения капли. Ведь мы не учитывали образование дополнительных
+капель, да и в целом система крайне чувствительная к стороннему
+воздействию, например шагам людей поблизости. Чтобы улучшить эксперимент,
+можно взять сосуд побольше, найти более хорошую камеру, чтобы избавиться
+от эффекта перспективы и уменьшить высоту падения капли, ведь тогда
+можно добиться отсутсвия появления дополнительных, что ближе приблизит
+нас к модели.
 
 \end{document}

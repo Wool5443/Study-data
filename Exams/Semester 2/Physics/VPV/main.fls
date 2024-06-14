@@ -456,26 +456,46 @@ INPUT ./img/Experiment data/Cup/40_5 fast/Fast cup 40_5.4.jpg
 INPUT ./img/Experiment data/Cup/40_5 fast/Fast cup 40_5.4.jpg
 INPUT ./img/Experiment data/Cup/40_5 fast/Fast cup 40_5.4.jpg
 INPUT ./img/Experiment data/Cup/40_5 fast/Fast cup 40_5.4.jpg
-INPUT ./img/R(h)(стакан).png
-INPUT ./img/R(h)(стакан).png
-INPUT ./img/R(h)(стакан).png
-INPUT ./img/R(h)(стакан).png
-INPUT ./img/R(h)(стакан).png
-INPUT ./img/lrc(h)(стакан).png
-INPUT ./img/lrc(h)(стакан).png
-INPUT ./img/lrc(h)(стакан).png
-INPUT ./img/lrc(h)(стакан).png
-INPUT ./img/lrc(h)(стакан).png
-INPUT ./img/R(h)(кувшин).png
-INPUT ./img/R(h)(кувшин).png
-INPUT ./img/R(h)(кувшин).png
-INPUT ./img/R(h)(кувшин).png
-INPUT ./img/R(h)(кувшин).png
-INPUT ./img/lrc(h)(кувшин).png
-INPUT ./img/lrc(h)(кувшин).png
-INPUT ./img/lrc(h)(кувшин).png
-INPUT ./img/lrc(h)(кувшин).png
-INPUT ./img/lrc(h)(кувшин).png
+INPUT ./img/R(h) стакан.png
+INPUT ./img/R(h) стакан.png
+INPUT ./img/R(h) стакан.png
+INPUT ./img/R(h) стакан.png
+INPUT ./img/R(h) стакан.png
+INPUT ./img/lrc(h) стакан.png
+INPUT ./img/lrc(h) стакан.png
+INPUT ./img/lrc(h) стакан.png
+INPUT ./img/lrc(h) стакан.png
+INPUT ./img/lrc(h) стакан.png
+INPUT ./img/R(h) кувшин.png
+INPUT ./img/R(h) кувшин.png
+INPUT ./img/R(h) кувшин.png
+INPUT ./img/R(h) кувшин.png
+INPUT ./img/R(h) кувшин.png
+INPUT ./img/lrc(h) кувшин.png
+INPUT ./img/lrc(h) кувшин.png
+INPUT ./img/lrc(h) кувшин.png
+INPUT ./img/lrc(h) кувшин.png
+INPUT ./img/lrc(h) кувшин.png
+INPUT ./img/linear R стакан.png
+INPUT ./img/linear R стакан.png
+INPUT ./img/linear R стакан.png
+INPUT ./img/linear R стакан.png
+INPUT ./img/linear R стакан.png
+INPUT ./img/linear lrc стакан.png
+INPUT ./img/linear lrc стакан.png
+INPUT ./img/linear lrc стакан.png
+INPUT ./img/linear lrc стакан.png
+INPUT ./img/linear lrc стакан.png
+INPUT ./img/linear R кувшин.png
+INPUT ./img/linear R кувшин.png
+INPUT ./img/linear R кувшин.png
+INPUT ./img/linear R кувшин.png
+INPUT ./img/linear R кувшин.png
+INPUT ./img/linear lrc кувшин.png
+INPUT ./img/linear lrc кувшин.png
+INPUT ./img/linear lrc кувшин.png
+INPUT ./img/linear lrc кувшин.png
+INPUT ./img/linear lrc кувшин.png
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
