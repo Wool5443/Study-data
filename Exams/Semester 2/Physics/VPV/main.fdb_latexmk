@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1718367769.09508 "/home/twenty/Documents/Study-data/Exams/Semester 2/Physics/VPV/main.tex" "main.pdf" "main" 1718367773.45073 0
+["pdflatex"] 1718430859.28537 "/home/twenty/Documents/Study-data/Exams/Semester 2/Physics/VPV/main.tex" "main.pdf" "main" 1718430863.14289 0
   "/home/twenty/.config/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm" 1717524440.31653 3308 eee81981029f67083258db36df06e523 ""
   "/home/twenty/.config/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm" 1717524440.31653 3304 6a543c07045572737981351171e0505e ""
   "/home/twenty/.config/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/labx1728.tfm" 1717524440.31653 3312 d199be9bd555944e2403193d58a0256a ""
@@ -13,7 +13,7 @@
   "/home/twenty/.config/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/larm1728.tfm" 1717524440.31653 3252 92d08740ce00199d6cf9ff4aaada81d1 ""
   "/home/twenty/.config/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/larm2074.tfm" 1717524440.31553 3264 03c2b9e4787a40d3b9c197c38b93b558 ""
   "/home/twenty/.config/texlive/2024/texmf-var/fonts/tfm/lh/lh-t2a/larm2488.tfm" 1717524440.31653 3264 102508a989355317d27912fb22a38399 ""
-  "/home/twenty/Documents/Study-data/Exams/Semester 2/Physics/VPV/main.tex" 1718367768.86051 11891 75e67fc2e665e69f569594ece5e48c5c ""
+  "/home/twenty/Documents/Study-data/Exams/Semester 2/Physics/VPV/main.tex" 1718430859.10445 12153 e7820cf2b15067335390555d9e860495 ""
   "/opt/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc" 1716032360 3141 82d5616418ed8d5de703b3951bedecb4 ""
   "/opt/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1716032360 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1716032360 1004 54797486969f23fa377b128694d548df ""
@@ -38,6 +38,7 @@
   "/opt/texlive/2024/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm" 1716032360 684 3a51bd4fd9600428d5264cf25f04bb9a ""
   "/opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1716032360 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1716032360 36741 fa121aac0049305630cf160b86157ee4 ""
+  "/opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1716032360 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "/opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1716032360 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1716032360 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/opt/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1716032360 32734 69e00a6b65cedb993666e42eedb3d48f ""
@@ -253,9 +254,9 @@
   "img/lrc(h) кувшин.png" 1718366703.21601 195632 1d8354d4e0f01fb77423ac95c56249d2 ""
   "img/lrc(h) стакан.png" 1718366703.21801 202726 292219341f300e7736d196810f25e59b ""
   "img/Установка.jpg" 1718355498.302 2429533 0b0c11183c6d4882b9d3e2c5e4edf367 ""
-  "main.aux" 1718367773.35146 262 9363b414d1adad414db7f2e4e1ef5cad "pdflatex"
-  "main.out" 1718367770.09449 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1718367768.86051 11891 75e67fc2e665e69f569594ece5e48c5c ""
+  "main.aux" 1718430863.02744 262 9363b414d1adad414db7f2e4e1ef5cad "pdflatex"
+  "main.out" 1718430859.93945 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1718430859.10445 12153 e7820cf2b15067335390555d9e860495 ""
   (generated)
   "main.aux"
   "main.log"
