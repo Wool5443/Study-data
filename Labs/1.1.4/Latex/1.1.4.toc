@@ -1,0 +1,11 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Аннотация}{2}{}%
+\contentsline {section}{\numberline {2}Теоретические сведения}{2}{}%
+\contentsline {subsection}{\numberline {2.1}Излучение}{2}{}%
+\contentsline {subsection}{\numberline {2.2}Статистические понятия}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Гистограммы и вероятности}{4}{}%
+\contentsline {section}{\numberline {3}Методика измерений}{5}{}%
+\contentsline {subsection}{\numberline {3.1}Ход работы}{5}{}%
+\contentsline {section}{\numberline {4}Результаты измерений и обработка данных}{5}{}%
+\contentsline {subsection}{\numberline {4.1}Данные}{5}{}%
+\contentsline {subsection}{\numberline {4.2}Вывод}{9}{}%

@@ -1,0 +1,7 @@
+Number of measures = 400
+Average particles = 19.1125
+Dispersion = 44.64845847002995
+Sigma inclusions = [0.98, 0.98, 0.98]
+Error rate = 2.2324229235014976
+Average intensity = 1.9112500000000001
+Average intensity error = 0.22324229235014975
