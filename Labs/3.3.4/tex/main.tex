@@ -1,0 +1,143 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[a4paper,top=1.5cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{cmap}
+\usepackage{mathtext}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage[rgb]{xcolor}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{icomma}
+\usepackage{euscript}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{caption}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{subcaption}
+\usepackage[europeanresistors, americaninductors]{circuitikz}
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\begin{document}
+
+\newgeometry{left=2cm, right=2cm, top=2cm, bottom=1cm,
+             bindingoffset=0cm}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{5cm}
+        \Huge МФТИ
+        \vspace*{2cm}\\
+        \LARGE \textbf{Лабораторная работа}
+        \\\vspace*{0.25cm}
+
+        \noindent\rule{\textwidth}{1pt}
+        \vspace*{-0.25cm}
+
+        \huge \textbf{Эффект Холла в полупроводниках.}
+        \noindent\rule{\textwidth}{1pt}
+
+        \vfill
+
+        \begin{flushright}
+            \begin{minipage}{.4\textwidth}
+            \Large Выполнил: \\ Солодилов Михаил \\ (Б01-306)
+            \end{minipage}
+        \end{flushright}
+
+        \vfill
+
+        \normalsize Долгопрудный \\2024
+    \end{center}
+\end{titlepage}
+
+\restoregeometry
+
+\begin{center}
+    \section*{Введение}
+\end{center}
+
+\noindent \textbf{Цель работы:}
+измерение подвижности и концентрации носителей заряда в проводнике.
+
+\bigskip
+
+\noindent \textbf{Оборудование:}
+электромагнит, источник питания, миллитесламетр, амперметр,
+образец германия, вольтметр.
+
+\bigskip
+
+\subsection*{Экспериментальная установка}
+
+Электрическая схема установки для измерения ЭДС Холла представ­
+лена на рис. 1. В зазоре электромагнита (рис. 1а) создаётся постоянное
+магнитное поле, величину которого можно менять с помощью регуля­тора источника
+питания электромагнита. Ток питания электромагни­та измеряется амперметром А1
+(внешним или встроенным в источник).
+
+Направление тока в обмотках электромагнита меняется переключением
+разъёма К1.
+
+Градуировка электромагнита (связь тока с индукцией поля) проводится при
+помощи миллитесламетра на основе датчика Хол­ла.
+
+Прямоугольный образец из легированного германия, смонтированный в специальном
+держателе (рис. 1б), подключается к источнику питнаия ($\approx 1,5 \text{В}$).
+При замыкании ключа К2 вдоль длинной стороны образца течёт ток, величина
+которого регулируется реостатом R2 и измеряется миллиамперметром А2. В образце,
+помещённом в зазор электромагнита, между контактами 3 и 4 возникает разность
+потенциалов $U34$, которая измеряется с помощью вольтметра V.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.8\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{img/Setup.png}
+    \end{subfigure}
+\end{figure}
+
+Однако контакты 3 и 4 могут лежать не на одной эквипотенциали, поэтому напряжение
+между ними является суммой омического падения напряжения и ЭДС Холла.
+
+\begin{equation}
+    U_{34} = \varepsilon_{\text{Холла}} + U_0
+\end{equation}
+
+\begin{equation}
+    \varepsilon_{\text{Холла}} = U_{34} - U_0
+\end{equation}
+
+Затем вольтметр ставится на контакты 3 и 5. Таким образом,
+зная $I$ и $U_{35}$ можно найти удельное сопротивление образца.
+
+\begin{equation}
+    \rho_0 =\frac{U_{35}ah}{Il}\text{,}
+\end{equation}
+где $l$ - длина образца, $a$ - ширина, $h$ - толщина.
+
+\begin{tabular}{|r|r|r|r|r|r|r|}
+    \toprule
+     & $U$, $V$ & $I$, A & $B1$, mTl & $B2$, mTl & $B3$, mTl & $\overline{B}$, mTl \\
+    \midrule
+    $0$ & $21.10$  & $0.24$ & $234.20$  & $233.90$  & $233.70$  & $233.93$  \\
+    $1$ & $39.30$  & $0.47$ & $447.10$  & $446.90$  & $448.70$  & $447.57$  \\
+    $2$ & $60.00$  & $0.71$ & $683.50$  & $684.00$  & $686.40$  & $684.63$  \\
+    $3$ & $81.00$  & $0.96$ & $868.00$  & $869.10$  & $868.80$  & $868.63$  \\
+    $4$ & $101.40$ & $1.20$ & $983.30$  & $985.10$  & $986.20$  & $984.87$  \\
+    $5$ & $115.10$ & $1.36$ & $1042.50$ & $1045.90$ & $1044.60$ & $1044.33$ \\
+    \bottomrule
+\end{tabular}
+
+\end{document}
