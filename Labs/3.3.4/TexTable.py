@@ -1,14 +1,36 @@
 import pandas as pd
-from sys import argv
 
 
 def main():
-    if len(argv) < 2:
-        print("Give .csv file")
-        return
-    table = pd.read_csv(argv[1])
+    files = [
+        "U(I)14.csv",
+        "U(I)31.csv",
+        "U(I)48.csv",
+        "U(I)65.csv",
+        "U(I)82.csv",
+        "U(I)99.csv",
+        "U(I)100Reversed.csv",
+        "K(Isc).csv",
+    ]
 
-    print(table.to_latex(column_format='|r|r|r|r|r|r|r|', float_format='%.2f'))
+    tablesFile = open("Tables.txt", "w")
+
+    for file in files:
+        get_table(file, tablesFile)
+
+    tablesFile.close()
+
+
+def get_table(file: str, outFile):
+    table = pd.read_csv(file)
+    column_fomrat = '|' + '|'.join('r' * len(table)) + '|'
+    print(
+        table.to_latex(column_format=column_fomrat,
+                       float_format='%.2e',
+                       index=False),
+        file=outFile
+    )
+
 
 
 if __name__ == '__main__':

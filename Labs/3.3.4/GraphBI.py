@@ -33,7 +33,9 @@ def draw_graphs(files: list[str]) -> None:
             return
         draw_graph(axes, file, COLORS[i])
 
-    fig.savefig(file.removesuffix(".csv").removeprefix("./") + '.png')
+    axes.legend()
+
+    fig.savefig("B(I).png")
     fig.show()
     plt.show()
 
