@@ -1,0 +1,213 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+
+\setlength{\parindent}{0pt} % Убираем абзацные отступы
+
+\titleformat{\section}[block]{\centering\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}[block]{\centering\large\bfseries}{}{0pt}{}
+\setcounter{secnumdepth}{-1}
+
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+
+\title{
+    \textbf{Федеральное государственное автономное образовательное учреждение высшего образования}\\
+    \textbf{«Национальный исследовательский университет}\\
+    \textbf{"Высшая школа экономики"»}
+
+    \vspace{1cm}
+
+    \textbf{Московский институт электроники и математики им. А.Н. Тихонова НИУ ВШЭ}
+
+    \textbf{Департамент компьютерной инженерии}
+
+    \vspace{1.5cm}
+
+    \textbf{Курс: Алгоритмизация и программирование}
+
+    \vspace{1cm}
+
+    \textbf{ОТЧЕТ}
+
+    \textbf{по лабораторной работе №1}
+}
+
+\author{
+    \fontsize{10}{10}
+    \begin{tabular}{cc}
+        \begin{tabular}{|l|c|c|}
+            \hline
+            \textbf{Раздел} & \textbf{Mах оценка} & \textbf{Итог. оценка} \\
+            \hline
+            Постановка & $0,5$ & \\
+            \hline
+            Метод & $1$ & \\
+            \hline
+            Спецификация & $0,5$ & \\
+            \hline
+            Алгоритм & $1,5$ & \\
+            \hline
+            Работа программы & $1$ & \\
+            \hline
+            Листинг & $0,5$ & \\
+            \hline
+            Тесты & $1$ & \\
+            \hline
+            Вопросы & $2$ & \\
+            \hline
+            Доп. задание & 2 & \\
+            \hline
+        \end{tabular}
+        &
+        \begin{tabular}{l}
+            Студент: Солодилов Михаил Анатольевич \\
+            Группа: БИВ253 \\
+            Вариант: 232\\
+            Руководитель:\\
+            Оценка:\\
+            Дата сдачи \\
+        \end{tabular}
+    \end{tabular}
+}
+
+\date{
+    \vfill
+    \textbf{МОСКВА 2025}
+}
+
+\addto\captionsrussian{\renewcommand\contentsname{Оглавление}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+\newpage
+
+\section{Задание}
+
+\begin{enumerate}
+    \item (2) Вычислить массив $R[1:n]$ в соответствии с формулой:
+        $r[i] = 1,25 \sin(3ax -ih)$
+    \item (8) Из вычисленного массива $R$ удалить все элементны,
+        расположенные между последним положительным и первым
+        максимальным по модулю элементами.
+    \item (3) В полученном массиве $R[1:k]$, где $k$ --- число
+        элементов, оставшихся после удаления, подсчитать среднее
+        арифметическое элементов, расположенных до последнего
+        минимального элемента включительно.
+\end{enumerate}
+
+\section{Постановка задачи}
+
+\underline{Дано:}
+\begin{enumerate}
+    \item n --- цел.; a, x, h --- вещ.
+    \item Нет входных данных
+    \item Нет входных данных
+\end{enumerate}
+
+\underline{Результат:}
+\begin{enumerate}
+    \item $R[1:n]$ --- вещ.
+    \item $R[1:k]$ --- вещ., где $k$ --- длина массива после удаления
+        или сообщение <<Full removal>> или сообщение <<No deletions>>
+    \item $\text{average}$ --- вещ. или сообщение <<No average>>
+\end{enumerate}
+
+\underline{При:}
+\begin{enumerate}
+    \item $n \in \mathbb{N}, \ n \leq LMAX$, где $LMAX$ ---
+        максимальная длинна массива.
+\end{enumerate}
+
+\underline{Связь:}
+\begin{enumerate}
+    \item $r[i] = 1,25 \sin(3ax - ih)$
+    \item $\exists n_1 : \forall i \in [1, n] \implies |r[i]|
+        <= |r[n_1]|, \  \nexists t \in [1, n_1 - 1]: |r[t]| >
+        |r[n_1]|$ \\
+        $\exists n_2 : r[n_2] > 0 \  \nexists t \in [n_2 + 1, n]:
+        r[t] > 0$ \\
+        При $n_1 > n_2, \ c = n_1, \ n_1 = n_2, \ n_2 = c$ \\
+        $\forall i \in [1, n_1] \cup [n_2, n] \implies \exists t \in
+        [1, k]: r'[t] = r[k], \ \forall j \in [1, k] \ \exists q \in
+        [1, n_1] \cup [n_2, n]: r'[j] = r[q]$, где $r'$ --- массив
+        после удаления.
+    \item $\exists km \in [1, k] : \forall i \in [1, k] \implies r[i]
+        >= r[km], \ \forall q \in [km + 1, k] \implies r[q] > r[km]$
+        \\
+        $average = \sum_{i = 1}^{i = km}{r[i]} \cdot \frac{1}{km}$
+\end{enumerate}
+
+\section{Метод решения задачи}
+\begin{enumerate}
+    \item
+        $
+            \begin{array}{l}
+                \begin{cases}
+                    \text{для } i = \overline{1, n} \\
+                    r[i] = 1,25 \sin(3ax - ih)
+                \end{cases}
+            \end{array}
+        $
+    \item
+        $
+            \begin{array}{l}
+                n_1 = 0 \\
+                \begin{cases}
+                    для i = \overline{2, n} \\
+                    n_1 = i \text{, если } |r[i]| > |r[n_1]| \\
+                \end{cases} \\ \\
+
+                n_2 = n \\
+                \begin{cases}
+                    \text{пока } n_2 > 0 \text{ и } r[n_2] \leq 0 \\
+                    n_2 = n_2 - 1 \\
+                \end{cases} \\ \\
+
+                m = n_2 - n_1  - 1\\
+                \begin{cases}
+                    \text{для } i = \overline{n_1 + 1, n_2 - 1} \\
+                    r[i] = r[i + m] \\
+                \end{cases} \\
+                k = n - m \\
+            \end{array}
+        $
+    \item
+        $
+            \begin{array}{l}
+                km = 0
+                \begin{cases}
+                    \text{для } i = \overline{2, k} \\
+                    km = i \text{, если } r[i] \leq r[km]
+                \end{cases} \\ \\
+
+                sum = 0 \\
+                \begin{cases}
+                    \text{для } i = \overline{1, km} \\
+                    sum = sum + r[i] \\
+                \end{cases} \\
+                average = \frac{sum}{km}
+            \end{array}
+        $
+\end{enumerate}
+
+\section{Внешняя спецификация}
+
+
+
+\section{Описание алгоритма на псевдокоде}
+\section{Листинг программы}
+\section{Распечатка тестов к программе и результатов}
+
+
+\end{document}
