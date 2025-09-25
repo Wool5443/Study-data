@@ -1,8 +1,8 @@
-#include <stdio.h>
 #include <math.h>
 #include <stddef.h>
+#include <stdio.h>
 
-//FLAGS: "-lm"
+// FLAGS: "-lm"
 
 void clean_buffer(void);
 void print_array(size_t size, const double array[size]);
@@ -29,8 +29,7 @@ int main()
         printf("Введите a, x, h:\n");
         scanf("%lg%lg%lg", &a, &x, &h);
         clean_buffer();
-    }
-    while (!isfinite(a) || !isfinite(x) || !isfinite(h));
+    } while (!isfinite(a) || !isfinite(x) || !isfinite(h));
 
     double r[LMAX + 1] = {};
     for (size_t i = 1; i <= n; i++)
@@ -118,5 +117,6 @@ void print_array(size_t size, const double array[size])
 
 void clean_buffer(void)
 {
-    while (getchar() != '\n');
+    while (getchar() != '\n')
+        ;
 }
