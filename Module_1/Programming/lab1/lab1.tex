@@ -11,8 +11,36 @@
 \usepackage{stackengine}
 \usepackage{verbatim}
 \usepackage{fancyvrb}
+\usepackage{listings}
 
-\setlength{\parindent}{0pt} % Убираем абзацные отступы
+\setlength{\parindent}{0pt}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\lstset{extendedchars=\true}
 
 \titleformat{\section}[block]{\centering\Large\bfseries}{}{0pt}{}
 \titleformat{\subsection}[block]{\centering\large\bfseries}{}{0pt}{}
@@ -370,8 +398,31 @@
 \newpage
 \section{Листинг программы}
 
+\lstinputlisting[language=C]{main.c}
+
 \newpage
 \section{Распечатка тестов к программе и результатов}
 
+\begin{center}
+    \begin{tabular}{|c|l|l|}
+        \hline
+        № & Искодные данные & Результат \\
+        \hline
+        1 & $n = 5, a = 1, x = 1, h = 1$ &
+        \begin{tabular}{l}
+            $r = [1.13662, 1.05184, 0, -1.05184, -1.13662]$ \\
+            Нет удалений \\
+            Среднее вышло: $-4.44089e-17$
+        \end{tabular} \\
+        \hline
+        2 & $n = 6, a = 4, x = 1, h = 5$ &
+        \begin{tabular}{l}
+            $r = [0.821233, 1.13662, -0.1764, -1.2367, -0.525209, 0.938734]$ \\
+            $r = [0.821233, 1.13662, -0.1764, -1.2367, 0.938734]$ \\
+            Среднее вышло: $0.136189$
+        \end{tabular} \\
+        \hline
+    \end{tabular}
+\end{center}
 
 \end{document}
