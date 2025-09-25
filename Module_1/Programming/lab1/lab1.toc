@@ -1,8 +1,8 @@
 \babel@toc {russian}{}\relax 
 \contentsline {section}{Задание}{2}{}%
-\contentsline {section}{Постановка задачи}{2}{}%
-\contentsline {section}{Метод решения задачи}{2}{}%
-\contentsline {section}{Внешняя спецификация}{3}{}%
-\contentsline {section}{Описание алгоритма на псевдокоде}{3}{}%
-\contentsline {section}{Листинг программы}{3}{}%
-\contentsline {section}{Распечатка тестов к программе и результатов}{3}{}%
+\contentsline {section}{Постановка задачи}{3}{}%
+\contentsline {section}{Метод решения задачи}{4}{}%
+\contentsline {section}{Внешняя спецификация}{5}{}%
+\contentsline {section}{Описание алгоритма на псевдокоде}{6}{}%
+\contentsline {section}{Листинг программы}{7}{}%
+\contentsline {section}{Распечатка тестов к программе и результатов}{8}{}%

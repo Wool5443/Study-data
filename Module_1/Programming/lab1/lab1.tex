@@ -7,6 +7,10 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{array}
+\usepackage{tcolorbox}
+\usepackage{stackengine}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
 
 \setlength{\parindent}{0pt} % Убираем абзацные отступы
 
@@ -15,6 +19,53 @@
 \setcounter{secnumdepth}{-1}
 
 \geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+
+\newcommand{\labnumber}{1}
+
+\newcommand{\algquote}[1]{<<#1>>}
+\newcommand{\algindex}[1]{[#1]}
+\newcommand{\algline}[1]{\underline{#1}}
+\newcommand{\algplus}{+}
+
+\newcommand{\specframeimpl}[1]
+{
+\begin{array}{l}
+    \begin{tcolorbox}[
+        width=\textwidth,
+        colback=white,
+        colframe=black,
+        sharp corners,
+        boxrule=1pt
+    ]
+    #1
+    \end{tcolorbox}
+\end{array}
+}
+
+\newcommand{\specframe}[1]
+{
+\[
+    \specframeimpl{#1}
+\]
+}
+
+\newcommand{\specframeif}[1]
+{
+\[
+\left\{
+    \specframeimpl{#1}
+\right.
+\]
+}
+
+\newcommand{\specframeloop}[1]
+{
+\[
+\left\{
+    \specframeimpl{#1}
+\right\}^{\!\bigstar}
+\]
+}
 
 \title{
     \textbf{Федеральное государственное автономное образовательное учреждение высшего образования}\\
@@ -35,7 +86,7 @@
 
     \textbf{ОТЧЕТ}
 
-    \textbf{по лабораторной работе №1}
+    \textbf{по лабораторной работе №\labnumber}
 }
 
 \author{
@@ -95,17 +146,18 @@
 \section{Задание}
 
 \begin{enumerate}
-    \item (2) Вычислить массив $R[1:n]$ в соответствии с формулой:
+    \item (2) Вычислить массив $r[1:n]$ в соответствии с формулой:
         $r[i] = 1,25 \sin(3ax -ih)$
-    \item (8) Из вычисленного массива $R$ удалить все элементны,
+    \item (8) Из вычисленного массива $r$ удалить все элементны,
         расположенные между последним положительным и первым
         максимальным по модулю элементами.
-    \item (3) В полученном массиве $R[1:k]$, где $k$ --- число
+    \item (3) В полученном массиве $r[1:k]$, где $k$ --- число
         элементов, оставшихся после удаления, подсчитать среднее
         арифметическое элементов, расположенных до последнего
         минимального элемента включительно.
 \end{enumerate}
 
+\newpage
 \section{Постановка задачи}
 
 \underline{Дано:}
@@ -117,10 +169,10 @@
 
 \underline{Результат:}
 \begin{enumerate}
-    \item $R[1:n]$ --- вещ.
-    \item $R[1:k]$ --- вещ., где $k$ --- длина массива после удаления
-        или сообщение <<Full removal>> или сообщение <<No deletions>>
-    \item $\text{average}$ --- вещ. или сообщение <<No average>>
+    \item $r[1:n]$ --- вещ.
+    \item $r[1:k]$ --- вещ., где $k$ --- длина массива после удаления
+        или сообщение <<Нет удалений>>
+    \item $\text{average}$ --- вещ.
 \end{enumerate}
 
 \underline{При:}
@@ -148,6 +200,7 @@
         $average = \sum_{i = 1}^{i = km}{r[i]} \cdot \frac{1}{km}$
 \end{enumerate}
 
+\newpage
 \section{Метод решения задачи}
 \begin{enumerate}
     \item
@@ -179,13 +232,14 @@
                     \text{для } i = \overline{n_1 + 1, n_2 - 1} \\
                     r[i] = r[i + m] \\
                 \end{cases} \\
-                k = n - m \\
+                k = n - m \text{, если } m > 0 \\
+
             \end{array}
         $
     \item
         $
             \begin{array}{l}
-                km = 0
+                km = 1 \\
                 \begin{cases}
                     \text{для } i = \overline{2, k} \\
                     km = i \text{, если } r[i] \leq r[km]
@@ -201,12 +255,114 @@
         $
 \end{enumerate}
 
+\newpage
 \section{Внешняя спецификация}
 
+\specframe{
+    Лабораторная работа №\labnumber
+}
 
+\specframe{
+    Задание №1
+}
 
+\specframeloop{Введите $n$: <$n$>}
+До $n > 0$ и $n < LMAX$
+
+\specframe{
+    Введите $a$: <$a$> \\
+    Введите $x$: <$x$> \\
+    Введите $h$: <$h$> \\
+    Массив r: \\
+    $\ll r[1] \gg$ $\ll r[2] \gg$ ... $\ll r[n] \gg$ \\
+}
+
+\specframe{
+    Задание №2
+}
+
+При $k = n$
+\specframeif{
+    Нет удалений
+}
+Иначе
+\specframeif{
+    $\ll r[1] \gg$ $\ll r[2] \gg$ ... $\ll r[k] \gg$ \\
+}
+
+\specframe{
+    Задание №3
+}
+
+\specframe{
+    Среднее вышло: $\ll average \gg$
+}
+
+\newpage
 \section{Описание алгоритма на псевдокоде}
+
+\begin{Verbatim}[commandchars=+\[\]]
+алг +algquote[Лабораторная работа №1]
+    ввод(n, a, x, h)
+    +algline[цикл от] i := 1 +algline[до] n
+        r+algindex[i] := 1,25sin(3ax - ih)
+    +algline[кц]
+    вывод(r+algindex[1:n])
+
+    n1 := 1
+    +algline[цикл от] i := 2 +algline[до] n
+        +algline[если] |r+algindex[i]| > |r+algindex[n1]| +algline[то]
+            n1 := i
+        +algline[всё]
+    +algline[кц]
+
+    n2 := n +algplus 1
+    +algline[цикл от] i := 1 +algline[до] n
+        +algline[если] r+algindex[i] > 0 +algline[то]
+            n2 := i
+        +algline[всё]
+    +algline[кц]
+
+    +algline[если] n1 > n2 +algline[то]
+        c := n1
+        n1 := n2
+        n2 := c
+    +algline[всё]
+
+    m := n2 - n1 - 1
+    +algline[цикл от] i := n1 +algplus 1 +algline[до] n2 - 1
+        r+algindex[i] = r+algindex[i +algplus m]
+    +algline[кц]
+
+    +algline[если] m > 0 +algline[то]
+        k := n - m
+    +algline[всё]
+
+    вывод(r+algindex[1:k])
+
+    km := 1
+    +algline[цикл от] i := 2 +algline[до] k
+        +algline[если] r+algindex[i] <= r+algindex[km] +algline[то]
+            km := i
+        +algline[всё]
+    +algline[кц]
+
+    sum := 0
+    +algline[цикл от] i := 1 +algline[до] km
+        sum := sum +algplus r+algindex[i]
+    +algline[кц]
+
+    average := sum / km
+
+    вывод(average)
+
+кон
+\end{Verbatim}
+
+\newpage
 \section{Листинг программы}
+
+\newpage
 \section{Распечатка тестов к программе и результатов}
 
 
