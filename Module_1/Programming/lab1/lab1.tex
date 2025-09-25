@@ -12,6 +12,10 @@
 \usepackage{verbatim}
 \usepackage{fancyvrb}
 \usepackage{listings}
+\usepackage{tocloft}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=blue]{hyperref}
+
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
 
 \setlength{\parindent}{0pt}
 
@@ -19,7 +23,6 @@
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{backcolour},
     commentstyle=\color{codegreen},
@@ -37,16 +40,16 @@
     showtabs=false,
     tabsize=4
 }
-
 \lstset{style=mystyle}
-
 \lstset{extendedchars=\true}
 
 \titleformat{\section}[block]{\centering\Large\bfseries}{}{0pt}{}
 \titleformat{\subsection}[block]{\centering\large\bfseries}{}{0pt}{}
 \setcounter{secnumdepth}{-1}
 
-\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
 
 \newcommand{\labnumber}{1}
 
@@ -81,6 +84,7 @@
 \newcommand{\specframeif}[1]
 {
 \[
+\hspace{-2.85mm}
 \left\{
     \specframeimpl{#1}
 \right.
@@ -90,6 +94,7 @@
 \newcommand{\specframeloop}[1]
 {
 \[
+\hspace{-3.12mm}
 \left\{
     \specframeimpl{#1}
 \right\}^{\!\bigstar}
