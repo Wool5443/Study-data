@@ -28,29 +28,26 @@
 \newpage
 \section{Постановка задачи}
 
-\underline{Дано:}
-\begin{enumerate}
+\given
+{
     \item n --- цел.; a, x, h --- вещ.
     \item Нет входных данных
     \item Нет входных данных
-\end{enumerate}
+}
 
-\underline{Результат:}
-\begin{enumerate}
+\result{
     \item $r[1:n]$ --- вещ.
     \item $r[1:k]$ --- вещ., где $k$ --- длина массива после удаления
         или сообщение <<Нет удалений>>
     \item $\text{average}$ --- вещ.
-\end{enumerate}
+}
 
-\underline{При:}
-\begin{enumerate}
+\prerequisites{
     \item $n \in \mathbb{N}, \ n \leq LMAX$, где $LMAX$ ---
         максимальная длинна массива.
-\end{enumerate}
+}
 
-\underline{Связь:}
-\begin{enumerate}
+\binding{
     \item $r[i] = 1,25 \sin(3ax - ih)$
     \item $\exists n_1 : \forall i \in [1, n] \implies |r[i]|
         <= |r[n_1]|, \  \nexists t \in [1, n_1 - 1]: |r[t]| >
@@ -66,62 +63,53 @@
         >= r[km], \ \forall q \in [km + 1, k] \implies r[q] > r[km]$
         \\
         $average = \sum_{i = 1}^{i = km}{r[i]} \cdot \frac{1}{km}$
-\end{enumerate}
+}
 
 \newpage
 \section{Метод решения задачи}
-\begin{enumerate}
-    \item
-        $
-            \begin{array}{l}
-                \begin{cases}
-                    \text{для } i = \overline{1, n} \\
-                    r[i] = 1,25 \sin(3ax - ih)
-                \end{cases}
-            \end{array}
-        $
-    \item
-        $
-            \begin{array}{l}
-                n_1 = 0 \\
-                \begin{cases}
-                    для i = \overline{2, n} \\
-                    n_1 = i \text{, если } |r[i]| > |r[n_1]| \\
-                \end{cases} \\ \\
+\mathsolution{
+    \mathsolutionstep{
+        \mathsolutionloop{
+            \text{для } i = \overline{1, n} \\
+            r[i] = 1,25 \sin(3ax - ih)
+        }
+    }
+    \mathsolutionstep{
+        n_1 = 0 \\
+        \mathsolutionloop{
+            для i = \overline{2, n} \\
+            n_1 = i \text{, если } |r[i]| > |r[n_1]| \\
+        } \\ \\
 
-                n_2 = n \\
-                \begin{cases}
-                    \text{пока } n_2 > 0 \text{ и } r[n_2] \leq 0 \\
-                    n_2 = n_2 - 1 \\
-                \end{cases} \\ \\
+        n_2 = n \\
+        \mathsolutionloop{
+            \text{пока } n_2 > 0 \text{ и } r[n_2] \leq 0 \\
+            n_2 = n_2 - 1 \\
+        } \\ \\
 
-                m = n_2 - n_1  - 1\\
-                \begin{cases}
-                    \text{для } i = \overline{n_1 + 1, n_2 - 1} \\
-                    r[i] = r[i + m] \\
-                \end{cases} \\
-                k = n - m \text{, если } m > 0 \\
-                k = n \text{, в противном случае} \\
-            \end{array}
-        $
-    \item
-        $
-            \begin{array}{l}
-                km = 1 \\
-                \begin{cases}
-                    \text{для } i = \overline{2, k} \\
-                    km = i \text{, если } r[i] \leq r[km]
-                \end{cases} \\ \\
+        m = n_2 - n_1  - 1\\
+        \mathsolutionloop{
+            \text{для } i = \overline{n_1 + 1, n_2 - 1} \\
+            r[i] = r[i + m] \\
+        } \\
+        k = n - m \text{, если } m > 0 \\
+        k = n \text{, в противном случае} \\
+    }
+    \mathsolutionstep{
+        km = 1 \\
+        \mathsolutionloop{
+            \text{для } i = \overline{2, k} \\
+            km = i \text{, если } r[i] \leq r[km]
+        } \\ \\
 
-                sum = 0 \\
-                \begin{cases}
-                    \text{для } i = \overline{1, km} \\
-                    sum = sum + r[i] \\
-                \end{cases} \\
-                average = \frac{sum}{km}
-            \end{array}
-        $
-\end{enumerate}
+        sum = 0 \\
+        \mathsolutionloop{
+            \text{для } i = \overline{1, km} \\
+            sum = sum + r[i] \\
+        } \\
+        average = \frac{sum}{km}
+    }
+}
 
 \newpage
 \section{Внешняя спецификация}

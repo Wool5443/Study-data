@@ -101,6 +101,50 @@
 \]
 }
 
+\newcommand{\formalatskimpl}[2]
+{
+\underline{#1}
+\begin{enumerate}
+    #2
+\end{enumerate}
+}
+
+\newcommand{\given}[1]{\formalatskimpl{Дано:}{#1}}
+\newcommand{\result}[1]{\formalatskimpl{Результат:}{#1}}
+\newcommand{\prerequisites}[1]{\formalatskimpl{При}{#1}}
+\newcommand{\binding}[1]{\formalatskimpl{Связь}{#1}}
+
+\newcommand{\mathsolution}[1]
+{
+\begin{enumerate}
+    #1
+\end{enumerate}
+}
+
+\newcommand{\mathsolutionstep}[1]
+{
+\item
+$
+\begin{array}{l}
+    #1
+\end{array}
+$
+}
+
+\newcommand{\mathsolutionloop}[1]
+{
+\begin{cases}
+    #1
+\end{cases}
+}
+
+\newcommand{\pseudocode}[1]
+{
+\begin{Verbatim}[commandchars=+\[\]]
+    #1
+\end{Verbatim}
+}
+
 \title{
     \textbf{Федеральное государственное автономное образовательное учреждение высшего образования}\\
     \textbf{«Национальный исследовательский университет}\\
