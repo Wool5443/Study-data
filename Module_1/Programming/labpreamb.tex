@@ -53,10 +53,21 @@
 \renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
 
 \newcommand{\algquote}[1]{<<#1>>}
-\newcommand{\algindex}[1]{[#1]}
 \newcommand{\algline}[1]{\underline{#1}}
-\newcommand{\algplus}{+}
+
 \newcommand{\algleq}{$\leq$}
+\newcommand{\algneq}{$\neq$}
+\newcommand{\algcdot}{$\cdot$}
+
+\newcommand{\algif}[1]{\algline{если} #1 \algline{то}}
+\newcommand{\algelse}{\algline{иначе}}
+\newcommand{\algendif}{\algline{всё}}
+
+\newcommand{\algfor}[2]{\algline{цикл от} #1 \algline{до} #2}
+\newcommand{\algwhile}[1]{\algline{цикл-пока} #1}
+\newcommand{\algforwhileend}{\algline{кц}}
+\newcommand{\alguntil}{\algline{цикл}}
+\newcommand{\alguntilend}[1]{\algline{до} #1}
 
 \newcommand{\specframeimpl}[1]
 {

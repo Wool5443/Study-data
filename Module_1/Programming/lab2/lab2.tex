@@ -67,7 +67,7 @@
         \mathsolutionloop{
             \text{для } i = \overline{1, n} \\
             \mathsolutionloop{
-                \text{для } j = \overline{1, n} \\
+                \text{для } j = \overline{1, m} \\
                 found = 1 \\
                 \mathsolutionloop{
                     \text{пока } found \leq k \text{ и } x[i, j]
@@ -88,7 +88,7 @@
             \mathsolutionloop{
                 \text{пока } t_{val} > 0 \\
                 t_{prod} = t_{prod} \cdot (t_{val} \bmod 10) \\
-                t_{val} = \lfloor t_{val} / 10 \rfloor \\
+                t_{val} = t_{val} div 10 \\
             } \\
             p[i] = t_{prod}
         }
@@ -107,18 +107,52 @@
 }
 
 \specframeloop{
-    Введите n, m, k от 1 до LMAX: \\
+    Введите $n$, $m$, $k$ от $1$ до $LMAX$: \\
     $<n>$, $<m>$, $<k>$
 }
 До $1 \leq n \leq LMAX$ и $1 \leq m \leq LMAX$ и $1 \leq k \leq LMAX$
 
 \specframe{
-    Введите матрицу x: \\
+    Введите матрицу $x$: \\
     $\ll x[1, 1] \gg$, $\ll x[1, 2] \gg$, ..., $\ll x[2, 1] \gg$, $\ll x[2, 2] \gg$, ..., $\ll x[n, m] \gg$,
 }
 
 \specframe{
-    Задание №1
+    Введите массив $z$: \\
+    $\ll z[1] \gg$, $\ll z[2]\gg$, ..., $\ll z[k] \gg$
+}
+
+При t = 0
+\specframeif{
+    Ноль обнулений
+}
+Иначе
+\specframeif{
+    Обнулено $<t>$ элементов: \\
+    $\ll e[1] \gg$, $\ll e[2] \gg$, ..., $\ll e[t] \gg$ \\
+    Матрица имеет следующий вид: \\
+    $<x[1, 1]>$, $<x[1, 2]>$, ..., $<x[2, 1]>$, $<x[2, 2]>$, ..., $<x[n, m]>$,
+
+}
+
+\specframe{
+    Задание №2
+}
+
+\specframeloop{
+    Введите $n$ от $1$ до $LMAX$: \\
+    $<n>$
+}
+До $1 \leq n \leq LMAX$
+
+\specframe {
+    Введите $a[1:n]$ \\
+    $\ll a[1] \gg$, $\ll a[2]\gg$, ..., $\ll a[n] \gg$
+}
+
+\specframe{
+    Массив произведений цифр: \\
+    $\ll p[1] \gg$, $\ll p[2] \gg$, ..., $\ll p[n] \gg$
 }
 
 \newpage
@@ -129,14 +163,92 @@
 % +algline[]
 % +algplus
 % +algleq
+% +algneq
+% +algfor[][]
+% +algwhile[]
+% +algforwhileend
+% +alguntil
+% +alguntilend[]
+% +algif[]
+% +algelse
+% +algendif
 
-\begin{Verbatim}[commandchars=+\[\]]
+\begin{Verbatim}[commandchars=\\\{\}]
+алг \algquote{Лабораторная работа №\labnumber Задание №1}
+    вывод(\algquote{Лабораторная работа №\labnumber})
+    вывод(\algquote{Задание №1})
+
+    вывод(\algquote{Введите n, m, k от 1 до LMAX:})
+
+    \algline{цикл}
+        ввод(n, m, k)
+    \algline{до} 1 \algleq n \algleq LMAX \algline{и} 1 \algleq n \algleq LMAX \algline{и} 1 \algleq n \algleq LMAX
+
+    вывод(\algquote{Введите матрицу x[1:n, 1:m]})
+    ввод(x[1:n, 1:m])
+
+    вывод(\algquote{Введите массив z[1:k]})
+    ввод(z[1:k])
+
+    t := 0
+
+    \algfor{i := 1}{n}
+        \algfor{j := 1}{m}
+            found := 1
+            \algwhile{found \algleq k \algline{и} x[i, j] \algneq z[found]}
+                found := found \ 1
+            \algforwhileend
+            \algif{found \algleq k}
+                x[i, j] := 0
+                t := t \ 1
+                e[t] = z[found]
+            \algendif
+        \algforwhileend
+    \algforwhileend
+
+    \algif{t = 0}
+        вывод(\algquote{Ноль обнулений})
+    \algelse
+        вывод(\algquote{Обнулено}, t, \algquote{элементов:})
+        вывод(e[1:t])
+        Матрица имеет следующий вид:
+        вывод(x[1:n, 1:m])
+    \algendif
+кон
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+алг \algquote{Лабораторная работа №\labnumber Задание №2}
+    вывод(\algquote{Лабораторная работа №\labnumber})
+    вывод(\algquote{Задание №2})
+
+    вывод(\algquote{Введите n от 1 до LMAX:})
+
+    \algline{цикл}
+        ввод(n)
+    \algline{до} 1 \algleq n \algleq LMAX
+
+    вывод(\algquote{Введите массив a[1:n]})
+    ввод(a[1:n])
+
+    \algfor{i := 1}{n}
+        t_prod := 1
+        t_val := a[i]
+        \algwhile{t_val > 0}
+            t_prod := t_prod \algcdot (t_val mod 10)
+            t_val := t_val div 10
+        \algforwhileend
+        p[i] := t_prod
+    \algforwhileend
+    вывод(\algquote{Массив произведений цифр:})
+    вывод(p[1:n])
+кон
 \end{Verbatim}
 
 \newpage
 \section{Листинг программы}
 
-% \lstinputlisting[language=C]{main.c}
+\lstinputlisting[language=C]{task1.c}
 
 \newpage
 \section{Распечатка тестов к программе и результатов}

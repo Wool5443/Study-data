@@ -151,6 +151,7 @@
 }
 Иначе
 \specframeif{
+    Осталось $<k>$ элементов: \\
     $\ll r[1] \gg$ $\ll r[2] \gg$ ... $\ll r[k] \gg$
 }
 
@@ -166,8 +167,8 @@
 \section{Описание алгоритма на псевдокоде}
 
 \begin{Verbatim}[commandchars=+\[\]]
-алг +algquote[Лабораторная работа №1]
-    вывод(+algquote[Лабораторная работа №1])
+алг +algquote[Лабораторная работа №+labnumber]
+    вывод(+algquote[Лабораторная работа №+labnumber])
     вывод(+algquote[Задание №1])
 
     вывод(+algquote[Введите n от 1 до LMAX:])
