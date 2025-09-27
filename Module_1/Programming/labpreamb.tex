@@ -14,6 +14,7 @@
 \usepackage{listings}
 \usepackage{tocloft}
 \usepackage[colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=blue]{hyperref}
+\usepackage{biblatex}
 
 \geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
 
@@ -44,7 +45,7 @@
 \lstset{extendedchars=\true}
 
 \titleformat{\section}[block]{\centering\Large\bfseries}{}{0pt}{}
-\titleformat{\subsection}[block]{\centering\large\bfseries}{}{0pt}{}
+\titleformat{\subsection}[block]{\flushleft\normalsize\bfseries}{}{0pt}{}
 \setcounter{secnumdepth}{-1}
 
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}

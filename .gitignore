@@ -8,3 +8,7 @@
 *.aux
 *.toc
 *.out
+*.bbl
+*.bcf
+*.blg
+*.run.xml

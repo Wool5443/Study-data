@@ -127,13 +127,13 @@
 
 \specframeloop{
     Введите $n$ от 1 до $LMAX$: \\
-    <$n$>
+    $<n>$
 }
-До $n > 0$ и $n < LMAX$
+До $1 \leq n \leq LMAX$
 
 \specframeloop{
     Введите $a,x,h$:\\
-    <$a$> <$x$> <$h$>
+    $<a>$ $<x>$ $<h>$
 }
 До $a, x, h \in \mathbb{R}$
 
@@ -167,11 +167,26 @@
 
 \begin{Verbatim}[commandchars=+\[\]]
 алг +algquote[Лабораторная работа №1]
-    ввод(n, a, x, h)
+    вывод(+algquote[Лабораторная работа №1])
+    вывод(+algquote[Задание №1])
+
+    вывод(+algquote[Введите n от 1 до LMAX:])
+
+    +algline[цикл]
+        ввод(n)
+    +algline[до] 1 +algleq n +algleq LMAX
+
+    +algline[цикл]
+        ввод(a, x, h)
+    +algline[до] isfinite(a) +algline[и] isfinite(x) +algline[и] isfinite(h)
+
     +algline[цикл от] i := 1 +algline[до] n
         r+algindex[i] := 1,25sin(3ax - ih)
     +algline[кц]
+
     вывод(r+algindex[1:n])
+
+    вывод(+algquote[Задание №2])
 
     n1 := 1
     +algline[цикл от] i := 2 +algline[до] n
@@ -203,8 +218,11 @@
         r+algindex[i] = r+algindex[i +algplus m]
     +algline[кц]
 
-
-    вывод(r+algindex[1:k])
+    +algline[если] k = n +algline[то]
+        вывод(r+algindex[1:k])
+    +algline[иначе]
+        вывод(+algquote[Нет удалений])
+    +algline[всё]
 
     km := 1
     +algline[цикл от] i := 2 +algline[до] k
@@ -220,7 +238,7 @@
 
     average := sum / km
 
-    вывод(average)
+    вывод(+algquote[Cреднее вышло:], average)
 
 кон
 \end{Verbatim}

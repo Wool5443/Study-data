@@ -14,35 +14,112 @@
 \newpage
 \section{Задание}
 
+\begin{enumerate}
+    \item Даны целочисленная матрица X[1:n, 1:m] и целочисленный
+        массив Z[1:k]. Обнулить элементы матрицы X, которых нет в
+        массиве Z и запомнить обнуленные элементы.
+    \item Дан массив целых положительных чисел. Сформировать новый
+        массив, содержащий произведения цифр каждого элемента
+        исходного массива.
+\end{enumerate}
+
 \newpage
 \section{Постановка задачи}
-\given{ \item Input }
-\result{ \item Output }
-\prerequisites{ \item $0 < 1$}
-\binding{ \item With rope }
+
+\given{
+    \item
+        n, m, k --- цел. \\
+        x[1:n, 1:m] --- цел. \\
+        z[1:k] --- цел.
+    \item
+        n - цел.
+        a[1:n] --- цел.
+}
+\result{
+    \item
+        t --- цел., количество обнулённых элементов \\
+        e[1:t] --- обнулённые элементы или сообщение <<Ноль
+        обнулений>>
+    \item
+        p[1:n] --- цел.
+}
+\prerequisites{
+    \item
+        $ 1 \leq n, m, k \leq LMAX$ \\
+    \item
+        $ 1 \leq n \leq LMAX$
+}
+\binding{
+    \item
+        $\forall i \in [1, k]: \exists (i, j) \in \{n \times m\}:
+        x[i, j] = z[i] \implies x'[i, j] = 0, \exists k \in [1, t]:
+        e[t] = z[i]$, где $x'$ --- массив после преобразования
+    \item
+        $\forall i \in [1, n] \implies p[i] = productdigits(a[i])$
+}
 
 \newpage
 \section{Метод решения задачи}
 
 \mathsolution{
     \mathsolutiontask{
-        Some op \\
+        t = 0 \\
         \mathsolutionloop{
             \text{для } i = \overline{1, n} \\
-            a[i] = i
+            \mathsolutionloop{
+                \text{для } j = \overline{1, n} \\
+                found = 1 \\
+                \mathsolutionloop{
+                    \text{пока } found \leq k \text{ и } x[i, j]
+                    \neq z[found] \\
+                    found = found + 1
+                } \\
+                x[i, j] = 0 \text{, если } found \leq k \\
+                t = t + 1 \text{, если } found \leq k \\
+                e[t] = z[found] \text{, если } found \leq k
+            }
+        }
+    }
+    \mathsolutiontask{
+        \mathsolutionloop{
+            \text{для } i = \overline{1, n} \\
+            t_{prod} = 1 \\
+            t_{val} = a[i] \\
+            \mathsolutionloop{
+                \text{пока } t_{val} > 0 \\
+                t_{prod} = t_{prod} \cdot (t_{val} \bmod 10) \\
+                t_{val} = \lfloor t_{val} / 10 \rfloor \\
+            } \\
+            p[i] = t_{prod}
         }
     }
 }
 
 \newpage
 \section{Внешняя спецификация}
-\specframe{hello}
-При абобе
-\specframeif{hello}
-Иначе
-\specframeif{Bye}
-\specframeloop{hello}
-До конца света
+
+\specframe{
+    Лабораторная работа №\labnumber
+}
+
+\specframe{
+    Задание №1
+}
+
+\specframeloop{
+    Введите n, m, k от 1 до LMAX: \\
+    $<n>$, $<m>$, $<k>$
+}
+До $1 \leq n \leq LMAX$ и $1 \leq m \leq LMAX$ и $1 \leq k \leq LMAX$
+
+\specframe{
+    Введите матрицу x: \\
+    $\ll x[1, 1] \gg$, $\ll x[1, 2] \gg$, ..., $\ll x[2, 1] \gg$, $\ll x[2, 2] \gg$, ..., $\ll x[n, m] \gg$,
+}
+
+\specframe{
+    Задание №1
+}
 
 \newpage
 \section{Описание алгоритма на псевдокоде}

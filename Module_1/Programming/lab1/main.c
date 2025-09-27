@@ -117,6 +117,5 @@ void print_array(size_t size, const double array[size])
 
 void clean_buffer(void)
 {
-    while (getchar() != '\n')
-        ;
+    while (getchar() != '\n');
 }
