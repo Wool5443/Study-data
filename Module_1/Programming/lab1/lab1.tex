@@ -166,80 +166,80 @@
 \newpage
 \section{Описание алгоритма на псевдокоде}
 
-\begin{Verbatim}[commandchars=+\[\]]
-алг +algquote[Лабораторная работа №+labnumber]
-    вывод(+algquote[Лабораторная работа №+labnumber])
-    вывод(+algquote[Задание №1])
+\begin{Verbatim}[commandchars=\\\{\}]
+алг \algquote{Лабораторная работа №\labnumber}
+    вывод(\algquote{Лабораторная работа №\labnumber})
+    вывод(\algquote{Задание №1})
 
-    вывод(+algquote[Введите n от 1 до LMAX:])
+    вывод(\algquote{Введите n от 1 до LMAX:})
 
-    +algline[цикл]
+    \alguntil
         ввод(n)
-    +algline[до] 1 +algleq n +algleq LMAX
+    \alguntilend{1 \algleq n \algleq LMAX}
 
-    +algline[цикл]
+    \alguntil
         ввод(a, x, h)
-    +algline[до] isfinite(a) +algline[и] isfinite(x) +algline[и] isfinite(h)
+    \alguntilend{isfinite(a) \algline{и} isfinite(x) \algline{и} isfinite(h)}
 
-    +algline[цикл от] i := 1 +algline[до] n
-        r+algindex[i] := 1,25sin(3ax - ih)
-    +algline[кц]
+    \algfor{i := 1}{n}
+        r[i] := 1,25sin(3ax - ih)
+    \algforwhileend
 
-    вывод(r+algindex[1:n])
+    вывод(r[1:n])
 
-    вывод(+algquote[Задание №2])
+    вывод(\algquote{Задание №2})
 
     n1 := 1
-    +algline[цикл от] i := 2 +algline[до] n
-        +algline[если] |r+algindex[i]| > |r+algindex[n1]| +algline[то]
+    \algfor{i := 2}{n}
+        \algif{|r[i]| > |r[n1]|}
             n1 := i
-        +algline[всё]
-    +algline[кц]
+        \algendif
+    \algforwhileend
 
-    n2 := n +algplus 1
-    +algline[цикл от] i := 1 +algline[до] n
-        +algline[если] r+algindex[i] > 0 +algline[то]
+    n2 := n + 1
+    \algfor{i := 1}{n}
+        \algif{r[i] > 0}
             n2 := i
-        +algline[всё]
-    +algline[кц]
+        \algendif
+    \algline{кц}
 
-    +algline[если] n1 > n2 +algline[то]
+    \algif{n1 > n2}
         c := n1
         n1 := n2
         n2 := c
-    +algline[всё]
+    \algendif
 
     m := n2 - n1 - 1
-    +algline[если] m > 0 +algline[то]
+    \algif{m > 0}
         k := n - m
-    +algline[иначе]
+    \algelse
         k := n
-    +algline[всё]
-    +algline[цикл от] i := n1 +algplus 1 +algline[до] k
-        r+algindex[i] = r+algindex[i +algplus m]
-    +algline[кц]
+    \algendif
+    \algfor{i := n1 + 1}{k}
+        r[i] = r[i + m]
+    \algforwhileend
 
-    +algline[если] k = n +algline[то]
-        вывод(r+algindex[1:k])
-    +algline[иначе]
-        вывод(+algquote[Нет удалений])
-    +algline[всё]
+    \algif{k = n}
+        вывод(r[1:k])
+    \algelse
+        вывод(\algquote{Нет удалений})
+    \algendif
 
     km := 1
-    +algline[цикл от] i := 2 +algline[до] k
-        +algline[если] r+algindex[i] +algleq r+algindex[km] +algline[то]
+    \algfor{i := 2}{k}
+        \algif{r[i] \algleq r[km]}
             km := i
-        +algline[всё]
-    +algline[кц]
+        \algendif
+    \algforwhileend
 
     sum := 0
-    +algline[цикл от] i := 1 +algline[до] km
-        sum := sum +algplus r+algindex[i]
-    +algline[кц]
+    \algfor{i := 1}{km}
+        sum := sum + r[i]
+    \algforwhileend
 
     average := sum / km
 
-    вывод(+algquote[Cреднее вышло:], average)
+    вывод(\algquote{Cреднее вышло:}, average)
 
 кон
 \end{Verbatim}
