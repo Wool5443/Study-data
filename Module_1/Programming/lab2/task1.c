@@ -18,6 +18,7 @@ int main()
     {
         printf("Введите n, m, k от 1 до %zu\n", LMAX);
         scanf("%zu%zu%zu", &n, &m, &k);
+        clean_buffer();
     } while
     (!(
            in_range(n, 1, LMAX)
@@ -34,8 +35,6 @@ int main()
             scanf("%d", &x[i][j]);
         }
     }
-
-    print_matrix(n, m, x);
 
     printf("Введите массив z[1:%zu]\n", k);
     int z[LMAX + 1] = {};
