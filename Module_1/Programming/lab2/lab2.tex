@@ -173,6 +173,8 @@
 % +algelse
 % +algendif
 
+\subsection{Программа №1}
+
 \begin{Verbatim}[commandchars=\\\{\}]
 алг \algquote{Лабораторная работа №\labnumber Задание №1}
     вывод(\algquote{Лабораторная работа №\labnumber})
@@ -217,6 +219,8 @@
 кон
 \end{Verbatim}
 
+\subsection{Программа №2}
+
 \begin{Verbatim}[commandchars=\\\{\}]
 алг \algquote{Лабораторная работа №\labnumber Задание №2}
     вывод(\algquote{Лабораторная работа №\labnumber})
@@ -248,9 +252,82 @@
 \newpage
 \section{Листинг программы}
 
+\subsection{Программа №1}
 \lstinputlisting[language=C]{task1.c}
+
+\subsection{Программа №2}
+\lstinputlisting[language=C]{task2.c}
 
 \newpage
 \section{Распечатка тестов к программе и результатов}
+
+\subsection{Программа №1}
+
+\begin{center}
+    \begin{tabular}{|c|l|l|}
+        \hline
+        № & Искодные данные & Результат \\
+        \hline
+        1 &
+        $
+        n = 3, \  m = 3, \  k = 2, \
+        x =
+            \begin{Vmatrix}
+                1 & 2 & 3 \\
+                4 & 5 & 6 \\
+                7 & 8 & 9
+            \end{Vmatrix}
+        , \ z = \{4, \ 5\}
+        $ &
+        \begin{tabular}{l}
+            Обнулено 2 элементов: \\
+            4 5 \\
+            Матрица имеет следующий вид: \\
+            $
+                \begin{Vmatrix}
+                    1 & 2 & 3 \\
+                    0 & 0 & 6 \\
+                    7 & 8 & 9
+                \end{Vmatrix}
+            $
+        \end{tabular} \\
+        \hline
+        2 &
+        $
+        n = 3, \  m = 3, \  k = 2, \
+        x =
+            \begin{Vmatrix}
+                1 & 2 & 3 \\
+                4 & 5 & 6 \\
+                7 & 8 & 9
+            \end{Vmatrix}
+        , \ z = \{10, \ 11\}
+        $ &
+        \begin{tabular}{l}
+            Ноль обнулений
+        \end{tabular} \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Программа №1}
+
+\begin{center}
+    \begin{tabular}{|c|l|l|}
+        \hline
+        № & Искодные данные & Результат \\
+        \hline
+        1 & $n = 5, \ a = \{1, \  60, \  56, \  3, \  11111\}$ &
+        \begin{tabular}{l}
+            $a = \{1, \  0, \  30, \  3, \  1\}$
+        \end{tabular} \\
+        \hline
+        1 & $n = 5, \ a = \{1, \  56, \  0, \  3, \  11111\}$ &
+        \begin{tabular}{l}
+            $a = \{1, \  30, \  0, \  3, \  1\}$
+        \end{tabular} \\
+        \hline
+    \end{tabular}
+\end{center}
 
 \end{document}
