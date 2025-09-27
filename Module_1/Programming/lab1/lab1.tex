@@ -1,6 +1,7 @@
 \input{../labpreamb.tex}
 
 \renewcommand{\labnumber}{1}
+\renewcommand{\tasks}{(2, 8, 3)}
 
 \begin{document}
 
@@ -87,13 +88,15 @@
             n_2 = n_2 - 1 \\
         } \\ \\
 
+        (c = n_1, n_1 = n_2, n_2 = c) \text{, если } n_1 > n_2 \\ \\
+
         m = n_2 - n_1  - 1\\
-        \mathsolutionloop{
-            \text{для } i = \overline{n_1 + 1, n_2 - 1} \\
-            r[i] = r[i + m] \\
-        } \\
         k = n - m \text{, если } m > 0 \\
         k = n \text{, в противном случае} \\
+        \mathsolutionloop{
+            \text{для } i = \overline{n_1 + 1, k} \\
+            r[i] = r[i + m] \\
+        } \\
     }
     \mathsolutiontask{
         km = 1 \\
@@ -191,15 +194,15 @@
     +algline[всё]
 
     m := n2 - n1 - 1
-    +algline[цикл от] i := n1 +algplus 1 +algline[до] n2 - 1
-        r+algindex[i] = r+algindex[i +algplus m]
-    +algline[кц]
-
     +algline[если] m > 0 +algline[то]
         k := n - m
     +algline[иначе]
         k := n
     +algline[всё]
+    +algline[цикл от] i := n1 +algplus 1 +algline[до] k
+        r+algindex[i] = r+algindex[i +algplus m]
+    +algline[кц]
+
 
     вывод(r+algindex[1:k])
 

@@ -1,7 +1,7 @@
 \input{../labpreamb.tex}
 
-\renewcommand{\labnumber}{1}
-\renewcommand{\tasks}{(2, 8, 3)}
+\renewcommand{\labnumber}{номер лабы}
+\renewcommand{\tasks}{(задачи)}
 
 \begin{document}
 
@@ -26,16 +26,32 @@
 
 \mathsolution{
     \mathsolutiontask{
-        Some op
+        Some op \\
+        \mathsolutionloop{
+            \text{для } i = \overline{1, n} \\
+            a[i] = i
+        }
     }
 }
 
 \newpage
 \section{Внешняя спецификация}
 \specframe{hello}
+При абобе
+\specframeif{hello}
+Иначе
+\specframeif{Bye}
+\specframeloop{hello}
+До конца света
 
 \newpage
 \section{Описание алгоритма на псевдокоде}
+
+% +algquote[]
+% +algindex[]
+% +algline[]
+% +algplus
+% +algleq
 
 \begin{Verbatim}[commandchars=+\[\]]
 \end{Verbatim}
