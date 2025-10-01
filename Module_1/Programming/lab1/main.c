@@ -76,6 +76,7 @@ int main()
 
     if (k < n)
     {
+        printf("Осталось %zu элементов\n", k);
         print_array(k, r);
     }
     else
