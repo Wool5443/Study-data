@@ -83,8 +83,9 @@
     \mathsolutiontask{
         \mathsolutionloop{
             \text{для } i = \overline{1, n} \\
-            t_{prod} = 1 \\
             t_{val} = a[i] \\
+            t_{prod} = 1 \text{, если } t_{val} > 0 \\
+            t_{prod} = 0 \text{, в противном случае} \\
             \mathsolutionloop{
                 \text{пока } t_{val} > 0 \\
                 t_{prod} = t_{prod} \cdot (t_{val} \bmod 10) \\
@@ -236,8 +237,12 @@
     ввод(a[1:n])
 
     \algfor{i := 1}{n}
-        t_prod := 1
         t_val := a[i]
+        \algif{t_val > 0}
+            t_prod := 1
+        \algelse
+            t_prod := 0
+        \algendif
         \algwhile{t_val > 0}
             t_prod := t_prod \algcdot (t_val mod 10)
             t_val := t_val div 10
