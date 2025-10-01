@@ -124,6 +124,19 @@
 \newcommand{\prerequisites}[1]{\formaltaskimpl{При}{#1}}
 \newcommand{\binding}[1]{\formaltaskimpl{Связь}{#1}}
 
+\makeatletter
+\def\bdiv{
+    \nonscript
+    \mskip-
+    \medmuskip
+    \mkern5mu
+    \mathbin{
+        \operator@font div
+    }
+    \penalty900\mkern5mu\nonscript\mskip-\medmuskip
+}
+\makeatother
+
 \newcommand{\mathsolution}[1]
 {
 \begin{enumerate}
