@@ -1,0 +1,101 @@
+\input{../labpreamb.tex}
+
+\renewcommand{\labnumber}{номер лабы}
+\renewcommand{\tasks}{(задачи)}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+
+\newpage
+\section{Задание}
+
+\newpage
+\section{Постановка задачи}
+\given{
+    \item Input
+}
+\result{
+    \item Output
+}
+\prerequisites{
+    \item $0 < 1$
+}
+\binding{
+    \item With rope
+}
+
+\newpage
+\section{Метод решения задачи}
+
+\mathsolution{
+    \mathsolutiontask{
+        Some op \\
+        \mathsolutionloop{
+            \text{для } i = \overline{1, n} \\
+            a[i] = i
+        }
+    }
+}
+
+\newpage
+\section{Внешняя спецификация}
+\specframe{
+    Лабораторная работа №\labnumber
+}
+\specframe{
+    Задание №1
+}
+\specframeif{hello}
+Иначе
+\specframeif{Bye}
+\specframeloop{hello}
+До конца света
+
+\newpage
+\section{Описание алгоритма на псевдокоде}
+
+% +algquote[]
+% +algindex[]
+% +algline[]
+% +algplus
+% +algleq
+
+\begin{Verbatim}[commandchars=+\[\]]
+\end{Verbatim}
+
+\newpage
+\section{Листинг программы}
+
+% \lstinputlisting[language=C]{main.c}
+
+\newpage
+\section{Распечатка тестов к программе и результатов}
+
+\begin{center}
+    \begin{tabular}{|c|l|l|}
+        \hline
+        № & Искодные данные & Результат \\
+        \hline
+        1 & $n = 5, a = 1, x = 1, h = 1$ &
+        \begin{tabular}{l}
+            $r = [1.13662, 1.05184, 0, -1.05184, -1.13662]$ \\
+            Нет удалений \\
+            Среднее вышло: $-4.44089e-17$
+        \end{tabular} \\
+        \hline
+        2 & $n = 6, a = 4, x = 1, h = 5$ &
+        \begin{tabular}{l}
+            $r = [0.821233, 1.13662, -0.1764, -1.2367, -0.525209, 0.938734]$ \\
+            $r = [0.821233, 1.13662, -0.1764, -1.2367, 0.938734]$ \\
+            Среднее вышло: $0.136189$
+        \end{tabular} \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\end{document}
