@@ -27,11 +27,11 @@
           \[
               f(x) =
               \begin{cases}
-                  y_1 + \frac{x - x_1}{x_2 - x_1}(y_2 - y1) \text{, если }
+                  y_1 + \frac{x - x_1}{x_2 - x_1}(y_2 - y1) \mif
                   x_1 \leq x < x_2 \\
-                  y_2 + \frac{x - x_2}{x_3 - x_1}(y_3 - y2) \text{, если }
+                  y_2 + \frac{x - x_2}{x_3 - x_1}(y_3 - y2) \mif
                   x_2 \leq x < x_3 \\
-                  y_3 \text{, если } x = x_3
+                  y_3 \mif x = x_3
               \end{cases}
           \]
     \item Дана целочисленная матрица. Вычислить значение по формуле:
@@ -65,7 +65,7 @@
 \result{
     \item $f(x)$ -- вещ
     \item $S$ -- цел.
-    \item $B[0:k-1]$ -- цел.
+    \item $counts[0:n-1]$ -- цел.; $B[0:k-1]$ -- цел.
 }
 \prerequisites{
     \item $x_1 \leq x \leq x_3$
@@ -74,14 +74,16 @@
 \binding{
     \item $f(x) =
         \begin{cases}
-            y_1 + \frac{x - x_1}{x_2 - x_1}(y_2 - y1) \text{, если }
+            y_1 + \frac{x - x_1}{x_2 - x_1}(y_2 - y1) \mif
             x_1 \leq x < x_2 \\
-            y_2 + \frac{x - x_2}{x_3 - x_1}(y_3 - y2) \text{, если }
+            y_2 + \frac{x - x_2}{x_3 - x_1}(y_3 - y2) \mif
             x_2 \leq x < x_3 \\
-            y_3 \text{, если } x = x_3
+            y_3 \mif x = x_3
         \end{cases}$
     \item $S = \min_{j=1,n}\max_{i=1,n}(c_{i,j})$
-    \item $\forall i=\overline{0,n-1} \rightarrow \exists!
+    \item $\forall i=\overline{0,n-1} \rightarrow counts[i] =
+        \cfrac{\sum_{j = 0, A[j] = A[i]}^{n-1}{A[j]}}{A[i]} $;
+        $\forall i=\overline{0,n-1} \rightarrow \exists!
         j=\overline{0,k-1}: B[j] = A[i]$
 }
 
@@ -90,14 +92,46 @@
 
 \mathsolution{
     \mathsolutiontask{
-        f = y_1 + \frac{x - x_1}{x_2 - x_1}(y_2 - y1) \text{, если }
+        f = y_1 + \frac{x - x_1}{x_2 - x_1}(y_2 - y1) \mif
             x_1 \leq x < x_2 \\
-        f = y_2 + \frac{x - x_2}{x_3 - x_1}(y_3 - y2) \text{, если }
+        f = y_2 + \frac{x - x_2}{x_3 - x_1}(y_3 - y2) \mif
             x_2 \leq x < x_3 \\
-        f = y_3 \text{, если } x = x_3
+        f = y_3 \mif x = x_3
     }
     \mathsolutiontask{
-
+        max(i) = C[i, 1] \\
+        \mathsolutionloop{
+            \mfor j = \overline{2, n} \\
+            max(i) = C[i, j] \mif C[i, j] > max \\
+        } \\
+        min = max(1) \\
+        \mathsolutionloop{
+            \mfor i = \overline{2, n} \\
+            t = max(i) \\
+            min = t \mif t < min \\
+        }
+    }
+    \mathsolutiontask{
+        counts[0:n-1] = \{1\} \\
+        \mathsolutionloop{
+            \mfor i = \overline{1, n - 1} \\
+            \mathsolutionloop{
+                \mfor j = \overline{0, i - 1} \\
+                (counts[j] = counts[j] + 1, counts[i] = counts[j])
+                \mif A[j] = A[i] \\
+            } \\
+        } \\
+        k = 1 \\
+        B[0] = A[0] \\
+        \mathsolutionloop{
+            \mfor i = \overline{1, n - 1} \\
+            found = 0 \\
+            \mathsolutionloop{
+                \mwhile found < k \mand B[found] != A[i] \\
+                found = found + 1 \\
+            } \\
+            (B[k] = A[i], k = k + 1) \mif found = k
+        }
     }
 }
 
