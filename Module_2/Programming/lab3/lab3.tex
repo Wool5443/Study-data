@@ -1,4 +1,4 @@
-\input{../labpreamb.tex}
+\input{../../../common/labpreamb.tex}
 
 \renewcommand{\labnumber}{3}
 \renewcommand{\tasks}{(3, 8, 2)}
@@ -127,7 +127,7 @@
             \mfor i = \overline{1, n - 1} \\
             found = 0 \\
             \mathsolutionloop{
-                \mwhile found < k \mand B[found] != A[i] \\
+                \mwhile found < k \mand B[found] \neq A[i] \\
                 found = found + 1 \\
             } \\
             (B[k] = A[i], k = k + 1) \mif found = k
@@ -143,22 +143,178 @@
 \specframe{
     Задание №1
 }
-\specframeif{hello}
-Иначе
-\specframeif{Bye}
-\specframeloop{hello}
-До конца света
+\specframeloop{
+    Введите дейстивтельные $X_1, X_2, X_3, Y_1, Y_2, Y_3$: \\
+    $<X_1>, <X_2>, <X_3>, <Y_1>, <Y_2>, <Y_3>$
+}
+До $X_1, X_2, X_3, Y_1, Y_2, Y_3 \in \mathbb{R}$ и $X1 \leq X2 \leq X3$
+\specframeloop{
+    Введите действительный $x \text{, принадлежащий } [X1, X3]$: \\
+    $<x>$
+}
+До $x \in [X1, X3]$
+\specframe{
+    Приблизительное значение функции $= \ll f(x) \gg$
+}
+\specframe{
+    Задание №2
+}
+\specframeloop{
+    Введите $n$ от $1$ до $LMAX$: \\
+    $<n>$
+}
+До $1 \leq n \leq LMAX$
+\specframe{
+    Введите целочисленную матрицу $C[1:n, 1:n]$: \\
+    $<C[1, 1]>, <C[1, 2]>, ..., <C[1, n]>, <C[2, 1]>, ..., <C[2, n]>,
+    ..., <C[n, n]>$
+}
+\specframe{
+    Минимальный максимум строк матрицы $= \ll S \gg$
+}
+\specframe{
+    Задание №3
+}
+\specframeloop{
+    Введите $n$ от $1$ до $LMAX$: \\
+    $<n>$
+}
+До $1 \leq n \leq LMAX$
+\specframe{
+    Введите целочисленный массив $A[0, n - 1]$: \\
+    $<A[0]>, <A[1]>, ..., <A[n - 1]>$
+}
+\specframe{
+    Частоты чисел в массиве: \\
+    $\ll counts[0] \gg, ..., \ll counts[n - 1] \gg$
+}
+\specframe{
+    Уникальные числа массива в количестве $\ll k \gg$ штук: \\
+    $\ll B[0] \gg, ..., \ll B[k - 1] \gg$
+}
 
 \newpage
 \section{Описание алгоритма на псевдокоде}
 
-% +algquote[]
-% +algindex[]
-% +algline[]
-% +algplus
-% +algleq
+\subsection{Программа №1}
+\begin{Verbatim}[commandchars=\\\{\}]
+\algline{алг} \algquote{Лабораторная работа №3 Задание №1}
+\algline{нач}
+    вывод(\algquote{Лаборатоная работа №3})
+    вывод(\algquote{Задание №1})
 
-\begin{Verbatim}[commandchars=+\[\]]
+    вывод(\algquote{Введите действительные X1, X2, X3, Y1, Y2, Y3:})
+
+    \alguntil
+        ввод(X1, X2, X3, Y1, Y2, Y3)
+    \algline{до} isfinite(X1) \algline{и} isfinite(X2) \algline{и} isfinite(X3)
+     \algline{и} isfinite(Y1) \algline{и} isfinite(Y2) \algline{и} isfinite(Y3)
+     \algline{и} X1 \algleq X2 \algleq X3
+
+    вывод(\algquote{Введите действительный x, принадлежащий [X1, X3]})
+    \alguntil
+        ввод(x)
+    \alguntilend{X1 \algleq x \algleq X3}
+
+    \algif{x1 \algleq x < x2}
+        f := y1 + (x - x1) / (x2 - x1)
+    \algelse \algif{x2 \algleq x < x3}
+        f := y2 + (x - x2) / (x3 - x1)
+    \algelse
+        f := y3
+    \algifend
+
+    вывод(\algquote{Приблизительное значение функции = }, f)
+\algline{кон}
+\end{Verbatim}
+
+\subsection{Программа №2}
+\begin{Verbatim}[commandchars=\\\{\}]
+\algline{алг} \algquote{max}
+\algline{вход}: n, i, C[1:n, 1:n]
+\algline{выход}: max
+\algline{нач}
+    max := C[i, 1]
+    \algfor{j := 2}{n}
+        \algif{C[i, j] > max}
+            max := C[i, j]
+        \algifend
+    \algforwhileend
+
+\algline{кон}
+
+\algline{алг} \algquote{Лабораторная работа №3 Задание №2}
+\algline{нач}
+    вывод(\algquote{Лаборатоная работа №3})
+    вывод(\algquote{Задание №2})
+
+    вывод(\algquote{Введите n от 1 до LMAX:})
+    \algline{цикл}
+        ввод(n)
+    \algline{до} 1 \algleq n \algleq LMAX
+
+    вывод(\algquote{Введите целочисленную матрицу C[1:n, 1:n]:})
+    ввод(C[1:n, 1:n])
+
+    min := max(n, 1, C)
+    \algfor{i := 2}{n}
+        t := max(n, i, C)
+        \algif{t < min}
+            min := t
+        \algifend
+    \algforwhileend
+
+    вывод(\algquote{Минимальный максимум строк матрицы = }, min)
+\algline{кон}
+\end{Verbatim}
+
+\subsection{Программа №3}
+\begin{Verbatim}[commandchars=\\\{\}]
+\algline{алг} \algquote{Лабораторная работа №3 Задание №3}
+\algline{нач}
+    вывод(\algquote{Лаборатоная работа №3})
+    вывод(\algquote{Задание №3})
+
+    вывод(\algquote{Введите n от 1 до LMAX:})
+    \algline{цикл}
+        ввод(n)
+    \algline{до} 1 \algleq n \algleq LMAX
+
+    вывод(\algquote{Введите целочисленный массив A[0:n-1]:})
+    ввод(A[0:n-1])
+
+    \algfor{i := 0}{n - 1}
+        counts[i] := 1
+    \algforwhileend
+
+    \algfor{i := 1}{n - 1}
+        \algfor{j := 1}{i - 1}
+            \algif{A[j] = A[i]}
+                counts[j] := counts[j] + 1
+                counts[i] := counts[j]
+            \algifend
+        \algforwhileend
+    \algforwhileend
+
+    вывод(\algquote{Частоты чисел в массиве:})
+    вывод(counts[0:n-1])
+
+    k := 1
+    B[0] := A[0]
+
+    \algfor{i := 1}{n - 1}
+        found := 0
+        \algwhile{found < x \algline{и} B[found] != A[i]}
+            found := found + 1
+        \algforwhileend
+        \algif{found = k}
+            B[k] := A[i]
+            k := k + 1
+        \algifend
+    \algforwhileend
+
+    вывод(\algquote{Уникальные числа в массиве в количестве }, k, \algquote{ штук:})
+    вывод(B[0:k-1])
 \end{Verbatim}
 
 \newpage
