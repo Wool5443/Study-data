@@ -10,7 +10,7 @@ static void clean_buffer(void)
     while (getchar() != '\n');
 }
 
-static size_t input_n(void)
+[[maybe_unused]] static size_t input_n(void)
 {
     size_t n = 0;
     do
