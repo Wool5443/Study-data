@@ -319,30 +319,108 @@
 \newpage
 \section{Листинг программы}
 
-% \lstinputlisting[language=C]{main.c}
+\subsection{Программа №1}
+\lstinputlisting[language=C]{task1.c}
+\subsection{Программа №2}
+\lstinputlisting[language=C]{task2.c}
+\subsection{Программа №3}
+\lstinputlisting[language=C]{task3.c}
 
 \newpage
 \section{Распечатка тестов к программе и результатов}
 
+\subsection{Программа №1}
 \begin{center}
     \begin{tabular}{|c|l|l|}
         \hline
-        № & Искодные данные              & Результат                     \\
+        № & Искодные данные & Результат \\\hline
+        1 &
+        $X_1 = 1, X_2 = 2, X_3 = 3, Y_1 = 1, Y_2 = 2, Y_3 = 3, x
+        = 2.3$ &
+        $2.3$ \\\hline
+        2 &
+        $X_1 = 0, X_2 = 0.5, X_3 = 1, Y_1 = 0, Y_2 =
+        0.479425538604, Y_3 = 0.841470984808, x = 0$ &
+        $0$ \\\hline
+        3 &
+        $X_1 = 0, X_2 = 0.5, X_3 = 1, Y_1 = 0, Y_2 =
+        0.479425538604, Y_3 = 0.841470984808, x = 0.5$ &
+        $0.479426$ \\\hline
+        4 &
+        $X_1 = 0, X_2 = 0.5, X_3 = 1, Y_1 = 0, Y_2 =
+        0.479425538604, Y_3 = 0.841470984808, x = 1$ &
+        $0.841471$ \\\hline
+        5 &
+        $X_1 = 0, X_2 = 0.5, X_3 = 1, Y_1 = 0, Y_2 =
+        0.479425538604, Y_3 = 0.841470984808, x = 0.7$ &
+        $0.624244$ \\\hline
+    \end{tabular}
+\end{center}
+
+\subsection{Программа №2}
+\begin{center}
+    \begin{tabular}{|c|l|l|}
         \hline
-        1 & $n = 5, a = 1, x = 1, h = 1$ &
+        № & Искодные данные & Результат \\\hline
+        1 &
+        $ n = 3, C =
+        \begin{pmatrix}
+        1 & 2 & 3 \\
+        4 & 5 & 6 \\
+        7 & 8 & 9
+        \end{pmatrix}
+        $ &
+        $3$ \\\hline
+        2 &
+        $ n = 1, C =
+        \begin{pmatrix}
+        1
+        \end{pmatrix}
+        $ &
+        $1$ \\\hline
+        3 &
+        $ n = 5, C =
+        \begin{pmatrix}
+        8 & 73 & 1 & 0 & 92 \\
+        -5 & 8 & -324 & 0 & 1 \\
+        -100 & -100 & -100 & -100 & -100 \\
+        1 & 4 & 704 & -23 & 0 \\
+        589 & 599 & 3495 & 0 & 1
+        \end{pmatrix}
+        $ &
+        $-100$ \\\hline
+    \end{tabular}
+\end{center}
+
+\subsection{Программа №3}
+\begin{center}
+    \begin{tabular}{|c|l|l|}
+        \hline
+        № & Искодные данные & Результат \\\hline
+        1 &
+        $ n = 1, A = \{1\}$ &
         \begin{tabular}{l}
-            $r = [1.13662, 1.05184, 0, -1.05184, -1.13662]$ \\
-            Нет удалений                                    \\
-            Среднее вышло: $-4.44089e-17$
-        \end{tabular}                  \\
-        \hline
-        2 & $n = 6, a = 4, x = 1, h = 5$ &
+            $\{1\}$ \\
+            $\{1\}$
+        \end{tabular} \\\hline
+        2 &
+        $ n = 5, A = \{1, 2, 3, 4, 5\}$ &
         \begin{tabular}{l}
-            $r = [0.821233, 1.13662, -0.1764, -1.2367, -0.525209, 0.938734]$ \\
-            $r = [0.821233, 1.13662, -0.1764, -1.2367, 0.938734]$            \\
-            Среднее вышло: $0.136189$
-        \end{tabular} \\
-        \hline
+            $\{1, 1, 1, 1, 1\}$ \\
+            $\{1, 2, 3, 4, 5\}$
+        \end{tabular} \\\hline
+        3 &
+        $ n = 5, A = \{1, 7, 7, 7, 7\}$ &
+        \begin{tabular}{l}
+            $\{1, 4, 4, 4, 4\}$ \\
+            $\{1, 7\}$
+        \end{tabular} \\\hline
+        4 &
+        $ n = 14, A = \{1, 7, 4, 2, 4, 3, 6, 7, 1, 0, -53, 2, 1, 2\}$ &
+        \begin{tabular}{l}
+            $\{3, 2, 2, 3, 2, 1, 1, 2, 3, 1, 1, 3, 3, 3\}$ \\
+            $\{1, 7, 4, 2, 3, 6, 0, -53\}$
+        \end{tabular} \\\hline
     \end{tabular}
 \end{center}
 
