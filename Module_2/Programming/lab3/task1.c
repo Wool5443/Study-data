@@ -56,7 +56,7 @@ static Function input_function_table(void)
         clean_buffer();
     } while
     (!(
-        isfinite(f.Y1) && isfinite(f.Y2) && isfinite(f.Y3)
+        isfinite(f.X3) && isfinite(f.Y1) && isfinite(f.Y2) && isfinite(f.Y3)
         && f.X1 <= f.X2 && f.X2 <= f.X3
     ));
 
