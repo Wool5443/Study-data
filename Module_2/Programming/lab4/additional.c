@@ -34,13 +34,15 @@ static void solution2(const char* string)
     size_t new_len = 2 * len + 3;
     char* new_string = calloc(new_len + 1, 1);
 
-    new_string[0] = '@';
-    new_string[new_len - 2] = '#';
-    new_string[new_len - 1] = '@';
+    constexpr char GUARD = 1;
+
+    new_string[0] = GUARD;
+    new_string[new_len - 2] = '\0';
+    new_string[new_len - 1] = GUARD;
 
     for (size_t i = 0; i < len; i++)
     {
-        new_string[2 * i + 1] = '#';
+        new_string[2 * i + 1] = '\0';
         new_string[2 * i + 2] = string[i];
     }
 
@@ -50,7 +52,7 @@ static void solution2(const char* string)
     {
         size_t r = 0;
 
-        while (new_string[i - r] != '@' && new_string[i + r] != '@' && new_string[i - r] == new_string[i + r])
+        while (new_string[i - r] != GUARD && new_string[i + r] != GUARD && new_string[i - r] == new_string[i + r])
         {
             r++;
         }
@@ -81,7 +83,7 @@ static void solution2(const char* string)
 int main()
 {
     const char* s = "abdabdABBAabdabd";
-    // solution(s);
+    solution(s);
     solution2(s);
 }
 
