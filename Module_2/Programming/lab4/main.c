@@ -59,12 +59,12 @@ int main()
 
     if (found.size)
     {
-        printf("Нашлась строка со скобками и цифрами: \"");
+        printf("Нашлась строка со скобками и цифрами:\n\"");
         print_string(found);
         printf("\"\n");
 
         clean_non_cyrillic(&found);
-        printf("После очистки букв не из русского алфавита: \"");
+        printf("После очистки букв не из русского алфавита:\n\"");
         print_string(found);
         printf("\"\n");
     }
