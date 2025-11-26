@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for file in $1.*.txt; do
+for file in 1.*.txt; do
     echo $file
     cat $file
     echo "------------------------------------------------------------------"
