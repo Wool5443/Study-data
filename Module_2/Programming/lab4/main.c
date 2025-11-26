@@ -18,11 +18,14 @@ typedef struct String_array
 } String_array;
 
 static String_array
-find_all_substrings(size_t k, const char strings[ARRAY_SIZE][STRING_SIZE]);
-static String_array find_substrings(const char* string);
-static String find_substring_with_brackets_and_digits(const String_array* substrs);
-static bool check_string(String string);
-static void clean_non_cyrillic(String* string);
+split_string_array_by_dots(size_t k,
+                           const char strings[ARRAY_SIZE][STRING_SIZE]);
+static String_array split_string_by_dots(const char* string);
+
+static String find_correct_substring(const String_array* substrs);
+static bool check_correct_string(String string);
+
+static void filter_non_cyrillic(String* string);
 
 static void print_string(String str);
 static size_t input_k(void);
@@ -40,7 +43,7 @@ int main()
         fgets(strings[i], STRING_SIZE, stdin);
     }
 
-    String_array substrs = find_all_substrings(k, strings);
+    String_array substrs = split_string_array_by_dots(k, strings);
     if (substrs.size)
     {
         printf("Нашлось %zu подстрок, ограниченных точками:\n", substrs.size);
@@ -55,7 +58,7 @@ int main()
         printf("Не нашлось подстрок, ограниченных точками\n");
     }
 
-    String found = find_substring_with_brackets_and_digits(&substrs);
+    String found = find_correct_substring(&substrs);
 
     if (found.size)
     {
@@ -63,7 +66,7 @@ int main()
         print_string(found);
         printf("\"\n");
 
-        clean_non_cyrillic(&found);
+        filter_non_cyrillic(&found);
         printf("После очистки букв не из русского алфавита:\n\"");
         print_string(found);
         printf("\"\n");
@@ -75,13 +78,14 @@ int main()
 }
 
 static String_array
-find_all_substrings(size_t k, const char strings[ARRAY_SIZE][STRING_SIZE])
+split_string_array_by_dots(size_t k,
+                           const char strings[ARRAY_SIZE][STRING_SIZE])
 {
     String_array result = {};
 
     for (size_t i = 0; i < k; i++)
     {
-        String_array sub_res = find_substrings(strings[i]);
+        String_array sub_res = split_string_by_dots(strings[i]);
 
         for (size_t j = 0; j < sub_res.size; j++)
         {
@@ -92,7 +96,7 @@ find_all_substrings(size_t k, const char strings[ARRAY_SIZE][STRING_SIZE])
     return result;
 }
 
-static String_array find_substrings(const char* string)
+static String_array split_string_by_dots(const char* string)
 {
     String_array result = {};
     size_t len = strlen(string);
@@ -123,19 +127,19 @@ static String_array find_substrings(const char* string)
     return result;
 }
 
-static String find_substring_with_brackets_and_digits(const String_array* substrs)
+static String find_correct_substring(const String_array* substrs)
 {
     for (size_t i = 0; i < substrs->size; i++)
     {
-        if (check_string(substrs->data[i]))
+        if (check_correct_string(substrs->data[i]))
         {
             return substrs->data[i];
         }
     }
-    return (String){};
+    return (String) {};
 }
 
-static bool check_string(String string)
+static bool check_correct_string(String string)
 {
     bool has_brackets = memchr(string.data, '(', string.size)
                         && memchr(string.data, ')', string.size);
@@ -155,7 +159,7 @@ static bool check_string(String string)
     return false;
 }
 
-static void clean_non_cyrillic(String* string)
+static void filter_non_cyrillic(String* string)
 {
     const char* read = string->data;
     char* write = (char*)read;
