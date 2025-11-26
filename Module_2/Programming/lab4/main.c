@@ -52,7 +52,7 @@ int main()
     }
     else
     {
-        printf("Не нашлось подстрок, ограниченных точками");
+        printf("Не нашлось подстрок, ограниченных точками\n");
     }
 
     String found = find_substring_with_brackets_and_digits(&substrs);
