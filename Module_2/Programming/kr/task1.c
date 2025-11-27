@@ -9,16 +9,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-constexpr size_t ARRAY_SIZE = 512;
+typedef struct Matrix
+{
+    int* data;
+    size_t n, m;
+    size_t current_m;
+} Matrix;
 
 static void clean_buffer();
-static bool check_size(size_t s)
-{
-    return s != 0 && s <= ARRAY_SIZE;
-}
 
-static int solution(size_t n, size_t* m, int A[ARRAY_SIZE][ARRAY_SIZE], size_t k, size_t B[k]);
-static void delete_column(size_t column, size_t n, size_t* m, int A[ARRAY_SIZE][ARRAY_SIZE]);
+static int solution(Matrix* A, size_t k, size_t* B);
+static void delete_column(size_t column, Matrix* A);
 
 static int comparator(const void* a, const void* b)
 {
@@ -33,21 +34,25 @@ int main()
     size_t n = 0, m = 0, k = 0;
     do
     {
-        printf("Введите n, m и k от 1 до %zu:\n", ARRAY_SIZE);
+        puts("Введите n, m и k от 1:");
         scanf("%zu%zu%zu", &n, &m, &k);
         clean_buffer();
-    } while (!check_size(n) || !check_size(m) || !check_size(k));
-    size_t old_m = m;
+    } while (!(n > 0 && m > 0 && k > 0));
 
-    int A[ARRAY_SIZE][ARRAY_SIZE] = {};
-    size_t B[ARRAY_SIZE] = {};
+    Matrix A = {
+        (int*)calloc(n * m, sizeof(int)),
+        n,
+        m,
+        m
+    };
+    size_t* B = (size_t*)calloc(k, sizeof(*B));
 
     printf("Введите матрицу A[%zu][%zu]:\n", n, m);
     for (size_t i = 0; i < n; i++)
     {
         for (size_t j = 0; j < m; j++)
         {
-            scanf("%d", &A[i][j]);
+            scanf("%d", A.data + i * m + j);
         }
     }
 
@@ -56,64 +61,70 @@ int main()
     {
         scanf("%zu", &B[i]);
     }
+    // Сортировка по убыванию
     qsort(B, k, sizeof(*B), comparator);
 
-    int sum = solution(n, &m, A, k, B);
+    int sum = solution(&A, k, B);
     if (m == 0)
     {
         printf("Матрица полностью удалена, суммма элементов = 0\n");
-        return 0;
     }
-
-    printf("После удаления %zu столбцов:\n", old_m - m);
-    for (size_t i = 0; i < n; i++)
+    else
     {
-        printf("%d", A[i][0]);
-        for (size_t j = 1; j < m; j++)
+        printf("После удаления %zu столбцов:\n", A.m - A.current_m);
+        for (size_t i = 0; i < A.n; i++)
         {
-            printf(" %d", A[i][j]);
+            printf("%d", *(A.data + i * m));
+            for (size_t j = 1; j < A.current_m; j++)
+            {
+                printf(" %d", *(A.data + i * A.m + j));
+            }
+            printf("\n");
         }
-        printf("\n");
+
+        printf("Сумма элементов матрицы = %d\n", sum);
     }
 
-    printf("Сумма элементов матрицы = %d\n", sum);
+    free(A.data);
+    free(B);
 }
 
-static int solution(size_t n, size_t* m, int A[ARRAY_SIZE][ARRAY_SIZE], size_t k, size_t B[k])
+static int solution(Matrix* A, size_t k, size_t* B)
 {
     for (size_t i = 0; i < k; i++)
     {
-        delete_column(B[i], n, m, A);
+        delete_column(B[i], A);
     }
 
     int sum = 0;
 
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0; i < A->n; i++)
     {
-        for (size_t j = 0; j < *m; j++)
+        for (size_t j = 0; j < A->current_m; j++)
         {
-            sum += A[i][j];
+            sum += *(A->data + i * A->m + j);
         }
     }
 
     return sum;
 }
 
-static void delete_column(size_t column, size_t n, size_t* m, int A[ARRAY_SIZE][ARRAY_SIZE])
+static void delete_column(size_t column, Matrix* A)
 {
-    if (column >= *m)
+    if (column >= A->current_m)
     {
         return;
     }
 
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0; i < A->n; i++)
     {
-        for (size_t j = column; j < *m - 1; j++)
+        for (size_t j = column; j < A->current_m - 1; j++)
         {
-            A[i][j] = A[i][j + 1];
+            *(A->data + i * A->m + j) = *(A->data + i * A->m + j + 1);
         }
     }
-    --*m;
+
+    A->current_m--;
 }
 
 static void clean_buffer()
