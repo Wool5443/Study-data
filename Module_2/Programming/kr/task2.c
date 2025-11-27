@@ -5,17 +5,29 @@
 
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 static bool replace_latin(char* string);
 
+static void clean_buffer()
+{
+    while (getchar() != '\n');
+}
+
 int main()
 {
-    constexpr size_t STRING_SIZE = 512;
+    size_t len = 0;
+    do
+    {
+        puts("Введите длину строки:");
+        scanf("%zu", &len);
+        clean_buffer();
+    } while (len == 0);
 
-    printf("Введите строку длиной до %zu символов\n", STRING_SIZE - 1);
-    char string[STRING_SIZE] = "";
+    puts("Введите строку:");
+    char* string = (char*)calloc(len + 1, 1);
 
-    fgets(string, STRING_SIZE, stdin);
+    fgets(string, len, stdin);
 
     bool replaced = replace_latin(string);
 
@@ -28,6 +40,8 @@ int main()
     {
         puts("Замен не произошло");
     }
+
+    free(string);
 }
 
 static bool replace_latin(char* string)
