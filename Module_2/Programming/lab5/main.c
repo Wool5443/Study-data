@@ -142,7 +142,7 @@ static Queue input_queue(void)
 
     char buffer[512] = "";
 
-    puts("Введите целые числа:");
+    puts("Введите целые числа, ввод закончите пустой строкой:");
 
     fgets(buffer, sizeof(buffer), stdin);
     while (buffer[1] != '\0')
@@ -221,7 +221,7 @@ static void read_stdin(const char* save_path)
 
     char buffer[512] = "";
 
-    puts("Введите действительные числа:");
+    puts("Введите действительные числа, ввод закончите пустой строкой:");
 
     fgets(buffer, sizeof(buffer), stdin);
     while (buffer[1] != '\0')
