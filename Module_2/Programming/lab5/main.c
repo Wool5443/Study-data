@@ -5,7 +5,6 @@
 typedef struct Node
 {
     int data;
-    struct Node* prev;
     struct Node* next;
 } Node;
 
@@ -90,7 +89,6 @@ static void push(Queue* q, int n)
 
     Node* new_node = calloc(1, sizeof(Node));
     new_node->data = n;
-    new_node->prev = q->tail;
 
     q->tail->next = new_node;
     q->tail = new_node;
@@ -101,12 +99,6 @@ static void insert(Node* after, int n)
     Node* new_node = calloc(1, sizeof(Node));
     new_node->data = n;
     new_node->next = after->next;
-    new_node->prev = after;
-
-    if (after->next)
-    {
-        after->next->prev = new_node;
-    }
     after->next = new_node;
 }
 
