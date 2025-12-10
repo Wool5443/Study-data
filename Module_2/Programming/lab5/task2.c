@@ -33,6 +33,12 @@ int main()
     puts("Очередь:");
     print_queue(q);
 
+    puts("Отсортированный:");
+    sort(q.head);
+    print_queue(q);
+
+    return 0;
+
     int a1 = 0;
     puts("Введите A1:");
     scanf("%d", &a1);
@@ -161,11 +167,6 @@ static Node* find_positive(Queue queue)
 
 static void sort(Node* node)
 {
-    if (!node)
-    {
-        return;
-    }
-
     Node* n1 = node;
 
     while (n1)
