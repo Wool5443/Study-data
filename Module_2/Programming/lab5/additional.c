@@ -24,6 +24,9 @@ static Node* node_ctor(int data);
 static Queue queue_ctor();
 static void queue_dtor(Queue* queue);
 
+static Node* queue_head(Queue q);
+static Node* queue_tail(Queue q);
+
 static void insert_after(Node* after, int data);
 static void remove_node(Node* node);
 
@@ -34,14 +37,19 @@ static void print_queue(const Queue queue);
 
 int main()
 {
-    // Queue q = queue_ctor();
-    // insert_after(q.control->tail, 30);
-    // insert_after(q.control->tail, 10);
-    // insert_after(q.control->tail, 20);
-    // print_queue(q);
-
-    Queue q = input_queue();
+    Queue q = queue_ctor();
+    insert_after(q.control->tail, 45);
+    insert_after(q.control->tail, 23);
+    insert_after(q.control->tail, 100);
+    insert_after(q.control->tail, -5);
+    insert_after(q.control->tail, 4234);
+    insert_after(q.control->tail, 4);
+    insert_after(q.control->tail, 4);
+    insert_after(q.control->tail, 234);
     print_queue(q);
+
+    // Queue q = input_queue();
+    // print_queue(q);
 
     sort(&q);
     puts("After sort");
@@ -86,6 +94,16 @@ static void queue_dtor(Queue* queue)
     *queue = (Queue){};
 }
 
+static Node* queue_head(Queue q)
+{
+    return q.control->head;
+}
+
+static Node* queue_tail(Queue q)
+{
+    return q.control->tail;
+}
+
 static void insert_after(Node* after, int data)
 {
     if (!after)
@@ -127,27 +145,35 @@ static void sort(Queue* queue)
         return;
     }
 
-    Node* n1 = queue->control->tail;
+    bool swapped = true;
 
-    while (n1 != (Node*)queue->control)
+    while (swapped)
     {
-        Node* prev_n1 = n1->prev;
-        Node* n2 = prev_n1;
-        while (n2 != (Node*)queue->control)
+        swapped = false;
+
+        Node* cur = queue_head(*queue);
+        while (cur != queue_tail(*queue))
         {
-            Node* prev_n2 = n2->prev;
-            if (n1->data > n2->data)
+            Node* next = cur->next;
+            Node* next_cur = next;
+
+            if (cur->data < next->data)
             {
-                n2->next = n1->next;
-                n2->next->prev = n2;
-                n1->next = n2;
-                n1->prev = n2->prev;
-                n1->prev->next = n1;
-                n2->prev = n1;
+                swapped = true;
+
+                next_cur = cur;
+
+                cur->next = next->next;
+                cur->next->prev = cur;
+
+                next->next = cur;
+                next->prev = cur->prev;
+                next->prev->next = next;
+
+                cur->prev = next;
             }
-            n2 = prev_n2;
+            cur = next_cur;
         }
-        n1 = prev_n1;
     }
 }
 
