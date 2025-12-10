@@ -47,7 +47,7 @@ int main()
     }
     else
     {
-        sort(pos);
+        sort(pos->next);
         puts("Очередь:");
         print_queue(q);
     }
