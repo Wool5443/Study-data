@@ -29,57 +29,6 @@
 \end{enumerate}
 
 \newpage
-\section{Внешняя спецификация}
-\specframe{
-    Лабораторная работа №\labnumber
-}
-\specframe{
-    Задание №1
-}
-\specframeloop{
-    Введите действительные числа, ввод закончите пустой строкой: \\
-    $<x>$
-}
-До пустой строки \\
-При $max = -\infty$
-\specframeif{
-    В последовательности не было отрицательных чисел
-}
-Иначе
-\specframeif{
-    max = $\ll max \gg$
-}
-\specframe{
-    Задание №2
-}
-\specframeloop{
-    Введите целые числа, ввод закончите пустой строкой: \\
-    $<n>$
-}
-До пустой строки
-\specframe{
-    Очередь: \\
-    $\ll q[0] \gg, \ll q[1] \gg, ...$
-}
-\specframe{
-    Введите A1: \\
-    $<A1>$
-}
-\specframe{
-    Очередь: \\
-    $\ll q[0] \gg, \ll q[1] \gg, ...$
-}
-При $pos = NULL$
-\specframeif{
-    Нет положительных элементов
-}
-Иначе
-\specframeif{
-    Очередь: \\
-    $\ll q[0] \gg, \ll q[1] \gg, ...$
-}
-
-\newpage
 \section{Листинг программы}
 
 \lstinputlisting[language=C]{task1.c}
