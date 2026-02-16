@@ -1,0 +1,108 @@
+\newcommand{\algquote}[1]{<<#1>>}
+\newcommand{\algline}[1]{\underline{#1}}
+
+\newcommand{\algleq}{$\leq$}
+\newcommand{\algneq}{$\neq$}
+\newcommand{\algcdot}{$\cdot$}
+
+\newcommand{\algif}[1]{\algline{если} #1 \algline{то}}
+\newcommand{\algelse}{\algline{иначе}}
+\newcommand{\algendif}{\algline{всё}}
+
+\newcommand{\algfor}[2]{\algline{цикл от} #1 \algline{до} #2}
+\newcommand{\algwhile}[1]{\algline{цикл-пока} #1}
+\newcommand{\algforwhileend}{\algline{кц}}
+\newcommand{\alguntil}{\algline{цикл}}
+\newcommand{\alguntilend}[1]{\algline{до} #1}
+
+\newcommand{\specframeimpl}[1]
+{
+\begin{array}{l}
+    \begin{tcolorbox}[
+        width=\textwidth,
+        colback=white,
+        colframe=black,
+        sharp corners,
+        boxrule=1pt
+    ]
+    #1
+    \end{tcolorbox}
+\end{array}
+}
+
+\newcommand{\specframe}[1]
+{
+\[
+    \specframeimpl{#1}
+\]
+}
+
+\newcommand{\specframeif}[1]
+{
+\[
+\hspace{-2.85mm}
+\left\{
+    \specframeimpl{#1}
+\right.
+\]
+}
+
+\newcommand{\specframeloop}[1]
+{
+\[
+\hspace{-3.12mm}
+\left\{
+    \specframeimpl{#1}
+\right\}^{\!\bigstar}
+\]
+}
+
+\newcommand{\formaltaskimpl}[2]
+{
+\underline{#1}
+\begin{enumerate}
+    #2
+\end{enumerate}
+}
+
+\newcommand{\given}[1]{\formaltaskimpl{Дано:}{#1}}
+\newcommand{\result}[1]{\formaltaskimpl{Результат:}{#1}}
+\newcommand{\prerequisites}[1]{\formaltaskimpl{При}{#1}}
+\newcommand{\binding}[1]{\formaltaskimpl{Связь}{#1}}
+
+\newcommand{\mathsolution}[1]
+{
+\begin{enumerate}
+    #1
+\end{enumerate}
+}
+
+\newcommand{\mathsolutiontask}[1]
+{
+\item
+$
+\begin{array}{l}
+    #1
+\end{array}
+$
+}
+
+\newcommand{\mathsolutionloop}[1]
+{
+\begin{cases}
+    #1
+\end{cases}
+}
+
+\makeatletter
+\def\bdiv{
+    \nonscript
+    \mskip-\medmuskip
+    \mkern5mu
+    \mathbin{
+        \operator@font div
+    }
+    \penalty900\mkern5mu\nonscript\mskip-\medmuskip
+}
+\makeatother
+
