@@ -16,6 +16,7 @@
 \usepackage[colorlinks=true, linkcolor=black, urlcolor=blue, citecolor=blue]{hyperref}
 \usepackage{biblatex}
 \usepackage{csquotes}
+\usepackage{makecell}
 
 \geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
 
@@ -53,16 +54,14 @@
 \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
 
+\newcommand{\algmath}[1]{$#1$}
+
 \newcommand{\algquote}[1]{<<#1>>}
 \newcommand{\algline}[1]{\underline{#1}}
 
-\newcommand{\algleq}{$\leq$}
-\newcommand{\algneq}{$\neq$}
-\newcommand{\algcdot}{$\cdot$}
-
 \newcommand{\algif}[1]{\algline{если} #1 \algline{то}}
 \newcommand{\algelse}{\algline{иначе}}
-\newcommand{\algendif}{\algline{всё}}
+\newcommand{\algifend}{\algline{всё}}
 
 \newcommand{\algfor}[2]{\algline{цикл от} #1 \algline{до} #2}
 \newcommand{\algwhile}[1]{\algline{цикл-пока} #1}
@@ -145,7 +144,7 @@
 \end{enumerate}
 }
 
-\newcommand{\mathsolutiontask}[1]
+\newcommand{\mtask}[1]
 {
 \item
 $
@@ -155,11 +154,36 @@ $
 $
 }
 
-\newcommand{\mathsolutionloop}[1]
+\newcommand{\mloop}[1]
 {
 \begin{cases}
     #1
 \end{cases}
+}
+
+\newcommand{\mfor}
+{
+    \text{для }
+}
+
+\newcommand{\mwhile}
+{
+    \text{пока }
+}
+
+\newcommand{\mif}
+{
+    \text{, если }
+}
+
+\newcommand{\mand}
+{
+    \text{ и }
+}
+
+\newcommand{\mor}
+{
+    \text{ или }
 }
 
 \title{
@@ -181,7 +205,7 @@ $
 
     \textbf{ОТЧЕТ}
 
-    \textbf{по лабораторной работе №\labnumber}
+    \textbf{по практической работе №\labnumber}
 }
 
 \newcommand{\labnumber}{номер лабы}
@@ -189,46 +213,20 @@ $
 
 \author{
     \fontsize{10}{10}
-    \hspace{-1cm}
-    \begin{tabular}{cc}
-        \begin{tabular}{|l|c|c|}
-            \hline
-            \textbf{Раздел} & \textbf{Mах оценка} & \textbf{Итог. оценка} \\
-            \hline
-            Постановка & $0,5$ & \\
-            \hline
-            Метод & $1$ & \\
-            \hline
-            Спецификация & $0,5$ & \\
-            \hline
-            Алгоритм & $1,5$ & \\
-            \hline
-            Работа программы & $1$ & \\
-            \hline
-            Листинг & $0,5$ & \\
-            \hline
-            Тесты & $1$ & \\
-            \hline
-            Вопросы & $2$ & \\
-            \hline
-            Доп. задание & 2 & \\
-            \hline
-        \end{tabular}
-        &
-        \begin{tabular}{l}
-            Студент: Солодилов Михаил Анатольевич \\
-            Группа: БИВ253 \\
-            Вариант: 232 \tasks\\
-            Руководитель:\\
-            Оценка:\\
-            Дата сдачи \\
-        \end{tabular}
+    \hspace{8cm}
+    \begin{tabular}{l}
+        Студент: Солодилов Михаил Анатольевич \\
+        Группа: БИВ253 \\
+        Вариант: 232 \tasks\\
+        Руководитель:\\
+        Оценка:\\
+        Дата сдачи: \\
     \end{tabular}
 }
 
 \date{
     \vfill
-    \textbf{МОСКВА 2025}
+    \textbf{МОСКВА 2026}
 }
 
 \addto\captionsrussian{\renewcommand\contentsname{Оглавление}}
