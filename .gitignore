@@ -12,3 +12,4 @@
 *.bcf
 *.blg
 *.run.xml
+.env
