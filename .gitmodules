@@ -2,5 +2,5 @@
 	path = Programming/labs/AIP_repo
 	url = https://git.miem.hse.ru/aip_sapr_2025-2026/biv253/aip_25_26_39.git
 [submodule "Project Seminar/miansolodilov-147"]
-	path = Project Seminar/miansolodilov-147
+	path = Project_Seminar/miansolodilov-147
 	url = https://git.miem.hse.ru/grader_test_course_707f2aa3-0444-4b31-8128-446b4f9810c6/miansolodilov-147.git
