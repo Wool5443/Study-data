@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All notes</title>
+    <style>
+      body {
+        margin: 2rem;
+        font-family: sans-serif;
+      }
+      ol {
+        padding-left: 1.25rem;
+      }
+      li {
+        margin: 0.5rem 0;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>All notes</h1>
+
+    {% if notes %}
+    <ol>
+      {% for note in notes %}
+      <li>{{ note }}</li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <p>No notes yet.</p>
+    {% endif %}
+  </body>
+</html>

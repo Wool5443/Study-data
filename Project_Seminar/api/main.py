@@ -4,10 +4,15 @@ from datetime import datetime
 from pathlib import Path
 
 
-def render_last_node():
-    global template, notes
+def render_last_note():
+    global last_note_template, notes
     last_note = notes[-1] if notes else "none"
-    return template.render(note=last_note)
+    return last_note_template.render(note=last_note)
+
+
+def render_all_notes():
+    global all_notes_template, notes
+    return all_notes_template.render(notes=notes)
 
 
 def load_notes():
@@ -29,31 +34,37 @@ def load_notes():
 
 app = Flask(__name__)
 
-notes = load_notes()
-
-load_notes()
-
 with open("./templates/template.html") as f:
-    template = Template(f.read())
+    last_note_template = Template(f.read())
+with open("./templates/all_notes.html") as f:
+    all_notes_template = Template(f.read())
 
-html = render_last_node()
+notes = load_notes()
+last_note_html = render_last_note()
+all_notes_html = render_all_notes()
 
 
 @app.route("/api/last_note")
 def get_last_note():
-    return html
+    return last_note_html
+
+
+@app.route("/api/all_notes")
+def get_all_notes():
+    return all_notes_html
 
 
 @app.route("/api/create_note", methods={"POST"})
 def create_note():
-    global html
+    global last_note_html, all_notes_html
 
     body = request.get_json()
 
     content = body["content"]
     notes.append(content)
 
-    html = render_last_node()
+    last_note_html = render_last_note()
+    all_notes_html = render_all_notes()
 
     with open(f"./notes/note{len(notes)}-{datetime.now()}.txt", "w") as f:
         f.write(content)
