@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add note</title>
+    <style>
+      body {
+        margin: 2rem;
+        font-family: sans-serif;
+        max-width: 52rem;
+      }
+      h1 {
+        margin-bottom: 0.75rem;
+      }
+      p {
+        margin-top: 0;
+      }
+      form {
+        display: grid;
+        gap: 0.75rem;
+      }
+      textarea {
+        width: 100%;
+        min-height: 10rem;
+        padding: 0.75rem;
+        font: inherit;
+        resize: vertical;
+      }
+      button {
+        width: fit-content;
+        padding: 0.5rem 0.85rem;
+        font: inherit;
+        cursor: pointer;
+      }
+      .status {
+        min-height: 1.25rem;
+      }
+      .status.error {
+        color: #b00020;
+      }
+      nav {
+        margin-top: 1rem;
+      }
+      nav a {
+        margin-right: 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Create note</h1>
+    <p>Submit a note and it will be saved immediately.</p>
+
+    <form id="create-note-form">
+      <label for="content">Note content</label>
+      <textarea
+        id="content"
+        name="content"
+        placeholder="Write your note here..."
+        required
+      ></textarea>
+      <button type="submit">Add note</button>
+      <div id="status" class="status" aria-live="polite"></div>
+    </form>
+
+    <nav>
+      <a href="/api/last_note">Last note</a>
+      <a href="/api/all_notes">All notes</a>
+    </nav>
+
+    <script>
+      const form = document.getElementById("create-note-form");
+      const contentInput = document.getElementById("content");
+      const status = document.getElementById("status");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const content = contentInput.value.trim();
+        if (!content) {
+          status.textContent = "Please write a note before submitting.";
+          status.classList.add("error");
+          return;
+        }
+
+        status.textContent = "Saving...";
+        status.classList.remove("error");
+
+        try {
+          const response = await fetch("/api/create_note", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ content }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`Request failed (${response.status})`);
+          }
+
+          const message = await response.text();
+          status.textContent = message || "Note added.";
+          contentInput.value = "";
+          contentInput.focus();
+        } catch (error) {
+          status.textContent = "Could not save note. Try again.";
+          status.classList.add("error");
+        }
+      });
+    </script>
+  </body>
+</html>
