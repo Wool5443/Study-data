@@ -30,7 +30,7 @@ while True:
     need_signal = yn_to_est_net(input_yn("Нужна ли сигнализация? [yn]:"))
     need_music = yn_to_est_net(input_yn("Нужна ли музыкальная система? [yn]:"))
 
-    selector_price = (data["price"] >= min_price) & (data["price"] <= max_price)
+    selector_price = (min_price <= data["price"]) & (data["price"] <= max_price)
     selector_need_signal = data["signal"] == need_signal
     selector_need_music = data["music"] == need_music
 
