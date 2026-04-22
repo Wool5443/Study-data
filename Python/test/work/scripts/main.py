@@ -38,7 +38,7 @@ while True:
 
     chosen = data.loc[selector, :]
 
-    print(chosen.to_markdown())
+    print(chosen.to_markdown(index=False))
 
     go_on = input_yn("Продолжить? [yn]:")
 
