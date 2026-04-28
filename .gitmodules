@@ -4,3 +4,6 @@
 [submodule "Project Seminar/miansolodilov-147"]
 	path = Project_Seminar/homework/git_api
 	url = https://git.miem.hse.ru/grader_test_course_707f2aa3-0444-4b31-8128-446b4f9810c6/miansolodilov-147.git
+[submodule "Project_Seminar/homework/git_api2"]
+	path = Project_Seminar/homework/git_api2
+	url = https://git.miem.hse.ru/grader_test_course_707f2aa3-0444-4b31-8128-446b4f9810c6/miansolodilov-169.git
