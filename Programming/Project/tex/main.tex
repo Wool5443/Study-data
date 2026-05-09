@@ -1,40 +1,45 @@
 % !TeX program = lualatex
 
-
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \documentclass[14pt,a4paper]{extarticle}
-\usepackage{xcolor}
+
 \usepackage{amsmath,amssymb}
-\setcounter{secnumdepth}{5}
+\usepackage{etoolbox}
 \usepackage{fontspec}
 \usepackage{polyglossia}
-\setdefaultlanguage{russian}
-\setotherlanguage{english}
-\gappto\captionsrussian{\renewcommand{\contentsname}{\makebox[\linewidth][c]{ОГЛАВЛЕНИЕ}}}
-\AtBeginDocument{\renewcommand{\contentsname}{\makebox[\linewidth][c]{ОГЛАВЛЕНИЕ}}}
-\defaultfontfeatures{Ligatures=TeX}
-\setmainfont{Times New Roman}
-\setsansfont{Arial}
-\setmonofont{Courier New}
 \usepackage{geometry}
-\geometry{left=30mm,right=15mm,top=20mm,bottom=20mm}
-% Use upquote if available, for straight quotes in verbatim environments
-\usepackage{upquote}
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-    \setlength{\parindent}{1.25cm}
-    \setlength{\parskip}{0pt}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{ragged2e}
 \usepackage{tocloft}
-\renewcommand{\labelitemi}{--}
+\usepackage{upquote}
+\usepackage{microtype}
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+\gappto\captionsrussian{\renewcommand{\contentsname}{\makebox[\linewidth][c]{ОГЛАВЛЕНИЕ}}}
+\AtBeginDocument{\renewcommand{\contentsname}{\makebox[\linewidth][c]{ОГЛАВЛЕНИЕ}}}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+
+\geometry{left=30mm,right=15mm,top=20mm,bottom=20mm}
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{3em}
+\setcounter{secnumdepth}{5}
+
+\UseMicrotypeSet[protrusion]{basicmath}
+
+\setlist[itemize]{label=--}
+\setlist[enumerate,1]{label=\arabic*)}
+
 \renewcommand{\cfttoctitlefont}{\bfseries}
 \renewcommand{\cftaftertoctitle}{\par}
 \renewcommand{\cftsecfont}{\normalfont}
@@ -45,33 +50,22 @@
 \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
 \setlength{\cftbeforesecskip}{0.35\baselineskip}
 \setlength{\cftbeforesubsecskip}{0.25\baselineskip}
+
 \makeatletter
 \renewcommand{\@seccntformat}[1]{\csname the#1\endcsname\quad}
-\newsavebox\pandoc@box
-\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
-  \sbox\pandoc@box{#1}%
-  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
-  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
-  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
-  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
-  \else\usebox{\pandoc@box}%
-  \fi%
-}
-% Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+
+\newcommand{\reportimage}[1]{%
+	\begin{center}
+		\includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{#1}
+	\end{center}
+}
+
 \urlstyle{same}
 \hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-
-\author{}
-\date{}
+	hidelinks
+}
 
 \begin{document}
 
@@ -116,7 +110,7 @@
 		Иванов Иван Иванович
 	\end{flushright}
 
-\vfill
+	\vfill
 \end{titlepage}
 
 \justifying
@@ -191,7 +185,6 @@ Web-приложения являются одним из основных ви�
 выборе мы опирались на следующие факторы:
 
 \begin{enumerate}
-	\def\labelenumi{\arabic{enumi})}
 	\item
 	      Доступность. Django является одним из самых популярных фреймворком,
 	      который используют много известных платформ (YouTube, Google). В
@@ -228,7 +221,7 @@ Web-приложения являются одним из основных ви�
 \section{Ознакомление с текущей системой}
 
 Для начала работы нам предоставили возможность ознакомится с предыдущей
-версией системы~{[}1{]}. Анализируя структуру системы, мы получили
+версией системы~[1]. Анализируя структуру системы, мы получили
 список необходимых разделов: главная страница, раздел с инструкцией по
 подготовке 3D модели, раздел со статусом заявок и раздел с подачей самой
 заявки. Предыдущая версия была основана на конструкторе от компании
@@ -237,9 +230,7 @@ Google, а подача на сервисе Google forms. Данная схем�
 поэтому было принято решение создать собственную базу данных заявок и
 обрабатывать их непосредственно в системе.
 
-\begin{center}
-	\includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{media/media/image1.jpeg}
-\end{center}
+\reportimage{media/media/image1.jpeg}
 
 Рисунок 1 -- Неудобное отображение статусов из таблицы
 
@@ -249,20 +240,19 @@ Google, а подача на сервисе Google forms. Данная схем�
 связи с необходимостью изменять статус и отсылать сообщения без
 автоматизации.
 
-\section{Развертывание
-  проекта}
+\section{Развертывание проекта}
 
 В ходе разработки собственной системы первым шагом являлись
 развертывание проекта и его настройка. При работе с проектом
 использовалось виртуальное окружение для избежания проблем с
 совместимостью библиотек. После его установки были скачены необходимые
 библиотеки Django и создан сам проект посредством консольных команд
-Django~{[}2{]}.
+Django~[2].
 
 Затем была проведена настройка при помощи файла инструкций settings.py.
 Были созданы директории для хранения шаблонов и указан путь к ней через
 переменную TEMPLATE\_DIR, для хранения статических файлов в переменных
-STATIC\_URL и STATICFILES\_DIRS и для хранения файлов~{[}3{]} из формы в
+STATIC\_URL и STATICFILES\_DIRS и для хранения файлов~[3] из формы в
 переменных MEDIA\_URL и MEDIA\_ROOT. После создания блоков (о них будет
 сказано ниже), они были добавлены в переменной INSTALLED\_APPS. Также
 были указаны ссылки для перенаправления при авторизации и выходе и
@@ -275,9 +265,7 @@ STATIC\_URL и STATICFILES\_DIRS и для хранения файлов~{[}3{]}
 appform, хранящий весь функционал по работе с заявками. Схема проекта
 приведена на рисунке~Рисунок 2.
 
-\begin{center}
-	\includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{media/media/image2.jpeg}
-\end{center}
+\reportimage{media/media/image2.jpeg}
 
 Рисунок 2 -- Структура проекта
 
@@ -301,9 +289,7 @@ appform, хранящий весь функционал по работе с з�
 Отображение страницы происходит через стандартную функцию, возвращающую
 только шаблон страницы, без других манипуляций.
 
-\begin{center}
-	\includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{media/media/image3.png}
-\end{center}
+\reportimage{media/media/image3.png}
 
 Рисунок 3 -- Главная страница
 
@@ -327,9 +313,7 @@ models.py, в качестве которого выступает сама за
 моделью. Тестирование было возможно осуществить сразу благодаря
 административной панели фреймворка (рисунок~Рисунок 4).
 
-\begin{center}
-	\includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{media/media/image4.jpeg}
-\end{center}
+\reportimage{media/media/image4.jpeg}
 
 Рисунок 4 -- Объект в базе данных
 
@@ -349,7 +333,7 @@ models.py, в качестве которого выступает сама за
 форму на основе данных из запроса. Эта форма проверяется на корректность
 и дальше сохраняется в базу данных. Затем происходит сохранение файлов
 модели и записки на Яндекс.Диск. Для этого на сервисе Яндекс был получен
-токен для авторизации и использования диска~{[}4{]}. После обработки
+токен для авторизации и использования диска~[4]. После обработки
 всех путей вызывается функция upload\_yfile() и, с помощью библиотеки
 requests сохраняет файлы. После этого выполняется рассылка письма на
 указанный в форме адрес с номером заявки и информацией, что заявка
@@ -362,9 +346,7 @@ requests сохраняет файлы. После этого выполняет
 (рисунок~Рисунок 5), которые используются непосредственно в шаблоне
 посредством фигурных скобок.
 
-\begin{center}
-	\includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{media/media/image5.png}
-\end{center}
+\reportimage{media/media/image5.png}
 
 Рисунок 5 -- Страница подачи заявки
 
@@ -398,9 +380,7 @@ edit(request, number), которая на вход принимает еще н
 совпадений нет, то выводится сообщение о том, что такой заявки не
 существует.
 
-\begin{center}
-	\includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{media/media/image6.png}
-\end{center}
+\reportimage{media/media/image6.png}
 
 Рисунок 6 -- Страница поиска статуса
 
@@ -412,9 +392,7 @@ edit(request, number), которая на вход принимает еще н
 лаборатории, данные аккаунта записываются в базу данных пользователей и
 после этого появляется возможность авторизации под этими данными.
 
-\begin{center}
-	\includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{media/media/image7.jpeg}
-\end{center}
+\reportimage{media/media/image7.jpeg}
 
 Рисунок 7 -- Модерирование возможных пользователей
 
@@ -429,8 +407,7 @@ edit(request, number), которая на вход принимает еще н
 ссылок. Для этого существует файл urls.py. В данном файле хранятся
 ссылки и необходимые функции для их отображения.
 
-\section{Внедрение front-end части
-  системы}
+\section{Внедрение front-end части системы}
 
 При внедрении front-end части было необходимо собрать все шаблоны и
 статические файлы в две директории -- templates и static соответственно.
