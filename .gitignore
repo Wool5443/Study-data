@@ -14,3 +14,4 @@
 *.run.xml
 .env
 .~lock*
+.texbuild
