@@ -12,12 +12,14 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{ragged2e}
+\usepackage{setspace}
 \usepackage{tocloft}
+\usepackage{titlesec}
 \usepackage{upquote}
 \usepackage{microtype}
 \usepackage{bookmark}
 
-\usepackage{xurl}{}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
 
 \setdefaultlanguage[forceheadingpunctuation=false]{russian}
 \setotherlanguage{english}
@@ -29,11 +31,12 @@
 \setsansfont{Arial}
 \setmonofont{Courier New}
 
-\geometry{left=30mm,right=15mm,top=20mm,bottom=20mm}
+\geometry{left=20mm,right=10mm,top=20mm,bottom=20mm}
 \setlength{\parindent}{1.25cm}
 \setlength{\parskip}{0pt}
 \setlength{\emergencystretch}{3em}
-\setcounter{secnumdepth}{5}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 
 \UseMicrotypeSet[protrusion]{basicmath}
 
@@ -51,19 +54,34 @@
 \setlength{\cftbeforesecskip}{0.35\baselineskip}
 \setlength{\cftbeforesubsecskip}{0.25\baselineskip}
 
+\titleformat{\section}
+{\normalfont\fontsize{18pt}{22pt}\selectfont\bfseries}
+{\thesection}
+{1em}
+{}
+\titlespacing*{\section}
+{1.25cm}
+{-3.5ex plus -1ex minus -.2ex}
+{2.3ex plus .2ex}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries}
+{\thesubsection}
+{1em}
+{}
+
 \makeatletter
-\renewcommand{\@seccntformat}[1]{%
-	\ifstrequal{#1}{section}
-	{\csname the#1\endcsname\quad}
-	{\csname the#1\endcsname.\quad}%
-}
 \def\fps@figure{htbp}
+\pretocmd{\section}{\clearpage}{}{}
 \makeatother
 
-\newcommand{\reportimage}[1]{%
-	\begin{center}
-		\includegraphics[width=\linewidth,height=0.85\textheight,keepaspectratio]{#1}
-	\end{center}
+\newcommand{\reportfigure}[2]{%
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{#1}
+
+		{\fontsize{13pt}{15pt}\selectfont #2}
+	\end{figure}
 }
 
 \urlstyle{same}
@@ -117,7 +135,9 @@
 	\vfill
 \end{titlepage}
 
+\setcounter{page}{2}
 \justifying
+\onehalfspacing
 \tableofcontents
 \newpage
 
@@ -230,13 +250,11 @@ Web-приложения являются одним из основных ви�
 подготовке 3D модели, раздел со статусом заявок и раздел с подачей самой
 заявки. Предыдущая версия была основана на конструкторе от компании
 Google, а подача на сервисе Google forms. Данная схема была не совсем
-удобной из-за обработки заявок через Google sheets (рисунок~Рисунок 1),
+удобной из-за обработки заявок через Google sheets (рис. 1),
 поэтому было принято решение создать собственную базу данных заявок и
 обрабатывать их непосредственно в системе.
 
-\reportimage{media/media/image1.jpeg}
-
-Рисунок 1 -- Неудобное отображение статусов из таблицы
+\reportfigure{media/media/image1.jpeg}{Рис. 1. Неудобное отображение статусов из таблицы}
 
 Также мы ознакомились с самой таблицей заявок и функцией рассылки
 сообщений о новом статусе. Данная функция имела особенность отправлять
@@ -267,11 +285,9 @@ STATIC\_URL и STATICFILES\_DIRS и для хранения файлов~[3] и�
 соответствует принципу по работе с БД. Модуль home является главной
 страницей системы с последующей переадресацией на страницы модуля
 appform, хранящий весь функционал по работе с заявками. Схема проекта
-приведена на рисунке~Рисунок 2.
+приведена на рис. 2.
 
-\reportimage{media/media/image2.jpeg}
-
-Рисунок 2 -- Структура проекта
+\reportfigure{media/media/image2.jpeg}{Рис. 2. Структура проекта}
 
 В качестве базы данных взята стандартная для Django SQLite3, которая не
 требовала дополнительных настроек.
@@ -283,7 +299,7 @@ appform, хранящий весь функционал по работе с з�
 
 \subsection{Главная страница}
 
-Главная страница (рисунок~Рисунок 3) является начальной страницей при
+Главная страница (рис. 3) является начальной страницей при
 входе и сама по себе не содержит функционал, кроме переадресации на
 следующие страницы. Но в шаблоне страницы хранится back-end часть с
 анализом авторизации пользователя, и, в случае положительного
@@ -293,9 +309,7 @@ appform, хранящий весь функционал по работе с з�
 Отображение страницы происходит через стандартную функцию, возвращающую
 только шаблон страницы, без других манипуляций.
 
-\reportimage{media/media/image3.png}
-
-Рисунок 3 -- Главная страница
+\reportfigure{media/media/image3.png}{Рис. 3. Главная страница}
 
 \subsection{Подача заявки}
 
@@ -315,14 +329,12 @@ models.py, в качестве которого выступает сама за
 Затем данная модель была зарегистрирована в панели администратора и, в
 автоматическом порядке, была создана таблица в базе данных с данной
 моделью. Тестирование было возможно осуществить сразу благодаря
-административной панели фреймворка (рисунок~Рисунок 4).
+административной панели фреймворка (рис. 4).
 
-\reportimage{media/media/image4.jpeg}
-
-Рисунок 4 -- Объект в базе данных
+\reportfigure{media/media/image4.jpeg}{Рис. 4. Объект в базе данных}
 
 Следующим шагом было создание формы для отправки заявки. Фреймворк
-позволяет создавать их в файле forms.py. Было необходимо импортировать
+позволяет создавать их в файле forms.py~[4]. Было необходимо импортировать
 созданную ранее модель и создать новый класс -- форму. Форма имеет такие
 же поля, что и модель, но поле статус является скрытым для обычного
 пользователя, ведь при создании заявки обрабатывается стандартное
@@ -337,7 +349,7 @@ models.py, в качестве которого выступает сама за
 форму на основе данных из запроса. Эта форма проверяется на корректность
 и дальше сохраняется в базу данных. Затем происходит сохранение файлов
 модели и записки на Яндекс.Диск. Для этого на сервисе Яндекс был получен
-токен для авторизации и использования диска~[4]. После обработки
+токен для авторизации и использования диска~[5]. После обработки
 всех путей вызывается функция upload\_yfile() и, с помощью библиотеки
 requests сохраняет файлы. После этого выполняется рассылка письма на
 указанный в форме адрес с номером заявки и информацией, что заявка
@@ -347,12 +359,10 @@ requests сохраняет файлы. После этого выполняет
 появляется ошибка <<Форма заполнена неверно>>.
 
 На выходе мы имеем отображение шаблона appform.html c выходными данными
-(рисунок~Рисунок 5), которые используются непосредственно в шаблоне
+(рис. 5), которые используются непосредственно в шаблоне
 посредством фигурных скобок.
 
-\reportimage{media/media/image5.png}
-
-Рисунок 5 -- Страница подачи заявки
+\reportfigure{media/media/image5.png}{Рис. 5. Страница подачи заявки}
 
 \subsection{Вывод всех заявок}
 
@@ -380,25 +390,21 @@ edit(request, number), которая на вход принимает еще н
 Поиск заявки осуществляется благодаря странице с полем ввода номера
 заявки. Пользователь вводит номер и вызывается функция findart(request).
 В случае получения номера функция просматривает номера всех заявок и,
-при совпадении, выводит номер и ее статус (рисунок~Рисунок 6). Если же
+при совпадении, выводит номер и ее статус (рис. 6). Если же
 совпадений нет, то выводится сообщение о том, что такой заявки не
 существует.
 
-\reportimage{media/media/image6.png}
-
-Рисунок 6 -- Страница поиска статуса
+\reportfigure{media/media/image6.png}{Рис. 6. Страница поиска статуса}
 
 \subsection{Авторизация}
 
 Авторизация происходит посредством встроенной в фреймворк функции через
 логин и пароль, установленный суперпользователем административной панели
-(рисунок~Рисунок 7). Т.к. администратором является назначенный сотрудник
+(рис. 7). Т.к. администратором является назначенный сотрудник
 лаборатории, данные аккаунта записываются в базу данных пользователей и
 после этого появляется возможность авторизации под этими данными.
 
-\reportimage{media/media/image7.jpeg}
-
-Рисунок 7 -- Модерирование возможных пользователей
+\reportfigure{media/media/image7.jpeg}{Рис. 7. Модерирование возможных пользователей}
 
 \subsection{Инструкция по созданию модели}
 
@@ -430,14 +436,14 @@ edit(request, number), которая на вход принимает еще н
 
 \section{Список использованных источников}
 
-\begin{enumerate}[label={[\arabic*]}]
-	\item
-	      Bendoraitis, A., Kronika, J. Django~3 Web Development Cookbook.
-	      Vol.~4. -- Birmingham: Packt,~2020. -- 608~p.
+\begin{enumerate}[label=\arabic*,leftmargin=1.25cm]
 	\item
 	      3D MIEM. Подача заявки на 3D-печать. -- URL:
 	      \url{https://sites.google.com/miem.hse.ru/3dmiem} (дата
 	      обращения~01.07.2022).
+	\item
+	      Bendoraitis, A., Kronika, J. Django~3 Web Development Cookbook.
+	      Vol.~4. -- Birmingham: Packt,~2020. -- 608~p.
 	\item
 	      Дронов, В.А. Django~2.1. Практика создания веб-сайтов на Python.~--
 	      СПб.: BHV,~2019. -- 672~с.
