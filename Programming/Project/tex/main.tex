@@ -31,7 +31,10 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{ragged2e}
 \usepackage{tocloft}
+\renewcommand{\labelitemi}{--}
 \renewcommand{\cfttoctitlefont}{\bfseries}
 \renewcommand{\cftaftertoctitle}{\par}
 \renewcommand{\cftsecfont}{\normalfont}
@@ -113,9 +116,10 @@
 		Иванов Иван Иванович
 	\end{flushright}
 
-	\vfill
+\vfill
 \end{titlepage}
 
+\justifying
 \tableofcontents
 \newpage
 
@@ -445,8 +449,7 @@ edit(request, number), которая на вход принимает еще н
 
 \section{Список использованных источников}
 
-\begin{enumerate}
-	\def\labelenumi{\arabic{enumi}.}
+\begin{enumerate}[label={[\arabic*]}]
 	\item
 	      Bendoraitis, A., Kronika, J. Django~3 Web Development Cookbook.
 	      Vol.~4. -- Birmingham: Packt,~2020. -- 608~p.
