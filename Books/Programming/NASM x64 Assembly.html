@@ -1,0 +1,938 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><head><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">@layer {
+html {
+    background-color: var(--darkreader-background-ffffff, #181a1b) !important;
+}
+html {
+    color-scheme: dark !important;
+}
+iframe {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: var(--darkreader-background-ffffff, #181a1b);
+}
+html, body {
+    border-color: var(--darkreader-border-4c4c4c, #736b5e);
+    color: var(--darkreader-text-000000, #e8e6e3);
+}
+a {
+    color: var(--darkreader-text-0040ff, #3391ff);
+}
+table {
+    border-color: var(--darkreader-border-808080, #545b5e);
+}
+mark {
+    color: var(--darkreader-text-000000, #e8e6e3);
+}
+::placeholder {
+    color: var(--darkreader-text-a9a9a9, #b2aba1);
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: var(--darkreader-background-faffbd, #404400) !important;
+    color: var(--darkreader-text-000000, #e8e6e3) !important;
+}
+::selection {
+    background-color: var(--darkreader-background-0060d4, #004daa) !important;
+    color: var(--darkreader-text-ffffff, #e8e6e3) !important;
+}
+::-moz-selection {
+    background-color: var(--darkreader-background-0060d4, #004daa) !important;
+    color: var(--darkreader-text-ffffff, #e8e6e3) !important;
+}
+}</style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, img.Wirisformula, a[data-testid="headerMediumLogo"]>svg, .d2l-navigation-link-image-container, .d2l-iframe-loading-container, div.mc-ip-hide[style*="background: rgb(255, 255, 255) !important"], [style*="color: rgb(0, 0, 1) !important;"] {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}
+[data-darkreader-inline-border-short] {
+  border: var(--darkreader-inline-border-short) !important;
+}
+[data-darkreader-inline-border-bottom-short] {
+  border-bottom: var(--darkreader-inline-border-bottom-short) !important;
+}
+[data-darkreader-inline-border-left-short] {
+  border-left: var(--darkreader-inline-border-left-short) !important;
+}
+[data-darkreader-inline-border-right-short] {
+  border-right: var(--darkreader-inline-border-right-short) !important;
+}
+[data-darkreader-inline-border-top-short] {
+  border-top: var(--darkreader-inline-border-top-short) !important;
+}
+[data-darkreader-inline-invert] {
+    filter: invert(100%) hue-rotate(180deg);
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: var(--darkreader-background-ffffff, #181a1b);
+   --darkreader-neutral-text: var(--darkreader-text-000000, #e8e6e3);
+   --darkreader-selection-background: var(--darkreader-background-0060d4, #004daa);
+   --darkreader-selection-text: var(--darkreader-text-ffffff, #e8e6e3);
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <title>NASM x64 Assembly</title>
+    <meta content="Dr. Orion Lawlor, lawlor@alaska.edu" name="author">
+  <meta name="darkreader" content="db6bafee2d7148d5a6c9b9c499dfc564"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: var(--darkreader-background-ffd76e, #684b00) !important;
+    border-color: var(--darkreader-background-c59d00, #9e7e00) !important;
+    color: var(--darkreader-text-302505, #d7d4cf) !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: var(--darkreader-background-add8e6, #1b4958) !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: var(--darkreader-background-cfecf5, #0f3a47) !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+.tou-uknfeu {
+    background-color: var(--darkreader-background-faedda, #432c09) !important;
+}
+.tou-6i3zyv {
+    background-color: var(--darkreader-background-85c3d8, #245d70) !important;
+}
+div.mermaid-viewer-control-panel .btn {
+    background-color: var(--darkreader-neutral-background);
+    fill: var(--darkreader-neutral-text);
+}
+svg g rect.er {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+    fill: var(--darkreader-selection-background);
+    fill-opacity: 0.8 !important;
+}
+svg rect.er.relationshipLabelBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect,
+svg g g.nodes polygon {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+    fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0,
+svg line.messageLine1 {
+    stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+    fill: var(--darkreader-neutral-background) !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    background-color: white !important;
+    padding-top: 1rem;
+}
+iframe#unpaywall[src$="unpaywall.html"] {
+    color-scheme: light !important;
+}
+select {
+    --darkreader-bg--form-control-background-color: rgba(22, 22, 22, 0) !important;
+}
+body#tumblr {
+    --darkreader-bg--secondary-accent: 31, 32, 34 !important;
+    --darkreader-bg--white: 23, 23, 23 !important;
+    --darkreader-text--black: 228, 224, 218 !important;
+}
+:host {
+    --d2l-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-button-icon-background-color-hover: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-color-ferrite: var(--darkreader-neutral-text) !important;
+    --d2l-color-sylvite: var(--darkreader-bg--d2l-color-sylvite) !important;
+    --d2l-dropdown-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-dropdown-border-color: var(--darkreader-border--d2l-color-mica) !important;
+    --d2l-input-backgroud-color: var(--darkreader-neutral-background) !important;
+    --d2l-menu-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+    --d2l-tooltip-background-color: var(--darkreader-neutral-background) !important;
+    --d2l-tooltip-border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+:host([_floating]) .d2l-floating-buttons-container {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-top-color: var(--darkreader-border--d2l-color-mica) !important;
+    opacity: 0.88 !important;
+}
+d2l-card {
+    background: var(--darkreader-neutral-background) !important;
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+d2l-dropdown-content > div,
+d2l-menu-item {
+    background-color: var(--darkreader-neutral-background) !important;
+    border-radius: 10px !important;
+}
+d2l-empty-state-simple {
+    border-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-button-filter > ul > li > a.vui-button {
+    border-color: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-label-text:has(.d2l-button-subtle-content):hover,
+.d2l-label-text:has(.d2l-button-subtle-content):focus,
+.d2l-label-text:has(.d2l-button-subtle-content):active {
+    background-color: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-navigation-centerer {
+    color: inherit !important;
+}
+.d2l-tabs-layout {
+    border-color: var(--darkreader-border--d2l-color-gypsum) !important;
+}
+.d2l-input,
+.d2l-calendar-date,
+.d2l-htmleditor-container {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-collapsible-panel {
+    border: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+    border-radius: 0.4rem !important;
+}
+.d2l-collapsible-panel-divider {
+    border-bottom: 1px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-w2d-flex {
+    border-bottom: 2px solid var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-collapsible-panel scrolled,
+.d2l-collapsible-panel-header,
+.d2l-w2d-collection-fixed {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.d2l-loading-spinner-bg {
+    fill: var(--darkreader-bg--d2l-color-gypsum) !important;
+}
+.d2l-loading-spinner-bg-stroke {
+    stroke: var(--darkreader-border--d2l-color-mica) !important;
+}
+.d2l-loading-spinner-wrapper svg path,
+.d2l-loading-spinner-wrapper svg circle {
+    fill: var(--darkreader-neutral-background) !important;
+}
+.d2l-twopanelselector-side.d2l-twopanelselector-side-sep {
+    background: var(--darkreader-bg--d2l-color-mica) !important;
+}
+.d2l-le-TreeAccordionItem-anchor::before {
+    background: var(--darkreader-bg--d2l-color-corundum) !important;
+}
+table[class|="moz-header"] {
+    background: none;
+}
+*[style*="color: rgba(0,0,0,"],
+*[style*="color: rgba(0, 0, 0,"],
+*[style*="color:#000"],
+*[style*="color:black"],
+*[style*="color:#282828"],
+*[style*="color:#444"] {
+    color: var(--darkreader-neutral-text) !important;
+}
+*[style*="background:#fff"],
+*[style*="background-color:#fff"] {
+    background: var(--darkreader-neutral-background) !important;
+}
+*[bgcolor="#F5F5F5"],
+*[style*="background-color: #F5F5F5"] {
+    background: var(--darkreader-background-f5f5f5, #1e2021) !important;
+}
+body[style*="background: rgb(255, 255, 255) !important"] *:not(a),
+.body[style*="background-color: rgb(254, 254, 254) !important"] *:not(a) {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+div[style*="www.gstatic.com/android/"] {
+    background: none !important;
+}
+*[style*="background:#f9f9f9"] {
+    background: var(--darkreader-background-f9f9f9, #1b1e1f) !important;
+}
+body.mediawiki.skin-vector #mw-page-base {
+    background-image: none !important;
+}
+embed[type="application/pdf"] { filter: invert(100%) contrast(90%); }</style></head>
+  <body>
+    <h1>x86_64 NASM Assembly Quick Reference ("Cheat Sheet")</h1>
+    <p>
+      <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    </p>
+    <p style="color: rgb(0, 0, 0); font-variant-caps: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; line-height: normal; --darkreader-inline-color: var(--darkreader-text-000000, #e8e6e3);" data-darkreader-inline-color="">Here's the full list of
+      ordinary integer x86 registers.&nbsp; The 64 bit registers are
+      shown in red. &nbsp;"Scratch" registers any function is allowed to
+      overwrite, and use for anything you want without asking
+      anybody.&nbsp; "<em>Preserved</em>" registers have to be put back
+      ("save" the register) if you use them.</p>
+    <table style="font-family: &quot;Times New Roman&quot;; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; color: rgb(0, 0, 0); font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; text-align: start; white-space: normal; width: 966.4px; --darkreader-inline-color: var(--darkreader-text-000000, #e8e6e3);" cellspacing="2" cellpadding="2" border="1" data-darkreader-inline-color="">
+      <tbody>
+        <tr>
+          <td valign="top"><b>Name</b><br>
+          </td>
+          <td style="vertical-align: top; font-weight: bold;">Notes</td>
+          <td valign="top">Type<br>
+          </td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); font-weight: bold; --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">64-bit<br>
+            long</td>
+          <td style="vertical-align: top; font-weight: bold;">32-bit<br>
+            int</td>
+          <td style="vertical-align: top; font-weight: bold;">16-bit<br>
+            short</td>
+          <td style="vertical-align: top; font-weight: bold;">8-bit<br>
+            char</td>
+        </tr>
+        <tr>
+          <td valign="top">rax<br>
+          </td>
+          <td style="vertical-align: top;">Values are returned from
+            functions in this register.&nbsp;<span>&nbsp;</span><br>
+          </td>
+          <td valign="top">scratch<br>
+          </td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">rax</td>
+          <td style="vertical-align: top;">eax</td>
+          <td style="vertical-align: top;">ax</td>
+          <td style="vertical-align: top;">ah and al</td>
+        </tr>
+        <tr>
+          <td valign="top">rcx<br>
+          </td>
+          <td style="vertical-align: top;">Typical scratch
+            register.&nbsp; Some instructions also use it as a counter.</td>
+          <td valign="top">scratch<br>
+          </td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">rcx</td>
+          <td style="vertical-align: top;">ecx</td>
+          <td style="vertical-align: top;">cx</td>
+          <td style="vertical-align: top;">ch and cl</td>
+        </tr>
+        <tr>
+          <td valign="top">rdx<br>
+          </td>
+          <td style="vertical-align: top;">Scratch register.</td>
+          <td valign="top">scratch<br>
+          </td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">rdx</td>
+          <td style="vertical-align: top;">edx</td>
+          <td style="vertical-align: top;">dx</td>
+          <td style="vertical-align: top;">dh and dl</td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i>rbx</i><i><br>
+            </i></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>Preserved
+
+
+
+
+              register: don't use it without saving it!</em></td>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i>preserved</i><br>
+          </td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>rbx</em></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>ebx</em></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>bx</em></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>bh and
+              bl</em></td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i>rsp</i><i><br>
+            </i></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>The
+              stack pointer.&nbsp; Points to the top of the stack
+              (details coming soon!)<br>
+            </em></td>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i>preserved</i></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>rsp</em></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>esp</em></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>sp</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>spl</em></td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i>rbp</i><i><br>
+            </i></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>Preserved
+
+
+
+
+              register.&nbsp; Sometimes used to store the old value of
+              the stack pointer, or the "base".</em></td>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i>preserved</i></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>rbp</em></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>ebp</em></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>bp</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>bpl</em></td>
+        </tr>
+        <tr>
+          <td valign="top">rsi<br>
+          </td>
+          <td style="vertical-align: top;">Scratch register used to pass
+            function argument #2 in 64-bit Linux.&nbsp; In 64-bit
+            Windows, a preserved register.<br>
+          </td>
+          <td valign="top">scratch</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">rsi</td>
+          <td style="vertical-align: top;">esi</td>
+          <td style="vertical-align: top;">si</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">sil</td>
+        </tr>
+        <tr>
+          <td valign="top">rdi<br>
+          </td>
+          <td style="vertical-align: top;">Scratch register and function
+            argument #1 in 64-bit Linux.&nbsp; In 64-bit Windows, a
+            preserved register.<br>
+          </td>
+          <td valign="top">scratch</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">rdi</td>
+          <td style="vertical-align: top;">edi</td>
+          <td style="vertical-align: top;">di</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">dil</td>
+        </tr>
+        <tr>
+          <td valign="top"><font color="#ff0000" style="--darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r8<br>
+            </font></td>
+          <td style="vertical-align: top;">Scratch register.&nbsp; These
+            were added in 64-bit mode, so they have numbers, not names.<br>
+          </td>
+          <td valign="top">scratch</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r8</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r8d</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r8w</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r8b</td>
+        </tr>
+        <tr>
+          <td valign="top"><font color="#ff0000" style="--darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r9<br>
+            </font></td>
+          <td style="vertical-align: top;">Scratch register.</td>
+          <td valign="top">scratch</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r9</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r9d</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r9w</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r9b</td>
+        </tr>
+        <tr>
+          <td valign="top"><font color="#ff0000" style="--darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r10<br>
+            </font></td>
+          <td style="vertical-align: top;">Scratch register.</td>
+          <td valign="top">scratch</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r10</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r10d</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r10w</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r10b</td>
+        </tr>
+        <tr>
+          <td valign="top"><font color="#ff0000" style="--darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r11<br>
+            </font></td>
+          <td style="vertical-align: top;">Scratch register.</td>
+          <td valign="top">scratch</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r11</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r11d</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r11w</td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r11b</td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i><font color="#ff0000" style="--darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r12<br>
+              </font></i></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>Preserved
+
+
+
+
+              register.&nbsp; You can use it, but you need to save and
+              restore it.<br>
+            </em></td>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i>preserved</i></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r12</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r12d</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r12w</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r12b</em></td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i><font color="#ff0000" style="--darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r13<br>
+              </font></i></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>Preserved
+
+
+
+
+              register.</em></td>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i>preserved</i></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r13</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r13d</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r13w</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r13b</em></td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i><font color="#ff0000" style="--darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r14<br>
+              </font></i></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>Preserved
+
+
+
+
+              register.</em></td>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i>preserved</i></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r14</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r14d</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r14w</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r14b</em></td>
+        </tr>
+        <tr>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i><font color="#ff0000" style="--darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" data-darkreader-inline-color="">r15<br>
+              </font></i></td>
+          <td style="vertical-align: top; --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" bgcolor="#cccccc" data-darkreader-inline-bgcolor=""><em>Preserved
+
+
+
+
+              register.</em></td>
+          <td valign="top" bgcolor="#cccccc" style="--darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b);" data-darkreader-inline-bgcolor=""><i>preserved</i></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r15</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r15d</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r15w</em></td>
+          <td style="vertical-align: top; color: rgb(255, 0, 0); --darkreader-inline-bgcolor: var(--darkreader-background-cccccc, #35393b); --darkreader-inline-color: var(--darkreader-text-ff0000, #ff1a1a);" bgcolor="#cccccc" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><em>r15b</em></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <ul>
+      <li> A 64 bit linux machine <a href="https://en.wikipedia.org/wiki/X86_calling_conventions#System_V_AMD64_ABI">passes
+
+
+
+
+          function parameters</a> in rdi, rsi, rdx, rcx, r8, and
+        r9.&nbsp; Any additional parameters get pushed on the
+        stack.&nbsp; OS X in 64 bit uses the same parameter
+        scheme.&nbsp; Example function call:
+        <pre>extern putchar
+mov rdi,'H' ; function parameter: one char to print
+call putchar
+</pre>
+      </li>
+      <li> Windows in 64 bit is quite different:</li>
+      <ul>
+        <li>Win64 <a href="https://en.wikipedia.org/wiki/X86_calling_conventions#Microsoft_x64_calling_convention">function
+
+
+            parameters</a> go in registers rcx, rdx, r8, and r9.</li>
+        <li>Win64 functions assume you've allocated 32 bytes of stack
+          space to store the four parameter registers, plus another 8
+          bytes to align the stack to a 16-byte boundary.
+          <pre>sub rsp,32+8; parameter area, and stack alignment
+extern putchar
+mov rcx,'H' ; function parameter: one char to print
+call putchar
+add rsp,32+8 ; clean up stack
+</pre>
+        </li>
+        <li>Win64 treats the registers rdi and rsi as preserved.</li>
+        <li>Some function such as printf only get linked if they're
+          called from C/C++ code, so to call printf from assembly, you
+          need to include at least one call to printf from the C/C++
+          too.&nbsp; <br>
+        </li>
+        <li>If you use the MASM assembler, memory accesses must include
+          "PTR", like "DWORD PTR [rsp]".<br>
+        </li>
+      </ul>
+      <ul>
+        <li>See <a href="https://www.cs.uaf.edu/2017/fall/cs301/reference/nasm_vs/">NASM
+            assembly in 64-bit Windows in Visual Studio</a> to make
+          linking work.<br>
+        </li>
+      </ul>
+      <li> In <a>32 bit mode, </a>parameters are passed by pushing
+        them onto the stack in reverse order, so the function's first
+        parameter is on top of the stack before making the call.&nbsp;
+        In 32-bit mode Windows and OS X compilers also seem to add an
+        underscore before the name of a user-defined function, so if you
+        call a function foo from C/C++, you need to define it in
+        assembly as "_foo".<br>
+      </li>
+    </ul>
+    <br style="color: rgb(0, 0, 0); font-variant-caps: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; --darkreader-inline-color: var(--darkreader-text-000000, #e8e6e3);" data-darkreader-inline-color="">
+    <span style="color: rgb(0, 0, 0); font-variant-caps: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none; --darkreader-inline-color: var(--darkreader-text-000000, #e8e6e3);" data-darkreader-inline-color="">You can convert values between different register sizes
+      using different mov instructions:</span><br style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; --darkreader-inline-color: var(--darkreader-text-000000, #e8e6e3);" data-darkreader-inline-color="">
+    <table style="font-family: &quot;Times New Roman&quot;;
+      letter-spacing: normal; orphans: 2; text-indent: 0px;
+      text-transform: none; widows: 2; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; text-decoration-style: initial;
+      text-decoration-color: initial;" cellspacing="2" cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td colspan="4" rowspan="1" valign="top" align="center">Source
+            Size<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">64 bit rcx<br>
+          </td>
+          <td valign="top">32 bit ecx<br>
+          </td>
+          <td valign="top">16 bit cx<br>
+          </td>
+          <td valign="top">8 bit cl<br>
+          </td>
+          <td valign="top"><b>Notes</b><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">64 bit rax<br>
+          </td>
+          <td valign="top">mov rax,rcx<br>
+          </td>
+          <td valign="top"><a href="https://lawlor.cs.uaf.edu/netrun/run?name=Testing&amp;code=mov%20rcx%2C0xaabbccddeeff0011%0D%0Amovsxd%20rax%2Cecx%0D%0Aret%0D%0A&amp;lang=Assembly-NASM&amp;mach=x64&amp;mode=frag&amp;input=&amp;linkwith=&amp;foo_ret=long&amp;foo_arg0=void&amp;orun=Run&amp;orun=Disassemble&amp;orun=Grade&amp;ocompile=Optimize&amp;ocompile=Warnings">movsxd</a><span>&nbsp;</span>rax,ecx<br>
+          </td>
+          <td valign="top"><a href="https://lawlor.cs.uaf.edu/netrun/run?name=Testing&amp;code=mov%20rcx%2C0xaaeeccddeeffaabb%0D%0Amovsx%20rax%2Ccx%0D%0Aret%0D%0A&amp;lang=Assembly-NASM&amp;mach=x64&amp;mode=frag&amp;input=&amp;linkwith=&amp;foo_ret=long&amp;foo_arg0=void&amp;orun=Run&amp;orun=Disassemble&amp;orun=Grade&amp;ocompile=Optimize&amp;ocompile=Warnings">movsx</a><span>&nbsp;</span>rax,cx<br>
+          </td>
+          <td valign="top"><a href="https://lawlor.cs.uaf.edu/netrun/run?name=Testing&amp;code=mov%20rcx%2C0xaaeeccddeeffaabb%0D%0Amovsx%20rax%2Ccl%0D%0Aret%0D%0A&amp;lang=Assembly-NASM&amp;mach=x64&amp;mode=frag&amp;input=&amp;linkwith=&amp;foo_ret=long&amp;foo_arg0=void&amp;orun=Run&amp;orun=Disassemble&amp;orun=Grade&amp;ocompile=Optimize&amp;ocompile=Warnings">movsx</a><span>&nbsp;</span>rax,cl<br>
+          </td>
+          <td valign="top">Writes to whole register<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">32 bit eax<br>
+          </td>
+          <td valign="top">mov eax,ecx<br>
+          </td>
+          <td valign="top">mov eax,ecx<br>
+          </td>
+          <td valign="top"><a href="https://lawlor.cs.uaf.edu/netrun/run?name=Testing&amp;code=mov%20rax%2C0xeeeeeeeeeeeeeeee%0D%0Amov%20rcx%2C0xaaeeccddeeffaabb%0D%0Amovsx%20eax%2Ccx%0D%0Aret%0D%0A&amp;lang=Assembly-NASM&amp;mach=x64&amp;mode=frag&amp;input=&amp;linkwith=&amp;foo_ret=long&amp;foo_arg0=void&amp;orun=Run&amp;orun=Disassemble&amp;orun=Grade&amp;ocompile=Optimize&amp;ocompile=Warnings">movsx</a><span>&nbsp;</span>eax,cx<br>
+          </td>
+          <td valign="top"><a href="https://lawlor.cs.uaf.edu/netrun/run?name=Testing&amp;code=mov%20rax%2C0xeeeeeeeeeeeeeeee%0D%0Amov%20rcx%2C0xaaeeccddeeffaabb%0D%0Amovsx%20eax%2Ccl%0D%0Aret%0D%0A&amp;lang=Assembly-NASM&amp;mach=x64&amp;mode=frag&amp;input=&amp;linkwith=&amp;foo_ret=long&amp;foo_arg0=void&amp;orun=Run&amp;orun=Disassemble&amp;orun=Grade&amp;ocompile=Optimize&amp;ocompile=Warnings">movsx</a><span>&nbsp;</span>eax,cl<br>
+          </td>
+          <td valign="top">Top half of destination gets zeroed<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">16 bit ax<br>
+          </td>
+          <td valign="top">mov ax,cx<br>
+          </td>
+          <td valign="top">mov ax,cx<br>
+          </td>
+          <td valign="top">mov ax,cx<br>
+          </td>
+          <td valign="top"><a href="https://lawlor.cs.uaf.edu/netrun/run?name=Testing&amp;code=mov%20rax%2C0xeeeeeeeeeeeeeeee%0D%0Amov%20rcx%2C0xaaeeccddeeffaabb%0D%0Amovsx%20ax%2Ccl%0D%0Aret%0D%0A&amp;lang=Assembly-NASM&amp;mach=x64&amp;mode=frag&amp;input=&amp;linkwith=&amp;foo_ret=long&amp;foo_arg0=void&amp;orun=Run&amp;orun=Disassemble&amp;orun=Grade&amp;ocompile=Optimize&amp;ocompile=Warnings">movsx</a><span>&nbsp;</span>ax,cl<br>
+          </td>
+          <td valign="top">Only affects low 16 bits, rest unchanged.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">8 bit al<br>
+          </td>
+          <td valign="top">mov al,cl<br>
+          </td>
+          <td valign="top">mov al,cl</td>
+          <td valign="top">mov al,cl</td>
+          <td valign="top">mov al,cl<br>
+          </td>
+          <td valign="top">Only affects low 8 bits, rest unchanged.<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    Memory access:<br class="Apple-interchange-newline">
+    <table style="font-family: &quot;Times New Roman&quot;; letter-spacing: normal; text-indent: 0px; text-transform: none; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; color: rgb(0, 0, 0); font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; line-height: normal; text-align: start; white-space: normal; --darkreader-inline-color: var(--darkreader-text-000000, #e8e6e3);" border="1" data-darkreader-inline-color="">
+      <tbody>
+        <tr>
+          <td align="right"><strong>C/C++ datatype</strong></td>
+          <td><strong>Bits</strong></td>
+          <td><strong>Bytes</strong></td>
+          <td><strong>Register</strong></td>
+          <td><strong>Access memory</strong></td>
+          <td><strong>Allocate memory</strong></td>
+        </tr>
+        <tr>
+          <td align="right">char</td>
+          <td>8</td>
+          <td>1</td>
+          <td>al</td>
+          <td>BYTE [ptr]</td>
+          <td>db</td>
+        </tr>
+        <tr>
+          <td align="right">short</td>
+          <td>16</td>
+          <td>2</td>
+          <td>ax</td>
+          <td>WORD [ptr]</td>
+          <td>dw</td>
+        </tr>
+        <tr>
+          <td align="right">int</td>
+          <td>32</td>
+          <td>4</td>
+          <td>eax</td>
+          <td>DWORD [ptr]</td>
+          <td>dd</td>
+        </tr>
+        <tr>
+          <td align="right">long</td>
+          <td>64</td>
+          <td>8</td>
+          <td>rax</td>
+          <td>QWORD [ptr]</td>
+          <td>dq</td>
+        </tr>
+      </tbody>
+    </table>
+    <br class="Apple-interchange-newline">
+    <br>
+    <br class="Apple-interchange-newline">
+    <table style="width: 100%; text-align: left;" cellspacing="2" cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;" colspan="1">
+            <h2>Instructions (basically identical to 32-bit x86)</h2>
+            For gory instruction set details, read this <a href="http://www.felixcloutier.com/x86/">per-instruction
+              reference</a>, or the full Intel PDFs: <a href="https://www.cs.uaf.edu/2017/fall/cs301/reference/instructionsAM.pdf">part 1 (A-M)</a> and <a href="https://www.cs.uaf.edu/2017/fall/cs301/reference/instructionsNZ.pdf">part 2 (N-Z)</a>.<br>
+            <table style="text-align: left;" cellspacing="2" cellpadding="2" border="1">
+              <tbody>
+                <tr>
+                  <td style="vertical-align: top;">Mnemonic<br>
+                  </td>
+                  <td style="vertical-align: top;">Purpose<br>
+                  </td>
+                  <td style="vertical-align: top;">Examples<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">mov <span style="font-style: italic;">dest,src</span><br>
+                  </td>
+                  <td style="vertical-align: top;">Move data between
+                    registers, load immediate data into registers, move
+                    data between registers and memory.<br>
+                  </td>
+                  <td style="vertical-align: top;">mov rax,4&nbsp; ;
+                    Load constant into rax<br>
+                    mov rdx,rax&nbsp; ; Copy rax into rdx<br>
+                    mov rdx,[123]&nbsp; ; Copy rdx to memory address 123<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">push <span style="font-style: italic;">src</span><br>
+                  </td>
+                  <td style="vertical-align: top;">Insert a value onto
+                    the stack.&nbsp; Useful for passing arguments,
+                    saving registers, etc.<br>
+                  </td>
+                  <td style="vertical-align: top;">push rbp<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">pop <span style="font-style: italic;">dest</span><br>
+                  </td>
+                  <td style="vertical-align: top;">Remove topmost value
+                    from the stack.&nbsp; Equivalent to "mov <span style="font-style: italic;">dest</span>, [rsp];
+                    add 8,rsp"<br>
+                  </td>
+                  <td style="vertical-align: top;">pop rbp<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">call <span style="font-style: italic;">func</span><br>
+                  </td>
+                  <td style="vertical-align: top;">Push the address of
+                    the next instruction and start executing func.<br>
+                  </td>
+                  <td style="vertical-align: top;">call print_int<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">ret<br>
+                  </td>
+                  <td style="vertical-align: top;">Pop the return
+                    program counter, and jump there.&nbsp; Ends a
+                    subroutine.<br>
+                  </td>
+                  <td style="vertical-align: top;">ret<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">add <span style="font-style: italic;">dest,src</span><br>
+                  </td>
+                  <td style="vertical-align: top;"><span style="font-style: italic;">dest=dest+src</span><br>
+                  </td>
+                  <td style="vertical-align: top;">add rax,rdx ; Add rbx
+                    to rax<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">mul <span style="font-style: italic;">src</span><br>
+                  </td>
+                  <td style="vertical-align: top;">Multiply rax and <span style="font-style: italic;">src</span> as unsigned
+                    integers, and put the result in rax.&nbsp; High 64
+                    bits of product (usually zero) go into rdx.<br>
+                  </td>
+                  <td style="vertical-align: top;">mul rdx ; Multiply
+                    rax by rdx<br>
+                    ; rax=low bits, rdx overflow<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">div <span style="font-style: italic;">src</span><br>
+                  </td>
+                  <td style="vertical-align: top;">Divide rax by <span style="font-style: italic;">src</span>, and put
+                    the ratio into rax, and the remainder into rdx.<br>
+                    Bizarrely, on input rdx must be zero, or you get a
+                    SIGFPE.<br>
+                  </td>
+                  <td style="vertical-align: top;">mov rdx,0 ; avoid
+                    error<br>
+                    div rcx ; compute rax/rcx<br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">shr <span style="font-style: italic;">val,bits</span><br>
+                  </td>
+                  <td style="vertical-align: top;">Bitshift a value
+                    right by a constant, or the low 8 bits of rcx
+                    ("cl").<br>
+                    Shift count MUST go in rcx, no other register will
+                    do!<br>
+                  </td>
+                  <td style="vertical-align: top;">add rcx,4<br>
+                    shr rax,cl ; shift by rcx </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">jmp <span style="font-style: italic;">label</span></td>
+                  <td style="vertical-align: top;">Goto the instruction
+                    <span style="font-style: italic;">label</span>:.&nbsp;
+
+
+
+
+                    Skips anything else in the way.</td>
+                  <td style="vertical-align: top;">jmp post_mem<br>
+                    mov [0],rax ; Write to NULL!<br>
+                    post_mem: ; OK here...</td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">cmp <span style="font-style: italic;">a,b</span><br>
+                    <br>
+                    <span style="font-style: italic;"></span></td>
+                  <td style="vertical-align: top;">Compare two
+                    values.&nbsp; Sets flags that are used by the
+                    conditional jumps (below). <br>
+                  </td>
+                  <td style="vertical-align: top;">cmp
+                    rax,10&nbsp;&nbsp; <br>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;"> jl <span style="font-style: italic;">label</span></td>
+                  <td style="vertical-align: top;">Goto <span style="font-style: italic;">label</span> if
+                    previous comparison came out as less-than.&nbsp;
+                    Other conditionals available are: <br>
+                    jle (&lt;=), je (==), jge (&gt;=), jg (&gt;), jne
+                    (!=), and many others.<br>
+                    Also available in unsigned comparisons: jb (&lt;),
+                    jbe (&lt;=), ja (&gt;), jae (&gt;=).<br>
+                  </td>
+                  <td style="vertical-align: top;">jl loop_start&nbsp; ;
+                    Jump if rax&lt;10<br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">
+            <h2>Constants, Registers, Memory</h2>
+            "12" means decimal 12; "0xF0" is hex.&nbsp; "some_function"
+            is the address of the first instruction of the
+            function.&nbsp; Memory access (use register as pointer):
+            "[rax]".&nbsp; Same as C "*rax".<br>
+            Memory access with offset (use register + offset as
+            pointer): "[rax+4]".&nbsp; Same as C "*(rax+4)".<br>
+            Memory access with scaled index (register + another register
+            * scale): "[rax+rbx*4]".&nbsp; Same as C "*(rax+rbx*4)".<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    See <a href="http://www.sandpile.org/aa64/index.htm">sandpile.org</a>
+    for an opcode map.
+    <hr>
+    <div style="text-align: right;"><i =""=""><a href="http://lawlor.cs.uaf.edu/%7Eolawlor/">O. Lawlor</a>, <a href="https://www.cs.uaf.edu/2017/fall/cs301/reference/lawlor@alaska.edu">lawlor@alaska.edu</a></i><br>
+      <i =""=""> Up to: <a href="https://www.cs.uaf.edu/2017/">Class Site</a>, <a href="http://www.cs.uaf.edu/">CS</a>, <a href="http://www.uaf.edu/">UAF</a></i></div>
+  
+
+</body></html>
