@@ -1,0 +1,3 @@
+$do_cd = 1;
+$aux_dir = '.texbuild';
+$out_dir = '.';
