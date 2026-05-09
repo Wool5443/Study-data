@@ -13,6 +13,7 @@
 \usepackage{enumitem}
 \usepackage{ragged2e}
 \usepackage{tocloft}
+\usepackage{titlesec}
 \usepackage{upquote}
 \usepackage{microtype}
 \usepackage{bookmark}
@@ -51,8 +52,17 @@
 \setlength{\cftbeforesecskip}{0.35\baselineskip}
 \setlength{\cftbeforesubsecskip}{0.25\baselineskip}
 
+\titleformat{\section}
+{\normalfont\Large\bfseries}
+{\arabic{section}}
+{1em}
+{}
+\titlespacing*{\section}
+{0pt}
+{-3.5ex plus -1ex minus -.2ex}
+{2.3ex plus .2ex}
+
 \makeatletter
-\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname\quad}
 \def\fps@figure{htbp}
 \makeatother
 
