@@ -161,7 +161,7 @@
 
 \textbf{Тема:} разработка программы для пакетного преобразования видеозаписей в более компактный формат, позволяющий уменьшить объем занимаемого места на носителе.
 
-\textbf{Цель работы:} разработать приложение, с помощью которого пользователь сможет выбрать один или несколько видеофайлов и перекодировать их в формат HEVC, задав параметры качества, разрешения и частоты кадров.
+\textbf{Цель работы:} разработать приложение, с помощью которого пользователь сможет выбрать один или несколько видеофайлов и перекодировать их, задав параметры качества, разрешения и частоты кадров, чтобы уменьшить их размер.
 
 \textbf{Задачи работы:}
 \begin{enumerate}
@@ -179,11 +179,10 @@
 \begin{enumerate}
 	\item программа должна позволять выбирать один или несколько видеофайлов через стандартный диалог выбора файлов;
 	\item программа должна поддерживать добавление файлов перетаскиванием в окно приложения;
-	\item программа должна работать с локальными видеофайлами, доступными файловой системе пользователя;
 	\item программа должна позволять задавать параметр качества перекодирования;
 	\item программа должна позволять ограничивать высоту выходного видео;
 	\item программа должна позволять ограничивать частоту кадров выходного видео;
-	\item программа должна создавать выходной файл с суффиксом \texttt{\_compressed};
+	\item программа должна создавать выходные файлы с суффиксом \texttt{\_compressed};
 	\item программа должна позволять копировать метаданные исходного файла в результат;
 	\item программа должна отображать прогресс выполнения операции;
 	\item программа должна сообщать пользователю об ошибке, если перекодирование завершилось неуспешно.
@@ -229,6 +228,12 @@
 В ходе работы были рассмотрены основные подходы к сжатию видео, выбран стек Python, GTK~4, PyGObject, FFmpeg, ExifTool и python-ffmpeg. В приложении реализованы модули пользовательского интерфейса, выбора параметров, определения доступного HEVC-кодировщика, запуска FFmpeg, копирования метаданных и отображения прогресса. В результате была создана программа для локальной обработки видеофайлов без использования сетевых сервисов и базы данных.
 
 Работа содержит 20 страниц, 1 иллюстрацию, 1 таблицу, 8 использованных источников.
+
+This coursework examines the development of a desktop application called Floppy for batch converting video clips to HEVC format. The focus of the project is a software tool designed to reduce the disk space occupied by video files. The aim of the project is to create an application with a graphical user interface that allows the user to select multiple video files, configure the quality, resolution and frame rate, and then perform transcoding to save storage space.
+
+During the project, the main approaches to video compression were examined, and the following stack was selected: Python, GTK~4, PyGObject, FFmpeg, ExifTool and python-ffmpeg. The application implements modules for the user interface, parameter selection, detection of an available HEVC encoder, launching FFmpeg, copying metadata and displaying progress. The result is a programme for local processing of video files without the use of network services or a database.
+
+The thesis comprises 20 pages, 1 illustration, 1 table and 8 references.
 
 \newpage
 \tableofcontents
