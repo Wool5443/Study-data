@@ -5,10 +5,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 
-import matplotlib
 import pandas as pd
-
-matplotlib.use("Agg")
 
 LIBRARY_DIR = BASE_DIR / "library"
 SCRIPTS_DIR = BASE_DIR / "scripts"
@@ -19,15 +16,13 @@ from library.io_tools import (  # noqa: E402
     save_table_report,
 )
 from scripts.reports import (  # noqa: E402
-    pivot_status_by_species,
-    plot_box_age_by_status,
+    pivot_species_status,
+    plot_box_stay_days_by_status,
     plot_clustered_bar,
     plot_hist_age_by_status,
     plot_scatter_age_stay_by_species,
-    report_animals_by_age_range,
-    report_animals_by_status_species,
-    report_medical_records,
-    report_volunteer_workload,
+    report_animals_attention_list,
+    report_volunteer_workload_summary,
     statistics_report,
 )
 
@@ -93,45 +88,16 @@ def build_text_reports(config: ConfigParser, tables: dict) -> list[Path]:
         Paths to created text reports.
     """
     output_dir = BASE_DIR / config["paths"]["output_dir"]
-    status_in_shelter = tables["animal_statuses"].loc[
-        tables["animal_statuses"]["status_id"] == 1,
-        "status_name",
-    ].iat[0]
-    status_under_treatment = tables["animal_statuses"].loc[
-        tables["animal_statuses"]["status_id"] == 2,
-        "status_name",
-    ].iat[0]
-    species_cat = tables["species_breed"].loc[
-        tables["species_breed"]["species_breed_id"] == 3,
-        "species_name",
-    ].iat[0]
-    diagnosis_dermatitis = tables["medical_records"].loc[
-        tables["medical_records"]["record_id"] == 1,
-        "diagnosis",
-    ].iat[0]
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    for path in output_dir.glob("*.xlsx"):
+        path.unlink()
 
     reports = {
-        "animals_status_species": report_animals_by_status_species(
-            tables,
-            status_name=status_in_shelter,
-            species_name=species_cat,
-        ),
-        "animals_age_range": report_animals_by_age_range(
-            tables,
-            min_age=2,
-            max_age=5,
-            status_names=[status_in_shelter, status_under_treatment],
-        ),
-        "volunteer_workload": report_volunteer_workload(
-            tables,
-            min_duration=30,
-        ),
-        "medical_records": report_medical_records(
-            tables,
-            diagnosis_part=diagnosis_dermatitis,
-        ),
-        "statistics": statistics_report(tables),
-        "pivot_status_by_species": pivot_status_by_species(tables),
+        "animals_attention_list": report_animals_attention_list(tables),
+        "volunteer_workload_summary": report_volunteer_workload_summary(tables),
+        "shelter_statistics": statistics_report(tables),
+        "pivot_species_status": pivot_species_status(tables),
     }
     return [
         save_table_report(report, output_dir, name) for name, report in reports.items()
@@ -155,10 +121,14 @@ def build_graphic_reports(config: ConfigParser, tables: dict) -> list[Path]:
         Paths to created graphic files.
     """
     graphics_dir = BASE_DIR / config["paths"]["graphics_dir"]
+    graphics_dir.mkdir(parents=True, exist_ok=True)
+    for path in graphics_dir.glob("*.png"):
+        path.unlink()
+
     return [
         plot_clustered_bar(tables, graphics_dir),
         plot_hist_age_by_status(tables, graphics_dir),
-        plot_box_age_by_status(tables, graphics_dir),
+        plot_box_stay_days_by_status(tables, graphics_dir),
         plot_scatter_age_stay_by_species(tables, graphics_dir),
     ]
 
