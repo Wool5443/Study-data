@@ -121,15 +121,16 @@ def build_graphic_reports(config: ConfigParser, tables: dict) -> list[Path]:
         Paths to created graphic files.
     """
     graphics_dir = BASE_DIR / config["paths"]["graphics_dir"]
+    dpi = config.getint("graphics", "dpi")
     graphics_dir.mkdir(parents=True, exist_ok=True)
     for path in graphics_dir.glob("*.png"):
         path.unlink()
 
     return [
-        plot_species_status_bar(tables, graphics_dir),
-        plot_age_stay_scatter(tables, graphics_dir),
-        plot_volunteer_task_type_bar(tables, graphics_dir),
-        plot_medical_diagnosis_bar(tables, graphics_dir),
+        plot_species_status_bar(tables, graphics_dir, dpi),
+        plot_age_stay_scatter(tables, graphics_dir, dpi),
+        plot_volunteer_task_type_bar(tables, graphics_dir, dpi),
+        plot_medical_diagnosis_bar(tables, graphics_dir, dpi),
     ]
 
 

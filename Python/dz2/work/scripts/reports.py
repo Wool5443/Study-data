@@ -263,6 +263,7 @@ def pivot_species_status(
 def plot_species_status_bar(
     tables: dict[str, pd.DataFrame],
     graphics_dir: str | Path,
+    dpi: int,
 ) -> Path:
     """
     Build a clustered bar chart by species and status.
@@ -273,6 +274,8 @@ def plot_species_status_bar(
         Database tables loaded from pickle files.
     graphics_dir : str | Path
         Directory for graphic reports.
+    dpi : int
+        Image resolution in dots per inch.
 
     Returns
     -------
@@ -298,7 +301,7 @@ def plot_species_status_bar(
     plt.legend(title="Status")
     plt.tight_layout()
     path = graphics_path / "species_status_bar.png"
-    plt.savefig(path, dpi=150)
+    plt.savefig(path, dpi=dpi)
     plt.close()
     return path
 
@@ -306,6 +309,7 @@ def plot_species_status_bar(
 def plot_age_stay_scatter(
     tables: dict[str, pd.DataFrame],
     graphics_dir: str | Path,
+    dpi: int,
 ) -> Path:
     """
     Build a categorized scatter plot by age and shelter stay.
@@ -316,6 +320,8 @@ def plot_age_stay_scatter(
         Database tables loaded from pickle files.
     graphics_dir : str | Path
         Directory for graphic reports.
+    dpi : int
+        Image resolution in dots per inch.
 
     Returns
     -------
@@ -340,7 +346,7 @@ def plot_age_stay_scatter(
     plt.legend(title="Species")
     plt.tight_layout()
     path = graphics_path / "age_stay_scatter.png"
-    plt.savefig(path, dpi=150)
+    plt.savefig(path, dpi=dpi)
     plt.close()
     return path
 
@@ -348,6 +354,7 @@ def plot_age_stay_scatter(
 def plot_volunteer_task_type_bar(
     tables: dict[str, pd.DataFrame],
     graphics_dir: str | Path,
+    dpi: int,
 ) -> Path:
     """
     Build a bar chart with total volunteer task duration by task type.
@@ -358,6 +365,8 @@ def plot_volunteer_task_type_bar(
         Database tables loaded from pickle files.
     graphics_dir : str | Path
         Directory for graphic reports.
+    dpi : int
+        Image resolution in dots per inch.
 
     Returns
     -------
@@ -381,7 +390,7 @@ def plot_volunteer_task_type_bar(
     plt.xticks(rotation=25, ha="right")
     plt.tight_layout()
     path = graphics_path / "volunteer_task_type_bar.png"
-    plt.savefig(path, dpi=150)
+    plt.savefig(path, dpi=dpi)
     plt.close()
     return path
 
@@ -389,6 +398,7 @@ def plot_volunteer_task_type_bar(
 def plot_medical_diagnosis_bar(
     tables: dict[str, pd.DataFrame],
     graphics_dir: str | Path,
+    dpi: int,
 ) -> Path:
     """
     Build a bar chart with medical record counts by diagnosis.
@@ -399,6 +409,8 @@ def plot_medical_diagnosis_bar(
         Database tables loaded from pickle files.
     graphics_dir : str | Path
         Directory for graphic reports.
+    dpi : int
+        Image resolution in dots per inch.
 
     Returns
     -------
@@ -418,6 +430,6 @@ def plot_medical_diagnosis_bar(
     plt.xticks(rotation=25, ha="right")
     plt.tight_layout()
     path = graphics_path / "medical_diagnosis_bar.png"
-    plt.savefig(path, dpi=150)
+    plt.savefig(path, dpi=dpi)
     plt.close()
     return path
