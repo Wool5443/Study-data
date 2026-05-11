@@ -1,4 +1,5 @@
 *.mp4
+__pycache__
 *.psd
 *.autosave.*
 *.synctex.gz
