@@ -1,7 +1,7 @@
 """Specialized report functions for the shelter database."""
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 os.environ.setdefault("MPLCONFIGDIR", "/tmp/matplotlib")
 import matplotlib.pyplot as plt
@@ -58,9 +58,7 @@ def denormalize_volunteer_tasks(
     animals = tables["animals"][["animal_id", "name"]].copy()
     volunteers = tables["volunteers"].copy()
     volunteers["volunteer_name"] = (
-        volunteers["last_name"].astype(str)
-        + " "
-        + volunteers["first_name"].astype(str)
+        volunteers["last_name"].astype(str) + " " + volunteers["first_name"].astype(str)
     )
     result = tasks.merge(animals, on="animal_id", how="left")
     result = result.merge(
@@ -121,9 +119,8 @@ def report_animals_by_status_species(
         Filtered animal report.
     """
     animals = add_animal_metrics(denormalize_animals(tables))
-    row_index = (
-        (animals["status_name"] == status_name)
-        * (animals["species_name"] == species_name)
+    row_index = (animals["status_name"] == status_name) * (
+        animals["species_name"] == species_name
     )
     columns = [
         "inventory_number",
@@ -371,10 +368,7 @@ def plot_clustered_bar(
     for index, status in enumerate(counts.columns):
         shifted = [x + index * width for x in x_positions]
         plt.bar(shifted, counts[status], width=width, label=status)
-    centers = [
-        x + width * (len(counts.columns) - 1) / 2
-        for x in x_positions
-    ]
+    centers = [x + width * (len(counts.columns) - 1) / 2 for x in x_positions]
     plt.xticks(centers, counts.index)
     plt.title("Animal statuses by species")
     plt.xlabel("Species")
@@ -447,8 +441,7 @@ def plot_box_age_by_status(
     graphics_path.mkdir(parents=True, exist_ok=True)
     animals = add_animal_metrics(denormalize_animals(tables))
     groups = [
-        group["age_years"].dropna()
-        for _, group in animals.groupby("status_name")
+        group["age_years"].dropna() for _, group in animals.groupby("status_name")
     ]
     labels = [status for status, _ in animals.groupby("status_name")]
 

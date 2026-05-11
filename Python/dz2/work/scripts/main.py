@@ -93,33 +93,34 @@ def build_text_reports(config: ConfigParser, tables: dict) -> list[Path]:
         Paths to created text reports.
     """
     output_dir = BASE_DIR / config["paths"]["output_dir"]
-    shelter_status = tables["animal_statuses"].loc[
+    status_in_shelter = tables["animal_statuses"].loc[
         tables["animal_statuses"]["status_id"] == 1,
         "status_name",
     ].iat[0]
-    treatment_status = tables["animal_statuses"].loc[
+    status_under_treatment = tables["animal_statuses"].loc[
         tables["animal_statuses"]["status_id"] == 2,
         "status_name",
     ].iat[0]
-    cat_species = tables["species_breed"].loc[
+    species_cat = tables["species_breed"].loc[
         tables["species_breed"]["species_breed_id"] == 3,
         "species_name",
     ].iat[0]
-    diagnosis_query = tables["medical_records"].loc[
+    diagnosis_dermatitis = tables["medical_records"].loc[
         tables["medical_records"]["record_id"] == 1,
         "diagnosis",
     ].iat[0]
+
     reports = {
         "animals_status_species": report_animals_by_status_species(
             tables,
-            status_name=shelter_status,
-            species_name=cat_species,
+            status_name=status_in_shelter,
+            species_name=species_cat,
         ),
         "animals_age_range": report_animals_by_age_range(
             tables,
             min_age=2,
             max_age=5,
-            status_names=[shelter_status, treatment_status],
+            status_names=[status_in_shelter, status_under_treatment],
         ),
         "volunteer_workload": report_volunteer_workload(
             tables,
@@ -127,7 +128,7 @@ def build_text_reports(config: ConfigParser, tables: dict) -> list[Path]:
         ),
         "medical_records": report_medical_records(
             tables,
-            diagnosis_part=diagnosis_query,
+            diagnosis_part=diagnosis_dermatitis,
         ),
         "statistics": statistics_report(tables),
         "pivot_status_by_species": pivot_status_by_species(tables),
