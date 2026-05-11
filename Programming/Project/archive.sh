@@ -1,2 +1,2 @@
 #/usr/bin/env bash
-tar --exclude={*__pycache__,*.pytest_cache,*.texbuild,*main.synctex.gz,*.agents,*.codex,*.venv} --exclude-vcs -acf Misha-Solodilov.zip floppy tex
+tar --exclude={*__pycache__,*.pytest_cache,*.texbuild,*main.synctex.gz,*.agents,*.codex,*.venv,*todo} --exclude-vcs -acf MishaSolodilov.zip floppy tex
