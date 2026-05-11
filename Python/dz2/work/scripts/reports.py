@@ -3,6 +3,7 @@
 import os
 from pathlib import Path
 
+# TODO: убрать
 os.environ.setdefault("MPLCONFIGDIR", "/tmp/matplotlib")
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -70,10 +71,7 @@ def denormalize_volunteer_tasks(
     return result
 
 
-def add_animal_metrics(
-    animals: pd.DataFrame,
-    report_date: str = "2026-05-11",
-) -> pd.DataFrame:
+def add_animal_age_days_in_shelter(animals: pd.DataFrame) -> pd.DataFrame:
     """
     Add quantitative attributes used in reports.
 
@@ -81,8 +79,9 @@ def add_animal_metrics(
     ----------
     animals : pandas.DataFrame
         Denormalized animal table.
-    report_date : str, optional
+    report_date : str | None, optional
         Date for age and shelter stay calculations.
+        If None, the current date is used.
 
     Returns
     -------
@@ -90,7 +89,7 @@ def add_animal_metrics(
         Table with age and shelter stay columns.
     """
     result = animals.copy()
-    date = pd.Timestamp(report_date)
+    date = pd.Timestamp.today().normalize()
     result["age_years"] = ((date - result["birth_date"]).dt.days / 365.25).round(1)
     result["days_in_shelter"] = (date - result["admission_date"]).dt.days
     return result
@@ -110,16 +109,13 @@ def report_animals_attention_list(tables: dict[str, pd.DataFrame]) -> pd.DataFra
     pandas.DataFrame
         Report with animals that need medical or administrative attention.
     """
-    animals = add_animal_metrics(denormalize_animals(tables))
+    animals = add_animal_age_days_in_shelter(denormalize_animals(tables))
     active_status_ids = [1, 2, 4, 5]
     attention_status_ids = [2, 4]
-    row_index = (
-        animals["status_id"].isin(active_status_ids)
-        & (
-            animals["status_id"].isin(attention_status_ids)
-            | (animals["vaccinated"] == 0)
-            | (animals["sterilized"] == 0)
-        )
+    row_index = animals["status_id"].isin(active_status_ids) & (
+        animals["status_id"].isin(attention_status_ids)
+        | (animals["vaccinated"] == 0)
+        | (animals["sterilized"] == 0)
     )
     columns = [
         "inventory_number",
@@ -188,7 +184,7 @@ def statistics_report(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
     pandas.DataFrame
         Statistical report for qualitative and quantitative attributes.
     """
-    animals = add_animal_metrics(denormalize_animals(tables))
+    animals = add_animal_age_days_in_shelter(denormalize_animals(tables))
     tasks = denormalize_volunteer_tasks(tables)
     rows = []
     for column in ["species_name", "status_name", "sex", "vaccinated", "sterilized"]:
@@ -264,7 +260,7 @@ def pivot_species_status(
     return pivot.reset_index()
 
 
-def plot_clustered_bar(
+def plot_species_status_bar(
     tables: dict[str, pd.DataFrame],
     graphics_dir: str | Path,
 ) -> Path:
@@ -301,90 +297,13 @@ def plot_clustered_bar(
     plt.ylabel("Number of animals")
     plt.legend(title="Status")
     plt.tight_layout()
-    path = graphics_path / "clustered_bar_species_status.png"
+    path = graphics_path / "species_status_bar.png"
     plt.savefig(path, dpi=150)
     plt.close()
     return path
 
 
-def plot_hist_age_by_status(
-    tables: dict[str, pd.DataFrame],
-    graphics_dir: str | Path,
-) -> Path:
-    """
-    Build a categorized histogram of age by status.
-
-    Parameters
-    ----------
-    tables : dict[str, pandas.DataFrame]
-        Database tables loaded from pickle files.
-    graphics_dir : str | Path
-        Directory for graphic reports.
-
-    Returns
-    -------
-    pathlib.Path
-        Path to the created image.
-    """
-    graphics_path = Path(graphics_dir)
-    graphics_path.mkdir(parents=True, exist_ok=True)
-    animals = add_animal_metrics(denormalize_animals(tables))
-
-    plt.figure(figsize=(8, 5))
-    for status, group in animals.groupby("status_name"):
-        plt.hist(group["age_years"], alpha=0.65, label=status)
-    plt.title("Animal age by status")
-    plt.xlabel("Age, years")
-    plt.ylabel("Number of animals")
-    plt.legend(title="Status")
-    plt.tight_layout()
-    path = graphics_path / "hist_age_by_status.png"
-    plt.savefig(path, dpi=150)
-    plt.close()
-    return path
-
-
-def plot_box_stay_days_by_status(
-    tables: dict[str, pd.DataFrame],
-    graphics_dir: str | Path,
-) -> Path:
-    """
-    Build a categorized box-and-whisker plot by shelter stay.
-
-    Parameters
-    ----------
-    tables : dict[str, pandas.DataFrame]
-        Database tables loaded from pickle files.
-    graphics_dir : str | Path
-        Directory for graphic reports.
-
-    Returns
-    -------
-    pathlib.Path
-        Path to the created image.
-    """
-    graphics_path = Path(graphics_dir)
-    graphics_path.mkdir(parents=True, exist_ok=True)
-    animals = add_animal_metrics(denormalize_animals(tables))
-    groups = [
-        group["days_in_shelter"].dropna()
-        for _, group in animals.groupby("status_name")
-    ]
-    labels = [status for status, _ in animals.groupby("status_name")]
-
-    plt.figure(figsize=(8, 5))
-    plt.boxplot(groups, labels=labels)
-    plt.title("Shelter stay by status")
-    plt.xlabel("Status")
-    plt.ylabel("Days in shelter")
-    plt.tight_layout()
-    path = graphics_path / "box_stay_days_by_status.png"
-    plt.savefig(path, dpi=150)
-    plt.close()
-    return path
-
-
-def plot_scatter_age_stay_by_species(
+def plot_age_stay_scatter(
     tables: dict[str, pd.DataFrame],
     graphics_dir: str | Path,
 ) -> Path:
@@ -405,7 +324,7 @@ def plot_scatter_age_stay_by_species(
     """
     graphics_path = Path(graphics_dir)
     graphics_path.mkdir(parents=True, exist_ok=True)
-    animals = add_animal_metrics(denormalize_animals(tables))
+    animals = add_animal_age_days_in_shelter(denormalize_animals(tables))
 
     plt.figure(figsize=(8, 5))
     for species, group in animals.groupby("species_name"):
@@ -420,7 +339,85 @@ def plot_scatter_age_stay_by_species(
     plt.ylabel("Days in shelter")
     plt.legend(title="Species")
     plt.tight_layout()
-    path = graphics_path / "scatter_age_stay_by_species.png"
+    path = graphics_path / "age_stay_scatter.png"
+    plt.savefig(path, dpi=150)
+    plt.close()
+    return path
+
+
+def plot_volunteer_task_type_bar(
+    tables: dict[str, pd.DataFrame],
+    graphics_dir: str | Path,
+) -> Path:
+    """
+    Build a bar chart with total volunteer task duration by task type.
+
+    Parameters
+    ----------
+    tables : dict[str, pandas.DataFrame]
+        Database tables loaded from pickle files.
+    graphics_dir : str | Path
+        Directory for graphic reports.
+
+    Returns
+    -------
+    pathlib.Path
+        Path to the created image.
+    """
+    graphics_path = Path(graphics_dir)
+    graphics_path.mkdir(parents=True, exist_ok=True)
+    tasks = tables["animal_volunteer_tasks"].copy()
+    totals = (
+        tasks.groupby("task_type")["duration_minutes"]
+        .sum()
+        .sort_values(ascending=False)
+    )
+
+    plt.figure(figsize=(8, 5))
+    plt.bar(totals.index, totals.values)
+    plt.title("Volunteer workload by task type")
+    plt.xlabel("Task type")
+    plt.ylabel("Total minutes")
+    plt.xticks(rotation=25, ha="right")
+    plt.tight_layout()
+    path = graphics_path / "volunteer_task_type_bar.png"
+    plt.savefig(path, dpi=150)
+    plt.close()
+    return path
+
+
+def plot_medical_diagnosis_bar(
+    tables: dict[str, pd.DataFrame],
+    graphics_dir: str | Path,
+) -> Path:
+    """
+    Build a bar chart with medical record counts by diagnosis.
+
+    Parameters
+    ----------
+    tables : dict[str, pandas.DataFrame]
+        Database tables loaded from pickle files.
+    graphics_dir : str | Path
+        Directory for graphic reports.
+
+    Returns
+    -------
+    pathlib.Path
+        Path to the created image.
+    """
+    graphics_path = Path(graphics_dir)
+    graphics_path.mkdir(parents=True, exist_ok=True)
+    records = tables["medical_records"].copy()
+    counts = records["diagnosis"].value_counts()
+
+    plt.figure(figsize=(8, 5))
+    plt.bar(counts.index, counts.values)
+    plt.title("Medical records by diagnosis")
+    plt.xlabel("Diagnosis")
+    plt.ylabel("Number of records")
+    plt.xticks(rotation=25, ha="right")
+    plt.tight_layout()
+    path = graphics_path / "medical_diagnosis_bar.png"
     plt.savefig(path, dpi=150)
     plt.close()
     return path

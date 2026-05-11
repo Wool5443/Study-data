@@ -17,10 +17,10 @@ from library.io_tools import (  # noqa: E402
 )
 from scripts.reports import (  # noqa: E402
     pivot_species_status,
-    plot_box_stay_days_by_status,
-    plot_clustered_bar,
-    plot_hist_age_by_status,
-    plot_scatter_age_stay_by_species,
+    plot_age_stay_scatter,
+    plot_medical_diagnosis_bar,
+    plot_species_status_bar,
+    plot_volunteer_task_type_bar,
     report_animals_attention_list,
     report_volunteer_workload_summary,
     statistics_report,
@@ -126,10 +126,10 @@ def build_graphic_reports(config: ConfigParser, tables: dict) -> list[Path]:
         path.unlink()
 
     return [
-        plot_clustered_bar(tables, graphics_dir),
-        plot_hist_age_by_status(tables, graphics_dir),
-        plot_box_stay_days_by_status(tables, graphics_dir),
-        plot_scatter_age_stay_by_species(tables, graphics_dir),
+        plot_species_status_bar(tables, graphics_dir),
+        plot_age_stay_scatter(tables, graphics_dir),
+        plot_volunteer_task_type_bar(tables, graphics_dir),
+        plot_medical_diagnosis_bar(tables, graphics_dir),
     ]
 
 
