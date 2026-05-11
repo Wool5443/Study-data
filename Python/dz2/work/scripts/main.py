@@ -1,29 +1,24 @@
 """Main script for homework 02 report generation."""
 
-import os
-import sys
 from configparser import ConfigParser
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-os.environ.setdefault("MPLCONFIGDIR", "/tmp/matplotlib")
 
 import matplotlib
+import pandas as pd
 
 matplotlib.use("Agg")
 
 LIBRARY_DIR = BASE_DIR / "library"
 SCRIPTS_DIR = BASE_DIR / "scripts"
-sys.path.insert(0, str(LIBRARY_DIR))
-sys.path.insert(0, str(SCRIPTS_DIR))
 
-from io_tools import (  # noqa: E402
-    load_excel_tables,
+from library.io_tools import (  # noqa: E402
     load_pickle_tables,
     save_pickle_tables,
     save_table_report,
 )
-from reports import (  # noqa: E402
+from scripts.reports import (  # noqa: E402
     pivot_status_by_species,
     plot_box_age_by_status,
     plot_clustered_bar,
@@ -76,7 +71,7 @@ def prepare_database(config: ConfigParser) -> dict:
         return load_pickle_tables(data_dir)
 
     excel_path = data_dir / config["paths"]["excel_file"]
-    tables = load_excel_tables(excel_path)
+    tables = pd.read_excel(excel_path, sheet_name=None)
     save_pickle_tables(tables, data_dir)
     return load_pickle_tables(data_dir)
 

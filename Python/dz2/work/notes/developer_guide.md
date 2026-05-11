@@ -21,7 +21,7 @@
 `scripts/main.py` является главным модулем запуска:
 
 ```bash
-python work/scripts/main.py
+python -m scripts.main
 ```
 
 ## Библиотеки

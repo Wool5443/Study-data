@@ -5,25 +5,6 @@ from pathlib import Path
 import pandas as pd
 
 
-def load_excel_tables(file_path: str | Path) -> dict[str, pd.DataFrame]:
-    """
-    Load all MS Excel workbook sheets as database reference tables.
-
-    Parameters
-    ----------
-    file_path : str | Path
-        Path to an MS Excel workbook.
-
-    Returns
-    -------
-    dict[str, pandas.DataFrame]
-        Dictionary where keys are sheet names and values are
-        pandas.DataFrame tables.
-    """
-    tables = pd.read_excel(file_path, sheet_name=None)
-    return {name: frame.dropna(how="all") for name, frame in tables.items()}
-
-
 def save_pickle_tables(
     tables: dict[str, pd.DataFrame],
     data_dir: str | Path,
