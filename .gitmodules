@@ -10,3 +10,6 @@
 [submodule "Project_Seminar/homework/miansolodilov-185"]
 	path = Project_Seminar/homework/make-tests
 	url = https:/git.miem.hse.ru/grader_test_course_707f2aa3-0444-4b31-8128-446b4f9810c6/miansolodilov-185
+[submodule "Programming/labs/materials"]
+	path = Programming/labs/materials
+	url = https://git.miem.hse.ru/aip_sapr_2025-2026/materials
